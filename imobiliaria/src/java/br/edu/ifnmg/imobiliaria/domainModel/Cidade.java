@@ -80,7 +80,7 @@ public class Cidade implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.imobiliaria.domainModel.Cidade[ id=" + id + " ]";
+        return nome;
     }
     
 }
