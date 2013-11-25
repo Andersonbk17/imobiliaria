@@ -70,7 +70,7 @@ public class Nacionalidade implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.imobiliaria.domainModel.Nacionalidade[ id=" + id + " ]";
+        return nome;
     }
     
 }
