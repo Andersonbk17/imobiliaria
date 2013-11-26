@@ -22,14 +22,17 @@ import javax.persistence.Temporal;
  * @author Anderson
  */
 @Entity
-public class VendaImovel implements Serializable {
+public class AluguelImovel implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataVenda;
+    private Calendar dataInicio;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar dataTermino;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataRegistro;
@@ -41,10 +44,9 @@ public class VendaImovel implements Serializable {
     @ManyToOne
     FormaDePagamento formaDePagamento;
     
+   
     @ManyToOne
-    Cliente clienteVendedor;
-    @ManyToOne
-    Cliente clienteComprador;
+    Cliente cliente;
     
     @ManyToOne
     Funcionario funcionario;
@@ -52,13 +54,12 @@ public class VendaImovel implements Serializable {
     @ManyToOne
     Imovel imovel;
 
-    public VendaImovel() {
+    public AluguelImovel() {
         this.dataRegistro.setTime(new Date());
         this.formaDePagamento = null;
-        this.clienteVendedor = null;
-        this.clienteComprador = null;
-        this.funcionario = null;
         this.imovel = null;
+        this.cliente = null;
+        this.funcionario = null;
     }
 
     public Long getId() {
@@ -69,12 +70,20 @@ public class VendaImovel implements Serializable {
         this.id = id;
     }
 
-    public Calendar getDataVenda() {
-        return dataVenda;
+    public Calendar getDataInicio() {
+        return dataInicio;
     }
 
-    public void setDataVenda(Calendar dataVenda) {
-        this.dataVenda = dataVenda;
+    public void setDataInicio(Calendar dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Calendar getDataTermino() {
+        return dataTermino;
+    }
+
+    public void setDataTermino(Calendar dataTermino) {
+        this.dataTermino = dataTermino;
     }
 
     public Calendar getDataRegistro() {
@@ -109,20 +118,12 @@ public class VendaImovel implements Serializable {
         this.formaDePagamento = formaDePagamento;
     }
 
-    public Cliente getClienteVendedor() {
-        return clienteVendedor;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClienteVendedor(Cliente clienteVendedor) {
-        this.clienteVendedor = clienteVendedor;
-    }
-
-    public Cliente getClienteComprador() {
-        return clienteComprador;
-    }
-
-    public void setClienteComprador(Cliente clienteComprador) {
-        this.clienteComprador = clienteComprador;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Funcionario getFuncionario() {
@@ -143,12 +144,13 @@ public class VendaImovel implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.dataVenda);
-        hash = 19 * hash + Objects.hashCode(this.clienteVendedor);
-        hash = 19 * hash + Objects.hashCode(this.clienteComprador);
-        hash = 19 * hash + Objects.hashCode(this.funcionario);
-        hash = 19 * hash + Objects.hashCode(this.imovel);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.dataInicio);
+        hash = 97 * hash + Objects.hashCode(this.dataTermino);
+        hash = 97 * hash + Objects.hashCode(this.dataRegistro);
+        hash = 97 * hash + Objects.hashCode(this.cliente);
+        hash = 97 * hash + Objects.hashCode(this.funcionario);
+        hash = 97 * hash + Objects.hashCode(this.imovel);
         return hash;
     }
 
@@ -160,17 +162,17 @@ public class VendaImovel implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final VendaImovel other = (VendaImovel) obj;
-        if (!Objects.equals(this.dataVenda, other.dataVenda)) {
+        final AluguelImovel other = (AluguelImovel) obj;
+        if (!Objects.equals(this.dataInicio, other.dataInicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataTermino, other.dataTermino)) {
             return false;
         }
         if (!Objects.equals(this.dataRegistro, other.dataRegistro)) {
             return false;
         }
-        if (!Objects.equals(this.clienteVendedor, other.clienteVendedor)) {
-            return false;
-        }
-        if (!Objects.equals(this.clienteComprador, other.clienteComprador)) {
+        if (!Objects.equals(this.cliente, other.cliente)) {
             return false;
         }
         if (!Objects.equals(this.funcionario, other.funcionario)) {
@@ -184,8 +186,7 @@ public class VendaImovel implements Serializable {
 
     @Override
     public String toString() {
-        return "VendaImovel{" + "id=" + id + ", dataVenda=" + dataVenda + ", dataRegistro=" + dataRegistro + ", observacoes=" + observacoes + ", percentualComissao=" + percentualComissao + ", formaDePagamento=" + formaDePagamento + ", clienteVendedor=" + clienteVendedor + ", clienteComprador=" + clienteComprador + ", funcionario=" + funcionario + ", imovel=" + imovel + '}';
+        return "AluguelImovel{" + "id=" + id + ", dataInicio=" + dataInicio + ", dataTermino=" + dataTermino + ", dataRegistro=" + dataRegistro + ", observacoes=" + observacoes + ", percentualComissao=" + percentualComissao + ", formaDePagamento=" + formaDePagamento + ", cliente=" + cliente + ", funcionario=" + funcionario + ", imovel=" + imovel + '}';
     }
-    
     
 }
