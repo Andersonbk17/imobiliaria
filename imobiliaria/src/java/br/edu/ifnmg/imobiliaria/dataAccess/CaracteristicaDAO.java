@@ -6,8 +6,8 @@
 
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
-import br.edu.ifnmg.imobiliaria.domainModel.ITipoDeImovel;
-import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
+import br.edu.ifnmg.imobiliaria.domainModel.Caracteristica;
+import br.edu.ifnmg.imobiliaria.domainModel.IRepositorio;
 import java.util.List;
 import javax.persistence.Query;
 
@@ -15,23 +15,22 @@ import javax.persistence.Query;
  *
  * @author Anderson
  */
-public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoDeImovel{
+public class CaracteristicaDAO extends DAOGenerico<Caracteristica> implements IRepositorio<Caracteristica>{
 
-    public TipoDeImovelDAO() {
-        super(TipoDeImovel.class);
+    public CaracteristicaDAO() {
+        super(Caracteristica.class);
     }
 
     @Override
-    public List<TipoDeImovel> Buscar(TipoDeImovel obj) {
+    public List<Caracteristica> Buscar(Caracteristica obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean Apagar(TipoDeImovel obj) {
-     
-        try {
+    public boolean Apagar(Caracteristica obj) {
+         try {
 
-            Query query = manager.createQuery("Update TipoDeImovel s set s.ativo = 0 WHERE s.id :=id");
+            Query query = manager.createQuery("Update Caracteristica s set s.ativo = 0 WHERE s.id :=id");
             query.setParameter("id", obj.getId());
             query.executeUpdate();
 
