@@ -30,21 +30,17 @@ public class VisitaDAO extends DAOGenerico<Visita> implements IVisita{
 
     @Override
     public boolean Apagar(Visita obj) {
-        
-         try{
-         //   transacao.begin();
-            String consulta = "Update Visita s set s.ativo = 0 WHERE s.id ="+obj.getId();
-            
-             Query query = manager.createQuery(consulta);
-             query.executeUpdate();
-             
-           //  transacao.commit();
-             return true;
-        
-            
-        }catch(Exception ex){
-           ex.printStackTrace();
-           //transacao.rollback();
+        try {
+
+            Query query = manager.createQuery("Update Visita s set s.ativo = 0 WHERE s.id :=id");
+            query.setParameter("id", obj.getId());
+            query.executeUpdate();
+
+            return true;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
             return false;
         }
     }

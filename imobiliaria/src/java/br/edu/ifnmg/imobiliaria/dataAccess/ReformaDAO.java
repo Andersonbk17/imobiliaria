@@ -6,34 +6,31 @@
 
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
-import br.edu.ifnmg.imobiliaria.domainModel.ITipoDeImovel;
-import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
+import br.edu.ifnmg.imobiliaria.domainModel.IReforma;
+import br.edu.ifnmg.imobiliaria.domainModel.Reforma;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 /**
  *
  * @author Anderson
  */
-@Stateless(name = "ItipoDeImovel")
-public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoDeImovel{
+public class ReformaDAO extends DAOGenerico<Reforma> implements IReforma{
 
-    public TipoDeImovelDAO() {
-        super(TipoDeImovel.class);
+    public ReformaDAO() {
+        super(Reforma.class);
     }
 
     @Override
-    public List<TipoDeImovel> Buscar(TipoDeImovel obj) {
+    public List<Reforma> Buscar(Reforma obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean Apagar(TipoDeImovel obj) {
-     
-        try {
+    public boolean Apagar(Reforma obj) {
+         try {
 
-            Query query = manager.createQuery("Update TipoDeImovel s set s.ativo = 0 WHERE s.id :=id");
+            Query query = manager.createQuery("Update Reforma s set s.ativo = 0 WHERE s.id :=id");
             query.setParameter("id", obj.getId());
             query.executeUpdate();
 
