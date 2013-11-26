@@ -65,6 +65,7 @@ public class ClienteController {
     }
     
     public String voltar(){
+        listagem = null;
         return "index.xhtml";
     }
 
