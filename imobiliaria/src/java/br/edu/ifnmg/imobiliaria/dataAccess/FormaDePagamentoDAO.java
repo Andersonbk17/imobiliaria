@@ -10,7 +10,6 @@ import br.edu.ifnmg.imobiliaria.domainModel.FormaDePagamento;
 import br.edu.ifnmg.imobiliaria.domainModel.IFormaDePagamento;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 /**
@@ -67,21 +66,17 @@ throw new UnsupportedOperationException("Not supported yet."); //To change body 
 
     @Override
     public boolean Apagar(FormaDePagamento obj) {
-       // EntityTransaction transacao = manager.getTransaction();
-        try{
-         //   transacao.begin();
-            String consulta = "Update FormaDeTagamento s set s.ativo = 0 WHERE s.id ="+obj.getId();
-            
-             Query query = manager.createQuery(consulta);
-             query.executeUpdate();
-             
-           //  transacao.commit();
-             return true;
-        
-            
-        }catch(Exception ex){
-           ex.printStackTrace();
-           //transacao.rollback();
+        try {
+
+            Query query = manager.createQuery("Update FormaDeTagamento s set s.ativo = 0 WHERE s.id :=id");
+            query.setParameter("id", obj.getId());
+            query.executeUpdate();
+
+            return true;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
             return false;
         }
     }
