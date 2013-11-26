@@ -12,8 +12,8 @@ import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  *
  * @author Anderson
  */
-@SessionScoped
+@RequestScoped
 @Named(value = "TipoImovelController")
 public class TipoImovelController implements Serializable{
     
@@ -61,7 +61,7 @@ public class TipoImovelController implements Serializable{
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "FuncionarioListagem.xhtml";
+        return "TipoImovelListagem.xhtml";
     }
 
     public String voltar() {
