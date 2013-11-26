@@ -214,6 +214,42 @@ public class Imovel implements Serializable {
     public void setListaReformas(List<Reforma> listaReformas) {
         this.listaReformas = listaReformas;
     }
+    
+    public void addReforma(Reforma r){
+        if(!listaReformas.contains(r)){
+            listaReformas.add(r);
+        }
+    }
+    
+    public void removeReforma(Reforma r){
+        if(listaReformas.contains(r)){
+            listaReformas.remove(r);
+        }
+    }
+    
+    public void addFoto(Foto f){
+        if(!listaFotos.contains(f)){
+            listaFotos.add(f);
+        }
+    }
+    
+    public void removeFoto(Foto f){
+        if(listaFotos.contains(f)){
+            listaFotos.add(f);
+        }
+    }
+    
+    public void addCaracteristica(Caracteristica c){
+        if(!listaCaracteristicas.contains(c)){
+            listaCaracteristicas.add(c);
+        }
+    }
+    
+    public void removeCaracteristica(Caracteristica c){
+        if(listaCaracteristicas.contains(c)){
+            listaCaracteristicas.remove(c);
+        }
+    }
 
     @Override
     public int hashCode() {
