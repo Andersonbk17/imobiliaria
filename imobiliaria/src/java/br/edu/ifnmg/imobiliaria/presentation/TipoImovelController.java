@@ -68,6 +68,11 @@ public class TipoImovelController implements Serializable{
         listagem = null;
         return "index.xhtml";
     }
+    
+     public String filtrar() {
+        listagem = dao.Buscar(filtro);
+        return "ListagemTipoDeImovel.xhtml";
+    }
     public ITipoDeImovelRepositorio getDao() {
         return dao;
     }
