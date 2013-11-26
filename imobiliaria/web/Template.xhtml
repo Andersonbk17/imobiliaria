@@ -13,27 +13,30 @@
     </h:head>
 
     <h:body>
+        <h:form>
+            <div id="top">
+               <!--
+                <ui:insert name="top">Top</ui:insert>
+                -->
+                <p:menubar>
+                    <p:menuitem value="Home" url="index.xhtml"  />
+                    <p:submenu label="Cadastros" >
+                        <p:menuitem url="PessoaListagem.xhtml" value="Pessoas" />
+                    </p:submenu>
+                </p:menubar>
 
-        <div id="top">
-            <ui:insert name="top">Top</ui:insert>
-            
-            <p:menubar>
-                <p:menuitem value="Home" url="index.xhtml"  />
-                <p:submenu label="Cadastros" >
-                    <p:menuitem url="PessoaListagem.xhtml" value="Pessoas" />
-                </p:submenu>
-            </p:menubar>
-            
-        </div>
+            </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
 
-        <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
-        </div>
-
+            <div id="bottom">
+                <!--
+                <ui:insert name="bottom">Bottom</ui:insert>
+                -->
+            </div>
+        </h:form>
     </h:body>
 
 </html>
