@@ -32,6 +32,7 @@ public class Pessoa implements Serializable {
     private String nome;
     private String cpf;
     private String rg;
+    private String orgaoExpedidor;
     private String email;
     
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -55,6 +56,7 @@ public class Pessoa implements Serializable {
         this.nome = null;
         this.cpf = null;
         this.rg = null;
+        this.orgaoExpedidor = null;
         this.email = null;
         this.dataNascimento = new Date();
         this.telefone = null;
@@ -100,6 +102,16 @@ public class Pessoa implements Serializable {
     public void setRg(String rg) {
         this.rg = rg;
     }
+
+    public String getOrgaoExpedidor() {
+        return orgaoExpedidor;
+    }
+
+    public void setOrgaoExpedidor(String orgaoExpedidor) {
+        this.orgaoExpedidor = orgaoExpedidor;
+    }
+    
+    
 
     public String getEmail() {
         return email;
