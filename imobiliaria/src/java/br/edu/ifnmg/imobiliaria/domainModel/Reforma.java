@@ -40,12 +40,14 @@ public class Reforma implements Serializable {
     
     @ManyToOne
     private Imovel imovel;
+    private boolean ativo;
 
     public Reforma() {
         
         this.dataInicio = null;
         this.dataTermino = null;        
         this.imovel = null;
+        this.ativo = true;
     }
     
 
@@ -96,6 +98,16 @@ public class Reforma implements Serializable {
     public void setImovel(Imovel imovel) {
         this.imovel = imovel;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     @Override
     public int hashCode() {

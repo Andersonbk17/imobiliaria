@@ -7,7 +7,6 @@
 package br.edu.ifnmg.imobiliaria.domainModel;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -53,6 +52,8 @@ public class AluguelImovel implements Serializable {
     
     @ManyToOne
     Imovel imovel;
+    
+    private boolean ativo;
 
     public AluguelImovel() {
         this.dataRegistro = new Date();
@@ -62,6 +63,7 @@ public class AluguelImovel implements Serializable {
         this.imovel = null;
         this.cliente = null;
         this.funcionario = null;
+        this.ativo = true;
     }
 
     public Long getId() {
@@ -145,6 +147,16 @@ public class AluguelImovel implements Serializable {
     public void setImovel(Imovel imovel) {
         this.imovel = imovel;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     @Override
     public int hashCode() {

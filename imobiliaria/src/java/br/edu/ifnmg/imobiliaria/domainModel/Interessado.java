@@ -36,14 +36,17 @@ public class Interessado implements Serializable {
     
     @ManyToOne
     private Imovel imovel;
+    
+    private boolean ativo;
 
     public Interessado() {
-        this.nome = "";
-        this.telefone = "";
-        this.email = "";
-        this.mensagem = "";
+        this.nome = null;
+        this.telefone = null;
+        this.email = null;
+        this.mensagem = null;
         this.dataRegistro = new Date();
-        this.imovel = new Imovel();
+        this.imovel = null;
+        this.ativo = true;
     }
     
     
@@ -103,6 +106,16 @@ public class Interessado implements Serializable {
     public void setImovel(Imovel imovel) {
         this.imovel = imovel;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     
     

@@ -38,6 +38,8 @@ public class Foto implements Serializable {
     @Lob
     byte [] arquivo;
 
+    private boolean ativo;
+    
     public Long getId() {
         return id;
     }
@@ -77,6 +79,16 @@ public class Foto implements Serializable {
     public void setArquivo(byte[] arquivo) {
         this.arquivo = arquivo;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     @Override
     public int hashCode() {

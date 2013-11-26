@@ -24,9 +24,11 @@ public class Profissao implements Serializable {
     private Long id;
     
     private String nome;
+    private boolean ativo;
 
     public Profissao() {
-        this.nome = "";
+        this.nome = null;
+        this.ativo = true;
     }
     
     
@@ -46,6 +48,16 @@ public class Profissao implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     
     

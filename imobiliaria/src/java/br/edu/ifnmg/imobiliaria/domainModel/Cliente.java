@@ -57,24 +57,23 @@ public class Cliente extends Pessoa implements Serializable {
     private int clienteJuridicoFisico;
     private String JuridicoInscricaoMunicipal;
     private String JuridicoInscricaoEstadual;
+    private boolean ativo;
 
     public Cliente() {
         this.dataCadastro = new Date();
-        this.profissao = new Profissao();
-        this.conjugueNome = "";
-        this.conjugueCpf = "";
+        this.profissao = null;
+        this.conjugueNome = null;
+        this.conjugueCpf = null;
         this.conjugueDataNascimento = new Date();
-        this.conjugueSexo = 0;
-        this.conjugueRg = 0;
-        this.conjugueOrgaoExpedidor = "";
+        this.conjugueOrgaoExpedidor = null;
         this.dataCasamento = new Date();
-        this.conjugueTelefone = "";
-        this.conjugueEmail = "";
-        this.conjugueProfissao = new Profissao();
-        this.conjugueNacionalidade = new Nacionalidade();
-        this.clienteJuridicoFisico = 0;
-        this.JuridicoInscricaoMunicipal = "";
-        this.JuridicoInscricaoEstadual = "";
+        this.conjugueTelefone = null;
+        this.conjugueEmail = null;
+        this.conjugueProfissao = null;
+        this.conjugueNacionalidade = null;
+        this.JuridicoInscricaoMunicipal = null;
+        this.JuridicoInscricaoEstadual = null;
+        this.ativo = true;
     }
 
     
@@ -214,6 +213,18 @@ public class Cliente extends Pessoa implements Serializable {
     public void setJuridicoInscricaoEstadual(String JuridicoInscricaoEstadual) {
         this.JuridicoInscricaoEstadual = JuridicoInscricaoEstadual;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
+    
+    
     
     
 

@@ -26,6 +26,8 @@ public class Cargo implements Serializable {
     private String nome;
     private float salario;
 
+    private boolean ativo;
+    
     public Cargo() {
         this.nome = "";
         this.salario = 0;
@@ -56,6 +58,15 @@ public class Cargo implements Serializable {
     public void setSalario(float salario) {
         this.salario = salario;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
     
     
 

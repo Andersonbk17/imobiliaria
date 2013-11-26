@@ -25,6 +25,7 @@ public class TipoDeImovel implements Serializable {
     private Long id;
     
     private String nome;
+    private boolean ativo;
 
     public Long getId() {
         return id;
@@ -41,6 +42,16 @@ public class TipoDeImovel implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     @Override
     public int hashCode() {

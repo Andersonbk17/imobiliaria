@@ -27,15 +27,16 @@ public class Usuario implements Serializable {
     private String login;
     private String senha;
     private int nivel;
+    private boolean ativo;
     
     @ManyToOne
     private Funcionario funcionario;
 
     public Usuario() {
-        this.login = "";
-        this.senha = "";
-        this.nivel = 0;
-        this.funcionario = new Funcionario();
+        this.login = null;
+        this.senha = null;
+        this.funcionario = null;
+        this.ativo = true;
     }
 
        
@@ -79,6 +80,16 @@ public class Usuario implements Serializable {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
     
     
 

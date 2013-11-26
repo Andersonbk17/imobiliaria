@@ -50,6 +50,8 @@ public class VendaImovel implements Serializable {
     
     @ManyToOne
     Imovel imovel;
+    
+    private boolean ativo;
 
     public VendaImovel() {
         this.dataRegistro = new Date();
@@ -59,6 +61,7 @@ public class VendaImovel implements Serializable {
         this.clienteComprador = null;
         this.funcionario = null;
         this.imovel = null;
+        this.ativo = true;
     }
 
     public Long getId() {
@@ -141,6 +144,16 @@ public class VendaImovel implements Serializable {
     public void setImovel(Imovel imovel) {
         this.imovel = imovel;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     @Override
     public int hashCode() {

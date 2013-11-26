@@ -60,6 +60,8 @@ public class Imovel implements Serializable {
     @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY,mappedBy = "imovel")
     List<Reforma> listaReformas;
 
+    private boolean ativo;
+    
     public Imovel() {
         this.dataInicioConstrucao = null;
         this.tipoDeImovel = null;
@@ -69,6 +71,7 @@ public class Imovel implements Serializable {
         this.listaFotos = new LinkedList<>();
         this.listaCaracteristicas = new LinkedList<>();
         this.listaReformas = new LinkedList<>();
+        this.ativo = true;
     }
 
     public Long getId() {
@@ -250,6 +253,16 @@ public class Imovel implements Serializable {
             listaCaracteristicas.remove(c);
         }
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     @Override
     public int hashCode() {

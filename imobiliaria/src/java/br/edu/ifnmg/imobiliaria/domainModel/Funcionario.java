@@ -32,6 +32,8 @@ public class Funcionario extends Pessoa implements Serializable {
     @ManyToOne
     private Cargo cargo;
 
+    private boolean ativo;
+    
     public Funcionario() {
         this.dataAdmissao = new Date();
         this.cargo = new Cargo();
@@ -62,6 +64,16 @@ public class Funcionario extends Pessoa implements Serializable {
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
     
 
 

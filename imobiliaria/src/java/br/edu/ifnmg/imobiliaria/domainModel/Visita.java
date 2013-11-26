@@ -37,12 +37,14 @@ public class Visita implements Serializable {
     private Date dataRegistro;
     @ManyToOne
     private Imovel imovel;
+    private boolean ativo;
 
     public Visita() {
         this.cliente = null;
         this.dataAgenda = null;
         this.dataRegistro = new Date();
         this.imovel = null;
+        this.ativo = true;
     }
 
     public Long getId() {

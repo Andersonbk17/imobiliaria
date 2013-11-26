@@ -34,10 +34,13 @@ public class LogAcesso implements Serializable {
     
     private int tipo;
 
+    private boolean ativo;
+    
     public LogAcesso() {
         this.dataHora = new Date();
-        this.usuario = new Usuario();
-        this.tipo = 0;
+        this.usuario = null;
+        this.ativo = true;
+        
     }
     
 
@@ -72,6 +75,16 @@ public class LogAcesso implements Serializable {
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
     
 
     @Override

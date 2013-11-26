@@ -49,21 +49,22 @@ public class Pessoa implements Serializable {
     
     @ManyToOne
     private Nacionalidade nacionalidade;
+    private boolean ativo;
 
     public Pessoa() {
-        this.nome = "";
-        this.cpf = "";
-        this.rg = "";
-        this.email = "";
+        this.nome = null;
+        this.cpf = null;
+        this.rg = null;
+        this.email = null;
         this.dataNascimento = new Date();
-        this.sexo = 0;
-        this.telefone = "";
-        this.enderecoRua = "";
-        this.enderecoNumero = "";
-        this.enderecoBairro = "";
-        this.enderecoCep = "";
-        this.cidade = new Cidade();
-        this.nacionalidade = new Nacionalidade();
+        this.telefone = null;
+        this.enderecoRua = null;
+        this.enderecoNumero = null;
+        this.enderecoBairro = null;
+        this.enderecoCep = null;
+        this.cidade = null;
+        this.nacionalidade = null;
+        this.ativo = true;
     }
     
     
@@ -179,6 +180,16 @@ public class Pessoa implements Serializable {
     public void setNacionalidade(Nacionalidade nacionalidade) {
         this.nacionalidade = nacionalidade;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
+    
 
     
     
