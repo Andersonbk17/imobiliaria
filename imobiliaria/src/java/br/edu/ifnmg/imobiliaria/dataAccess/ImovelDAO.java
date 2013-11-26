@@ -6,7 +6,7 @@
 
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
-import br.edu.ifnmg.imobiliaria.domainModel.IImovel;
+import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -16,8 +16,8 @@ import javax.persistence.Query;
  *
  * @author Anderson
  */
-@Stateless(name = "IImovel")
-public class ImovelDAO extends DAOGenerico<Imovel> implements IImovel{
+@Stateless(name = "IImovelRepositorio")
+public class ImovelDAO extends DAOGenerico<Imovel> implements IImovelRepositorio{
 
     public ImovelDAO() {
         super(Imovel.class);

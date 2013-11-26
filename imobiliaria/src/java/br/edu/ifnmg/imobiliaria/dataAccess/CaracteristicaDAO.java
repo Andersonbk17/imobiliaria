@@ -7,7 +7,7 @@
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Caracteristica;
-import br.edu.ifnmg.imobiliaria.domainModel.ICaracteristica;
+import br.edu.ifnmg.imobiliaria.domainModel.ICaracteristicaRepositorio;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -16,8 +16,8 @@ import javax.persistence.Query;
  *
  * @author Anderson
  */
-@Stateless(name = "ICaracteristica")
-public class CaracteristicaDAO extends DAOGenerico<Caracteristica> implements ICaracteristica{
+@Stateless(name = "ICaracteristicaRepositorio")
+public class CaracteristicaDAO extends DAOGenerico<Caracteristica> implements ICaracteristicaRepositorio{
 
     public CaracteristicaDAO() {
         super(Caracteristica.class);

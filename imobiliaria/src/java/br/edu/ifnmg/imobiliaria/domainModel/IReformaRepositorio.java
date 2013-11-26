@@ -13,6 +13,6 @@ import javax.ejb.Remote;
  * @author Anderson
  */
 @Remote
-public interface IVendaImovel extends IRepositorio<VendaImovel>{
+public interface IReformaRepositorio extends IRepositorio<Reforma>{
     
 }

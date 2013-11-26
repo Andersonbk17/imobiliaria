@@ -7,7 +7,7 @@
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Foto;
-import br.edu.ifnmg.imobiliaria.domainModel.IFoto;
+import br.edu.ifnmg.imobiliaria.domainModel.IFotoRepositorio;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -16,8 +16,8 @@ import javax.persistence.Query;
  *
  * @author Anderson
  */
-@Stateless(name = "IFoto")
-public class FotoDAO extends DAOGenerico<Foto> implements IFoto{
+@Stateless(name = "IFotoRepositorio")
+public class FotoDAO extends DAOGenerico<Foto> implements IFotoRepositorio{
 
     public FotoDAO() {
         super(Foto.class);

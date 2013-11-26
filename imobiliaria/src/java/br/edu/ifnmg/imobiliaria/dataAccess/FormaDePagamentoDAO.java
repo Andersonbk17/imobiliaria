@@ -7,7 +7,7 @@
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
 import br.edu.ifnmg.imobiliaria.domainModel.FormaDePagamento;
-import br.edu.ifnmg.imobiliaria.domainModel.IFormaDePagamento;
+import br.edu.ifnmg.imobiliaria.domainModel.IFormaDePagamentoRepositorio;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -16,8 +16,8 @@ import javax.persistence.Query;
  *
  * @author Thaisa
  */
-@Stateless(name = "IFormaDePagamento")
-public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implements IFormaDePagamento{
+@Stateless(name = "IFormaDePagamentoRepositorio")
+public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implements IFormaDePagamentoRepositorio{
 
     public FormaDePagamentoDAO() {
         super(FormaDePagamento.class);

@@ -34,14 +34,14 @@ public class Visita implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dataAgenda;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataRegistro;
+    private Date dataRegistro;
     @ManyToOne
     private Imovel imovel;
 
     public Visita() {
         this.cliente = null;
         this.dataAgenda = null;
-        this.dataRegistro.setTime(new Date());
+        this.dataRegistro = new Date();
         this.imovel = null;
     }
 
@@ -69,14 +69,15 @@ public class Visita implements Serializable {
         this.dataAgenda = dataAgenda;
     }
 
-    public Calendar getDataRegistro() {
+    public Date getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(Calendar dataRegistro) {
+    public void setDataRegistro(Date dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
 
+   
     public Imovel getImovel() {
         return imovel;
     }

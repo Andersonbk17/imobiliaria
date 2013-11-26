@@ -6,16 +6,18 @@
 
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
-import br.edu.ifnmg.imobiliaria.domainModel.IReforma;
+import br.edu.ifnmg.imobiliaria.domainModel.IReformaRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Reforma;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 /**
  *
  * @author Anderson
  */
-public class ReformaDAO extends DAOGenerico<Reforma> implements IReforma{
+@Stateless(name = "IReformaRepositorio")
+public class ReformaDAO extends DAOGenerico<Reforma> implements IReformaRepositorio{
 
     public ReformaDAO() {
         super(Reforma.class);

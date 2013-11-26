@@ -7,7 +7,6 @@
 package br.edu.ifnmg.imobiliaria.domainModel;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -29,10 +28,10 @@ public class VendaImovel implements Serializable {
     private Long id;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataVenda;
+    private Date dataVenda;
     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataRegistro;
+    private Date dataRegistro;
     
     private String observacoes;
     
@@ -53,7 +52,8 @@ public class VendaImovel implements Serializable {
     Imovel imovel;
 
     public VendaImovel() {
-        this.dataRegistro.setTime(new Date());
+        this.dataRegistro = new Date();
+        this.dataVenda = new Date();
         this.formaDePagamento = null;
         this.clienteVendedor = null;
         this.clienteComprador = null;
@@ -69,22 +69,23 @@ public class VendaImovel implements Serializable {
         this.id = id;
     }
 
-    public Calendar getDataVenda() {
+    public Date getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(Calendar dataVenda) {
+    public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
 
-    public Calendar getDataRegistro() {
+    public Date getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(Calendar dataRegistro) {
+    public void setDataRegistro(Date dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
 
+   
     public String getObservacoes() {
         return observacoes;
     }

@@ -29,13 +29,13 @@ public class AluguelImovel implements Serializable {
     private Long id;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataInicio;
+    private Date dataInicio;
     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataTermino;
+    private Date dataTermino;
     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataRegistro;
+    private Date dataRegistro;
     
     private String observacoes;
     
@@ -55,7 +55,9 @@ public class AluguelImovel implements Serializable {
     Imovel imovel;
 
     public AluguelImovel() {
-        this.dataRegistro.setTime(new Date());
+        this.dataRegistro = new Date();
+        this.dataInicio = null;
+        this.dataTermino = null;
         this.formaDePagamento = null;
         this.imovel = null;
         this.cliente = null;
@@ -70,29 +72,31 @@ public class AluguelImovel implements Serializable {
         this.id = id;
     }
 
-    public Calendar getDataInicio() {
+    public Date getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Calendar dataInicio) {
+    public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Calendar getDataTermino() {
+    public Date getDataTermino() {
         return dataTermino;
     }
 
-    public void setDataTermino(Calendar dataTermino) {
+    public void setDataTermino(Date dataTermino) {
         this.dataTermino = dataTermino;
     }
 
-    public Calendar getDataRegistro() {
+    public Date getDataRegistro() {
         return dataRegistro;
     }
 
-    public void setDataRegistro(Calendar dataRegistro) {
+    public void setDataRegistro(Date dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
+
+ 
 
     public String getObservacoes() {
         return observacoes;

@@ -6,16 +6,18 @@
 
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
-import br.edu.ifnmg.imobiliaria.domainModel.IVendaImovel;
+import br.edu.ifnmg.imobiliaria.domainModel.IVendaImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.VendaImovel;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 
 /**
  *
  * @author Anderson
  */
-public class VendaImovelDAO extends DAOGenerico<VendaImovel> implements IVendaImovel{
+@Stateless(name = "IVendaImovelRepositorio")
+public class VendaImovelDAO extends DAOGenerico<VendaImovel> implements IVendaImovelRepositorio{
 
     public VendaImovelDAO() {
         super(VendaImovel.class);

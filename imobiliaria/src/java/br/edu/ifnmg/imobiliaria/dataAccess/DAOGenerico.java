@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Thaisa
+ * @author Anderson
  */
 public abstract class DAOGenerico<T> implements IRepositorio<T>{
     @PersistenceContext(name="imobiliariaPU")
