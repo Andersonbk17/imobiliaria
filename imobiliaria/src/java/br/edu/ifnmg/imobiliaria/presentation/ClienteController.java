@@ -64,6 +64,12 @@ public class ClienteController {
         return "ListagemProfissao.xhtml";
     }
     
+    public String filtrar() {
+        listagem = dao.Buscar(filtro);
+        return "ListagemCliente.xhtml";
+    }
+
+    
     public String voltar(){
         listagem = null;
         return "index.xhtml";

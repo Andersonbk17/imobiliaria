@@ -64,9 +64,49 @@ public class CargoController {
         return "ListagemCargo.xhtml";
     }
     
+    public String filtrar() {
+        listagem = dao.Buscar(filtro);
+        return "CargoListagem.xhtml";
+    }
+
+    
     public String voltar(){
         listagem = null;
         return "index.xhtml";
     }
+
+    public ICargoRepositorio getDao() {
+        return dao;
+    }
+
+    public void setDao(ICargoRepositorio dao) {
+        this.dao = dao;
+    }
+
+    public Cargo getEntidade() {
+        return entidade;
+    }
+
+    public void setEntidade(Cargo entidade) {
+        this.entidade = entidade;
+    }
+
+    public Cargo getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(Cargo filtro) {
+        this.filtro = filtro;
+    }
+
+    public List<Cargo> getListagem() {
+        return listagem;
+    }
+
+    public void setListagem(List<Cargo> listagem) {
+        this.listagem = listagem;
+    }
+    
+    
     
 }

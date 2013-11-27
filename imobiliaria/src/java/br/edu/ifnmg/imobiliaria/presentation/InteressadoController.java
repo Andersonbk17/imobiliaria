@@ -6,8 +6,8 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
-import br.edu.ifnmg.imobiliaria.domainModel.Cidade;
-import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.IInteressadoRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.Interessado;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -19,22 +19,22 @@ import javax.faces.context.FacesContext;
  *
  * @author emerson
  */
-@Named(value = "CidadeController")
+@Named(value = "interessadoController")
 @RequestScoped
-public class CidadeController {
+public class InteressadoController {
 
     /**
-     * Creates a new instance of CidadeController
+     * Creates a new instance of InteressadoController
      */
     @EJB
-    ICidadeRepositorio dao;
-    Cidade entidade;
-    Cidade filtro;
-    List<Cidade> listagem;
+    IInteressadoRepositorio dao;
+    Interessado entidade;
+    Interessado filtro;
+    List<Interessado> listagem;
     
-    public CidadeController() {
-        entidade = new Cidade();
-        filtro = new Cidade();
+    public InteressadoController() {
+        entidade = new Interessado();
+        filtro = new Interessado();  
     }
     
     public void exibirMensagem(String msg) {
@@ -49,60 +49,60 @@ public class CidadeController {
     }
     
     public String editar(){
-        return "ListagemCidade.xhtml";
+        return "ListagemInteressado.xhtml";
     }
     
     public String criar(){
-        entidade = new Cidade();
-        return "CadastroCidade.xhtml";
+        entidade = new Interessado();
+        return "CadastradoCargo.xhtml";
     }
     
     public String apagar(){
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "ListagemCidade.xhtml";
+        return "ListagemCargo.xhtml";
     }
     
     public String filtrar() {
         listagem = dao.Buscar(filtro);
-        return "TipoFuncionarioListagem";
+        return "ListagemInteressado.xhtml";
     }
-
     
     public String voltar(){
+        listagem = null;
         return "index.xhtml";
     }
 
-    public ICidadeRepositorio getDao() {
+    public IInteressadoRepositorio getDao() {
         return dao;
     }
 
-    public void setDao(ICidadeRepositorio dao) {
+    public void setDao(IInteressadoRepositorio dao) {
         this.dao = dao;
     }
 
-    public Cidade getEntidade() {
+    public Interessado getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(Cidade entidade) {
+    public void setEntidade(Interessado entidade) {
         this.entidade = entidade;
     }
 
-    public Cidade getFiltro() {
+    public Interessado getFiltro() {
         return filtro;
     }
 
-    public void setFiltro(Cidade filtro) {
+    public void setFiltro(Interessado filtro) {
         this.filtro = filtro;
     }
 
-    public List<Cidade> getListagem() {
+    public List<Interessado> getListagem() {
         return listagem;
     }
 
-    public void setListagem(List<Cidade> listagem) {
+    public void setListagem(List<Interessado> listagem) {
         this.listagem = listagem;
     }
     

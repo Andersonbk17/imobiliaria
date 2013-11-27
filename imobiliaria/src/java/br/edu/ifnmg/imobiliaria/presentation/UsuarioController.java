@@ -6,8 +6,8 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
-import br.edu.ifnmg.imobiliaria.domainModel.Cidade;
-import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.IUsuariolRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.Usuario;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -19,22 +19,22 @@ import javax.faces.context.FacesContext;
  *
  * @author emerson
  */
-@Named(value = "CidadeController")
+@Named(value = "usuarioController")
 @RequestScoped
-public class CidadeController {
+public class UsuarioController {
 
     /**
-     * Creates a new instance of CidadeController
+     * Creates a new instance of UsuarioController
      */
     @EJB
-    ICidadeRepositorio dao;
-    Cidade entidade;
-    Cidade filtro;
-    List<Cidade> listagem;
+    IUsuariolRepositorio dao;
+    Usuario entidade;
+    Usuario filtro;
+    List<Usuario> listagem;
     
-    public CidadeController() {
-        entidade = new Cidade();
-        filtro = new Cidade();
+    public UsuarioController() {
+        entidade = new Usuario();
+        filtro = new Usuario();
     }
     
     public void exibirMensagem(String msg) {
@@ -49,60 +49,60 @@ public class CidadeController {
     }
     
     public String editar(){
-        return "ListagemCidade.xhtml";
+        return "CadastroUsuario.xhtml";
     }
     
     public String criar(){
-        entidade = new Cidade();
-        return "CadastroCidade.xhtml";
+        entidade = new Usuario();
+        return "CadastroUsuario.xhtml";
     }
     
     public String apagar(){
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "ListagemCidade.xhtml";
+        return "ListagemUsuario.xhtml";
     }
     
     public String filtrar() {
         listagem = dao.Buscar(filtro);
-        return "TipoFuncionarioListagem";
+        return "UsuarioListagem.xhtml";
     }
 
-    
     public String voltar(){
+        listagem = null;
         return "index.xhtml";
     }
 
-    public ICidadeRepositorio getDao() {
+    public IUsuariolRepositorio getDao() {
         return dao;
     }
 
-    public void setDao(ICidadeRepositorio dao) {
+    public void setDao(IUsuariolRepositorio dao) {
         this.dao = dao;
     }
 
-    public Cidade getEntidade() {
+    public Usuario getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(Cidade entidade) {
+    public void setEntidade(Usuario entidade) {
         this.entidade = entidade;
     }
 
-    public Cidade getFiltro() {
+    public Usuario getFiltro() {
         return filtro;
     }
 
-    public void setFiltro(Cidade filtro) {
+    public void setFiltro(Usuario filtro) {
         this.filtro = filtro;
     }
 
-    public List<Cidade> getListagem() {
+    public List<Usuario> getListagem() {
         return listagem;
     }
 
-    public void setListagem(List<Cidade> listagem) {
+    public void setListagem(List<Usuario> listagem) {
         this.listagem = listagem;
     }
     
