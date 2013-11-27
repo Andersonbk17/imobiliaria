@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+               
+                <h:form>
+                    
+                    <p:tabView>
+                        <p:tab title="Nova Forma de Pagamento">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputLabel value="Nome:*" />
+                                <p:inputText size="50" value="#{formaDePagamentoController.entidade.nome}" required="true"  />
+                               
+                                
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    
+                    <p:panel id="rodape">
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        <p:commandButton value="Voltar" onclick="#{formaDePagamentoController.voltar()}" />
+                    </p:panel>
+                    
+                    <!-- dialogo de confirmacao -->
+                    
+                   <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
+                                     severity="alert" widgetVar="msgSalvar" >
+                        
+                       <p:commandButton ajax="false" value="SIM" action="${formaDePagamentoController.salvar()}" />
+                        <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
+                    </p:confirmDialog>
+                    
+                    <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
+                    
+                    
+                </h:form>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

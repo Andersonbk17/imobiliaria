@@ -17,7 +17,7 @@ import javax.persistence.Query;
  *
  * @author Anderson
  */
-@Stateless(name = "ItipoDeImovelRepositorio")
+@Stateless(name = "ITipoDeImovelRepositorio")
 public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoDeImovelRepositorio{
 
     public TipoDeImovelDAO() {
@@ -27,7 +27,7 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
     @Override
     public List<TipoDeImovel> Buscar(TipoDeImovel obj) {
          //corpo da consuta
-        String consulta = "select c from TipoDeImovel c";
+        String consulta = "select c from TipoDeImovel c ";
 
         //A parte Where da consulta
         String filtro = "";
@@ -52,9 +52,9 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
            
             
             // Se houver filtros, coloca o "where" na consulta
-            if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
-            }
+           // if (filtro.length() > 0) {
+            //    consulta = consulta + " where " + filtro;
+            //}
         }
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);

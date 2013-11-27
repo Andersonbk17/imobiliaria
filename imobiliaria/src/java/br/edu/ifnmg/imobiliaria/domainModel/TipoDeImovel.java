@@ -27,6 +27,10 @@ public class TipoDeImovel implements Serializable {
     private String nome;
     private boolean ativo;
 
+    public TipoDeImovel() {
+        this.ativo = true;
+    }
+    
     public Long getId() {
         return id;
     }
