@@ -31,6 +31,7 @@ public class Cargo implements Serializable {
     public Cargo() {
         this.nome = "";
         this.salario = 0;
+        this.ativo = true;
     }
     
     
