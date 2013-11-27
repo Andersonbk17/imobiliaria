@@ -74,6 +74,11 @@ public class CargoController {
         listagem = null;
         return "index.xhtml";
     }
+    
+    public List<Cargo> listarCargos() {
+        listagem = dao.Buscar(filtro);
+        return listagem;
+    }
 
     public ICargoRepositorio getDao() {
         return dao;
