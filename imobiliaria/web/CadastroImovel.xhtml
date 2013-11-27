@@ -1,14 +1,132 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./Template.xhtml">
 
             <ui:define name="content">
-              
+              <h:form>
+                    
+                    <p:tabView>
+                        <p:tab title="Imovel Localização">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputLabel value="Rua:*" />
+                                <p:inputText size="50" value="#{imovelController.entidade.enderecoRua}" required="true"  />
+                                <h:outputLabel value="Bairro:*" />
+                                <p:inputText size="50" value="#{imovelController.entidade.enderecoBairro}" required="true"  />
+                                <h:outputLabel value="Cep:*" />
+                                <p:inputText size="50" value="#{imovelController.entidade.enderecoCep}" required="true"  />
+                                <h:outputLabel value="Número:*" />
+                                <p:inputText size="50" value="#{imovelController.entidade.enderecoNumero}" required="true"  />
+                                <h:outputLabel value="Complemento:" />
+                                <p:inputText size="50" value="#{imovelController.entidade.enderecoComplemento}" required="false"  />
+                                <h:outputLabel value="Estado*:" />
+                                <h:selectOneMenu id="estado" value="#{imovelController.idEstado}" required="true">
+                                    <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                                    <f:selectItem itemLabel="AC" itemValue="1"/>
+                                    <f:selectItem itemLabel="AL" itemValue="2"/>
+                                    <f:selectItem itemLabel="AP" itemValue="3"/>
+                                    <f:selectItem itemLabel="AM" itemValue="4"/>
+                                    <f:selectItem itemLabel="BA" itemValue="5"/>
+                                    <f:selectItem itemLabel="CE" itemValue="6"/>
+                                    <f:selectItem itemLabel="DF" itemValue="7"/>
+                                    <f:selectItem itemLabel="ES" itemValue="8"/>
+                                    <f:selectItem itemLabel="GO" itemValue="9"/>
+                                    <f:selectItem itemLabel="MA" itemValue="10"/>                        
+                                    <f:selectItem itemLabel="MT" itemValue="11"/>
+                                    <f:selectItem itemLabel="MS" itemValue="12"/>
+                                    <f:selectItem itemLabel="MG" itemValue="13"/>                        
+                                    <f:selectItem itemLabel="PA" itemValue="14"/>
+                                    <f:selectItem itemLabel="PB" itemValue="15"/>
+                                    <f:selectItem itemLabel="PR" itemValue="16"/>
+                                    <f:selectItem itemLabel="PE" itemValue="17"/>
+                                    <f:selectItem itemLabel="PI" itemValue="18"/>                        
+                                    <f:selectItem itemLabel="RJ" itemValue="19"/>
+                                    <f:selectItem itemLabel="RN" itemValue="20"/>
+                                    <f:selectItem itemLabel="RS" itemValue="21"/>
+                                    <f:selectItem itemLabel="RO" itemValue="22"/>
+                                    <f:selectItem itemLabel="RR" itemValue="23"/>                            
+                                    <f:selectItem itemLabel="SC" itemValue="24"/>                            
+                                    <f:selectItem itemLabel="SE" itemValue="25"/>
+                                    <f:selectItem itemLabel="SP" itemValue="26"/>                               
+                                    <f:selectItem itemLabel="TO" itemValue="27"/>
+                                    
+                                    <p:ajax update="cidades" listener="#{imovelController.adicionarEstado()}" />
+
+                                </h:selectOneMenu>
+                                
+                                <h:outputLabel value="Cidade*:" />
+                                <h:selectOneMenu id="cidades" value="#{imovelController.entidadeCidade}" >
+                                    <f:selectItems value="#{imovelController.listaCidades}" />
+                                </h:selectOneMenu>
+                                
+                                <h:outputLabel value="Latutude:" />
+                                <p:inputText size="50" value="#{imovelController.entidade.latitude}" required="false"  />
+                                <h:outputLabel value="Longitude:" />
+                                <p:inputText size="50" value="#{imovelController.entidade.enderecoComplemento}" required="false"  />
+                                
+                            </h:panelGrid>
+                            
+                        </p:tab>
+                        
+                        <p:tab title="Caracteristicas">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputLabel value="Marque as caracteristicas do imovel:" />
+                                
+                                <h:selectManyCheckbox id="caracteristicasImovel" value="#{imovelController.cidadeFiltro}">
+                                    <f:selectItems value="#{imovelController.listaCidades}" />
+
+                                </h:selectManyCheckbox>
+                            </h:panelGrid>
+                            
+                            
+                        </p:tab>
+                        
+                        
+                        
+                        
+                        <p:tab title="Outras Informações">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputLabel value="Dimensões Terreno m2:" />
+                                <p:inputText size="20" value="#{imovelController.entidade.dimensoes}" required="false"  />
+                                <h:outputLabel value="Tipo de Imovel:" />
+                                <h:selectOneMenu id="tipoImovel" value="#{imovelController.entidadeTipoImovel}">
+                                    <f:selectItems value="#{imovelController.listaTipoImovel}" />
+
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                            
+                            
+                        </p:tab>
+                        
+                        
+                      
+                    </p:tabView>
+                    
+                    <p:panel id="rodape">
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        <p:commandButton value="Voltar" onclick="#{caracteristicaImovelController.voltar()}" />
+                    </p:panel>
+                    
+                    <!-- dialogo de confirmacao -->
+                    
+                   <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
+                                     severity="alert" widgetVar="msgSalvar" >
+                        
+                       <p:commandButton ajax="false" value="SIM" action="${caracteristicaImovelController.salvar()}" />
+                        <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
+                    </p:confirmDialog>
+                    
+                    <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
+                    
+                    
+                </h:form>
             </ui:define>
 
         </ui:composition>

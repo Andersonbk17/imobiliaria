@@ -7,7 +7,6 @@
 package br.edu.ifnmg.imobiliaria.dataAccess;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Cidade;
-import br.edu.ifnmg.imobiliaria.domainModel.Cliente;
 import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
 import java.util.HashMap;
 import java.util.List;
@@ -48,8 +47,16 @@ public class CidadeDAO extends DAOGenerico<Cidade> implements  ICidadeRepositori
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " c.id like id";
+                filtro += " c.id =:id";
                 parametros.put("id", obj.getId());
+            }
+            
+            if (obj.getEstado()!= 0 && obj.getEstado()> 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " c.estado =:estado";
+                parametros.put("estado", obj.getEstado());
             }
             
             // Se houver filtros, coloca o "where" na consulta
