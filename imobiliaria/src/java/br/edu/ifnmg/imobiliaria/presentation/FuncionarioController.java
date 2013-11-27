@@ -32,9 +32,11 @@ public class FuncionarioController {
     Funcionario filtro;
     List<Funcionario> listagem;
     
+    
     public FuncionarioController() {
         entidade = new Funcionario();
         filtro = new Funcionario();
+       
     }
     
     public void exibirMensagem(String msg) {
@@ -66,14 +68,14 @@ public class FuncionarioController {
     
     public String filtrar() {
         listagem = dao.Buscar(filtro);
-        return "TipoFuncionarioListagem";
+        return "FuncionarioListagem.xhtml";
     }
 
     
     public String voltar(){
         return "index.xhtml";
     }
-
+    
     public IFuncionarioRepositorio getDao() {
         return dao;
     }
