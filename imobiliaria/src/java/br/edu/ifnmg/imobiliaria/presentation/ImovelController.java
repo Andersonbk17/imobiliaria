@@ -13,6 +13,7 @@ import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.ITipoDeImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
+import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -58,7 +59,8 @@ public class ImovelController{
         estado = new Estado();
         cidadeFiltro = new Cidade();
         entidadeTipoImovel = new TipoDeImovel();
-        //listarTipoImveis();
+        listarTipoImveis();
+        listaTipoImovel = new LinkedList<>();
         
         //verificar 
     }
@@ -102,7 +104,7 @@ public class ImovelController{
     }
     
     public void listarTipoImveis(){
-        listaTipoImovel = daoTipoImovel.Buscar(entidadeTipoImovel);
+        listaTipoImovel = daoTipoImovel.Buscar(null);
     }
     
      public String filtrar() {

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -65,6 +66,7 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
             query.setParameter(par, parametros.get(par));
         }
 
+        //JOptionPane.showMessageDialog(null,query);
         // Executa a consulta
         return query.getResultList();
     }
