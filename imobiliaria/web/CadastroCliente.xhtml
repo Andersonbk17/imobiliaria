@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:tabView>
+                        <p:tab title="Cadastro de Cliente" id="cadastroCliente">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                                <h:outputLabel value="Data cadastro*:"/>
+                                <p:calendar size="20" value="#{ClienteController.entidade.dataCadastro}"  required="true"/>
+                                
+                                <h:outputLabel value="Nome*:"/>
+                                <p:inputText size="50" value="#{ClienteController.entidade.nome}" required="true" />
+                            
+                                <h:outputLabel value="Sexo*:"/>
+                                <p:selectOneMenu id="sexoCliente" value="#{ClienteController.entidade.sexo}" rendered="true" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Rg*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.rg}" required="true" />
+                                
+                                <h:outputLabel value="Orgão expedidor*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.orgaoExpedidor}" required="true" />
+                            
+                                <h:outputLabel value="cpf*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.cpf}" required="true" />
+                            
+                                <h:outputLabel value="Nascimento*:"/>
+                                <p:calendar size="20" value="#{ClienteController.entidade.dataNascimento}" required="true" />
+                            
+                                <h:outputLabel value="Telefone*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.telefone}" required="true" />
+                                
+                                <h:outputLabel value="E-mail*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.email}" required="true" />
+                                
+                                <h:outputLabel value="Nacionalidade*:"/>
+                                <p:selectOneMenu id="nacionalidade" value="#{ClienteController.entidade.cidade}" rendered="true" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Profissão:"/>
+                                <p:selectOneMenu id="profissao" value="#{ClienteController.entidade.profissao}" required="true">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Pessoa*:"/>
+                                <p:selectOneMenu id="juridico" value="#{ClienteController.entidade.clienteJuridicoFisico}" required="true">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Fisica" itemValue="1"/>
+                                    <f:selectItem itemLabel="Juridica"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+                           
+                                <h:inputHidden value="#{ClienteController.entidade.ativo}" required="true" />
+                            
+                            </h:panelGrid>
+                        </p:tab>
+                        
+                        <p:tab title="Endereço" id="cadastroCliente">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                                <h:outputLabel value="Rua*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoRua}" required="true" />
+                            
+                                <h:outputLabel value="Número*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoNumero}" required="true" />
+                            
+                                <h:outputLabel value="Bairro*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoBairro}" required="true" />
+                            
+                                <h:outputLabel value="Cep*:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoCep}" required="true" />
+                                
+                                <h:outputLabel value="Cidade*:"/>
+                                <p:selectOneMenu id="cidade" value="#{ClienteController.entidade.cidade}"  >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                            
+                            </h:panelGrid>
+                        </p:tab>
+                        
+                        <p:tab title="Conjugue" id="cadastroCliente">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                                <h:outputLabel value="Data casamento*:"/>
+                                <p:calendar size="20" value="#{ClienteController.entidade.dataCasamento}"/>
+                                
+                                <h:outputLabel value="Nome:"/>
+                                <p:inputText size="50" value="#{ClienteController.entidade.conjugueNome}" />
+                            
+                                <h:outputLabel value="Sexo:"/>
+                                <p:selectOneMenu id="sexoConjugue" value="#{ClienteController.entidade.conjugueSexo}" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Rg:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.conjugueRg}"  />
+                                
+                                <h:outputLabel value="Orgão expedidor:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.conjugueOrgaoExpedidor}" />
+                            
+                                <h:outputLabel value="Cpf:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.conjugueCpf}"  />
+                                
+                                <h:outputLabel value="Nascimento:"/>
+                                <p:calendar size="20" value="#{ClienteController.entidade.conjugueDataNascimento}"  />
+                                
+                                <h:outputLabel value="Telefone:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.conjugueTelefone}"  />
+                                
+                                <h:outputLabel value="E-mail:"/>
+                                <p:calendar size="20" value="#{ClienteController.entidade.conjugueEmail}"  />
+                                
+                                <h:outputLabel value="Nacionalidade:"/>
+                                <p:selectOneMenu id="nacionalidadeConjugue" value="#{ClienteController.entidade.conjugueNacionalidade}" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Profissão:"/>
+                                <p:selectOneMenu id="profissaoConjugue" value="#{ClienteController.entidade.conjugueProfissao}" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+
+                            
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Juridico" id="cadastroCliente">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                                <h:outputLabel value="Inscrição Municipal:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.juridicoInscricaoMunicipal}" />
+                            
+                                <h:outputLabel value="Inscrição Estadual:"/>
+                                <p:inputText size="20" value="#{ClienteController.entidade.juridicoInscricaoEstadual}" />
+                                                                                            
+                            </h:panelGrid>
+                        </p:tab>
+                        
+                    </p:tabView>
+                    
+                    <p:panel id="rodape">
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()"/>
+                        <p:commandButton value="Voltar" action="#{ClienteController.voltar()}"/>
+                        
+                    </p:panel>
+                    
+                    <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
+                                     severity="alert" widgetVar="msgSalvar" >
+                        
+                        <p:commandButton ajax="false" value="SIM" action="${ClienteController.salvar()}" />
+                        <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
+                    </p:confirmDialog>
+                    
+                    <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
+                
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
