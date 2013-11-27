@@ -27,7 +27,7 @@
                                 <h:outputLabel value="Complemento:" />
                                 <p:inputText size="50" value="#{imovelController.entidade.enderecoComplemento}" required="false"  />
                                 <h:outputLabel value="Estado*:" />
-                                <h:selectOneMenu id="estado" value="#{imovelController.idEstado}" required="true">
+                                <p:selectOneMenu id="estado" value="#{imovelController.idEstado}" required="true">
                                     <f:selectItem itemLabel="Selecione..." itemValue=""/>
                                     <f:selectItem itemLabel="AC" itemValue="1"/>
                                     <f:selectItem itemLabel="AL" itemValue="2"/>
@@ -59,12 +59,12 @@
                                     
                                     <p:ajax update="cidades" listener="#{imovelController.adicionarEstado()}" />
 
-                                </h:selectOneMenu>
+                                </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Cidade*:" />
-                                <h:selectOneMenu id="cidades" value="#{imovelController.entidadeCidade}" >
+                                <p:selectOneMenu id="cidades" value="#{imovelController.entidadeCidade}" >
                                     <f:selectItems value="#{imovelController.listaCidades}" />
-                                </h:selectOneMenu>
+                                </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Latutude:" />
                                 <p:inputText size="50" value="#{imovelController.entidade.latitude}" required="false"  />
