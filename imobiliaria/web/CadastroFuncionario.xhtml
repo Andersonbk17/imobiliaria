@@ -55,20 +55,18 @@
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Cargo*:"/>
-                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}" required="true">
+                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}" required="true" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{CargoController.filtrar}"/>
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
                                 </p:selectOneMenu>
-                                
-                               
-                                
                            
                                 <h:inputHidden value="#{FuncionarioController.entidade.ativo}" required="true" />
                             
                             </h:panelGrid>
                         </p:tab>
                         
-                        <p:tab title="Endereço" id="cadastroFuncionario">
+                        <p:tab title="Endereço" id="cadastroFuncionarioEndereco">
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Rua*:"/>
@@ -82,6 +80,38 @@
                             
                                 <h:outputLabel value="Cep*:"/>
                                 <p:inputText size="20" value="#{FuncionarioController.entidade.enderecoCep}" required="true" />
+                                
+                                <h:outputLabel value="Estado*:" />
+                                <p:selectOneMenu id="estado" value="" required="true">
+                                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                                    <f:selectItem itemLabel="AC" itemValue="1"/>
+                                    <f:selectItem itemLabel="AL" itemValue="2"/>
+                                    <f:selectItem itemLabel="AP" itemValue="3"/>
+                                    <f:selectItem itemLabel="AM" itemValue="4"/>
+                                    <f:selectItem itemLabel="BA" itemValue="5"/>
+                                    <f:selectItem itemLabel="CE" itemValue="6"/>
+                                    <f:selectItem itemLabel="DF" itemValue="7"/>
+                                    <f:selectItem itemLabel="ES" itemValue="8"/>
+                                    <f:selectItem itemLabel="GO" itemValue="9"/>
+                                    <f:selectItem itemLabel="MA" itemValue="10"/>                        
+                                    <f:selectItem itemLabel="MT" itemValue="11"/>
+                                    <f:selectItem itemLabel="MS" itemValue="12"/>
+                                    <f:selectItem itemLabel="MG" itemValue="13"/>                        
+                                    <f:selectItem itemLabel="PA" itemValue="14"/>
+                                    <f:selectItem itemLabel="PB" itemValue="15"/>
+                                    <f:selectItem itemLabel="PR" itemValue="16"/>
+                                    <f:selectItem itemLabel="PE" itemValue="17"/>
+                                    <f:selectItem itemLabel="PI" itemValue="18"/>                        
+                                    <f:selectItem itemLabel="RJ" itemValue="19"/>
+                                    <f:selectItem itemLabel="RN" itemValue="20"/>
+                                    <f:selectItem itemLabel="RS" itemValue="21"/>
+                                    <f:selectItem itemLabel="RO" itemValue="22"/>
+                                    <f:selectItem itemLabel="RR" itemValue="23"/>                            
+                                    <f:selectItem itemLabel="SC" itemValue="24"/>                            
+                                    <f:selectItem itemLabel="SE" itemValue="25"/>
+                                    <f:selectItem itemLabel="SP" itemValue="26"/>                               
+                                    <f:selectItem itemLabel="TO" itemValue="27"/>
+                                </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Cidade*:"/>
                                 <p:selectOneMenu id="cidade" value="#{FuncionarioController.entidade.cidade}"  >
