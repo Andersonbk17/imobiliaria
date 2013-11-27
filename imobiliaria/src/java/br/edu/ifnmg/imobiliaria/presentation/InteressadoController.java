@@ -19,7 +19,7 @@ import javax.faces.context.FacesContext;
  *
  * @author emerson
  */
-@Named(value = "interessadoController")
+@Named(value = "InteressadoController")
 @RequestScoped
 public class InteressadoController {
 
