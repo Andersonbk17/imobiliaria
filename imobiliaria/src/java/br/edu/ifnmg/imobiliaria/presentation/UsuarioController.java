@@ -6,7 +6,9 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
+import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.IUsuariolRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import br.edu.ifnmg.imobiliaria.domainModel.Usuario;
 import java.util.List;
 import javax.ejb.EJB;
@@ -35,6 +37,7 @@ public class UsuarioController {
     public UsuarioController() {
         entidade = new Usuario();
         filtro = new Usuario();
+       
     }
     
     public void exibirMensagem(String msg) {
@@ -73,7 +76,7 @@ public class UsuarioController {
         listagem = null;
         return "index.xhtml";
     }
-
+    
     public IUsuariolRepositorio getDao() {
         return dao;
     }
@@ -105,7 +108,6 @@ public class UsuarioController {
     public void setListagem(List<Usuario> listagem) {
         this.listagem = listagem;
     }
-    
     
     
 }
