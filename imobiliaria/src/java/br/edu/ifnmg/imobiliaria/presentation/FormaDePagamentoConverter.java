@@ -20,7 +20,7 @@ import javax.faces.convert.Converter;
  *
  * @author Anderson
  */
-@Named(value = "formaDePagamentoConverter")
+@Named(value = "FormaDePagamentoConverter")
 @SessionScoped
 public class FormaDePagamentoConverter implements Serializable , Converter{
 
