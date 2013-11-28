@@ -48,7 +48,7 @@
                                 <p:inputText size="20" value="#{FuncionarioController.entidade.email}" required="true" />
                                 
                                 <h:outputLabel value="Nacionalidade*:"/>
-                                <p:selectOneMenu id="nacionalidade" value="#{FuncionarioController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" required="true">
+                                <p:selectOneMenu id="nacionalidade" value="#{FuncionarioController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{NacionalidadeController.listarNacionalidade()}"  />
                                 </p:selectOneMenu>
@@ -56,7 +56,7 @@
                   
                                 
                                 <h:outputLabel value="Cargo*:"/>
-                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}" converter="#{cargoConverter}" required="true">
+                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}" converter="#{cargoConverter}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItems value="#{CargoController.listarCargos()}" />
                                 </p:selectOneMenu>
@@ -82,7 +82,7 @@
                                 <p:inputText size="20" value="#{FuncionarioController.entidade.enderecoCep}" required="true" />
                                 
                                 <h:outputLabel value="Estado*:" />
-                                <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true">
+                                <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItem itemLabel="AC" itemValue="1"/>
                                     <f:selectItem itemLabel="AL" itemValue="2"/>
@@ -117,7 +117,7 @@
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Cidade*:" />
-                                <p:selectOneMenu id="cidades" value="#{FuncionarioController.entidade.cidade}" converter="${cidadeConverter}" required="true" >
+                                <p:selectOneMenu id="cidades" value="#{FuncionarioController.entidade.cidade}" converter="${cidadeConverter}" required="true" filter="true" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{CidadeController.filtrarCidade()}" />
                                 </p:selectOneMenu>

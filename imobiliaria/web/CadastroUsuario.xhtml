@@ -17,7 +17,7 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Funcionário*:" />
-                                <p:selectOneMenu id="funcionario" value="#{usuarioController.entidade.funcionario}" converter="${funcionarioConverter}" required="true">
+                                <p:selectOneMenu id="funcionario" value="#{usuarioController.entidade.funcionario}" converter="${funcionarioConverter}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItems value="#{FuncionarioController.listarFuncionario()}"/>
                                 </p:selectOneMenu>

@@ -30,7 +30,7 @@
                                 
                                 
                                 <h:outputLabel value="Imóvel*:"/>
-                                <p:selectOneMenu id="imovel" value="#{FuncionarioController.entidade.nacionalidade}" converter="" required="true" >
+                                <p:selectOneMenu id="imovel" value="#{FuncionarioController.entidade.nacionalidade}" converter="" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="${imovelController.listagem}"/>
                                 </p:selectOneMenu>
