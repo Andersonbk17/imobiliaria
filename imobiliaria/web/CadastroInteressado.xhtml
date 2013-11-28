@@ -16,29 +16,27 @@
                         <p:tab title="Cadastro de Interessado" id="cadastroInteressado">
                             <h:panelGrid columns="2" cellpadding="10">
                                 
-                                <h:outputLabel value="Data registro*:"/>
-                                <p:calendar size="20" value="#{interessadoController.entidade.dataRegistro}"  required="true"/>
-                                
                                 <h:outputLabel value="Nome*:"/>
-                                <p:inputText size="50" value="#{interessadoController.entidade.nome}" required="true" />
+                                <p:inputText size="50" value="#{InteressadoController.entidade.nome}" required="true" />
                              
+                                       
                                 <h:outputLabel value="E-mail*:"/>
-                                <p:inputText size="20" value="#{interessadoController.entidade.email}" required="true" />
+                                <p:inputText size="20" value="#{InteressadoController.entidade.email}" required="true" />
                                                                   
                                 <h:outputLabel value="Telefone*:"/>
-                                <p:inputText size="20" value="#{interessadoController.entidade.telefone}" required="true" />
+                                <p:inputText size="20" value="#{InteressadoController.entidade.telefone}" required="true" />
                                 
                                 
                                 <h:outputLabel value="Imóvel*:"/>
-                                <p:selectOneMenu id="imovel" value="#{FuncionarioController.entidade.nacionalidade}" converter="" required="true" filter="true">
+                                <p:selectOneMenu id="imovel" value="#{InteressadoController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="${imovelController.listagem}"/>
+                                    <f:selectItems value="#{imovelController.listarTodos()}"/>
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Mensagem:"/>
-                                <p:inputTextarea rows="10" cols="52" completeMethod="#{InteressadoController.entidade.mensagem}" queryDelay="750" minQueryLength="4" />  
+                                <p:inputTextarea rows="5" cols="52" value="#{InteressadoController.entidade.mensagem}" queryDelay="750" minQueryLength="4" />  
                         
-                                <h:inputHidden value="#{interessadoController.entidade.ativo}" />
+                                <h:inputHidden value="#{InteressadoController.entidade.ativo}" />
                             
                             </h:panelGrid>
                         </p:tab>
@@ -47,14 +45,14 @@
                     
                     <p:panel id="rodape">
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()"/>
-                        <p:commandButton value="Voltar" action="#{interessadoController.voltar()}"/>
+                        <p:commandButton value="Voltar" action="#{InteressadoController.voltar()}"/>
                         
                     </p:panel>
                     
                     <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
                                      severity="alert" widgetVar="msgSalvar" >
                         
-                        <p:commandButton ajax="false" value="SIM" action="${interessadoController.salvar()}" />
+                        <p:commandButton ajax="false" value="SIM" action="${InteressadoController.salvar()}" />
                         <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
                     </p:confirmDialog>
                     
