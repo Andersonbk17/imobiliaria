@@ -316,7 +316,7 @@ public class Imovel implements Serializable {
 
     @Override
     public String toString() {
-        return "Imovel{" + "id=" + id + ", enderecoRua=" + enderecoRua + ", enderecoNumero=" + enderecoNumero + ", enderecoBairro=" + enderecoBairro + ", enderecoCep=" + enderecoCep + ", enderecoComplemento=" + enderecoComplemento + ", iptu=" + iptu + ", dimensoes=" + dimensoes + ", dataInicioConstrucao=" + dataInicioConstrucao + ", tipoDeImovel=" + tipoDeImovel + ", cidade=" + cidade + ", clienteProprietario=" + clienteProprietario + ", dataTerminoConstrucao=" + dataTerminoConstrucao + ", latitude=" + latitude + ", longitude=" + longitude + ", listaFotos=" + listaFotos + ", listaCaracteristicas=" + listaCaracteristicas + ", listaReformas=" + listaReformas + '}';
+        return id.toString();
     }
     
     
