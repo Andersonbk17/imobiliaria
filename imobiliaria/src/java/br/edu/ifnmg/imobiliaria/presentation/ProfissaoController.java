@@ -74,6 +74,11 @@ public class ProfissaoController {
         listagem = null;
         return "index.xhtml";
     }
+    
+    public List<Profissao> listarProfissao(){
+        listagem = dao.Buscar(filtro);
+        return listagem;
+    }
 
     public IProfissaoRepositorio getDao() {
         return dao;
