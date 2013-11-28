@@ -17,16 +17,33 @@
                         <p:tab title="Venda de Imovel"  id="cadastroVendaImovel" >
                             <h:panelGrid columns="2" cellpadding="10" >
 
+                                
+                                <h:outputLabel value="Cliente Proprietário*:"/>
+                                <p:selectOneMenu id="clienteVendedor"  filter="true" converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteVendedor}">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Cliente Comprador*:"/>
+                                <p:selectOneMenu id="clienteComprador"  filter="true" converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteComprador}">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
+                                </p:selectOneMenu>
+                                
+                                
                                 <h:outputLabel value="Data da Venda*:" />
                                 <p:calendar size="50" value="#{vendaImovel.entidade.dataVenda}" required="true" />
                                 <h:outputLabel value="Percentual de Comussão*:" />
                                 <p:inputText size="50" value="#{vendaImovel.entidade.percentualComissao}" required="true" />
                                 <h:outputLabel value="Forma de Pagamento*:" />
-                                <h:selectOneMenu value="#{vendaImovel.entidade.formaDePagamento}" required="true" >
-                                    <f:selectItem value="Selecione uma Forma de Pagamento" />
-                                    <f:selectItems value="#{formaDePagamentoController.listarTodos}" />
+                                <p:selectOneMenu value="#{vendaImovel.entidade.formaDePagamento}" converter="${formaDePagamentoConverter}" required="true" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{formaDePagamentoController.listarTodos()}" />
+                                </p:selectOneMenu>
+                                <h:outputLabel value="Observações:" />
+                                <p:inputTextarea value="#{vendaImovel.entidade.observacoes}" rows="5" cols="52" />
                                 
-                                </h:selectOneMenu>
+                                
                                 
                                 
                             </h:panelGrid>
@@ -61,3 +78,5 @@
 
     </body>
 </html>
+
+
