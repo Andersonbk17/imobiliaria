@@ -48,7 +48,7 @@
                                 <p:inputText size="20" value="#{FuncionarioController.entidade.email}" required="true" />
                                 
                                 <h:outputLabel value="Nacionalidade*:"/>
-                                <p:selectOneMenu id="nacionalidade" value="#{FuncionarioController.entidade.nacionalidade}" required="true" >
+                                <p:selectOneMenu id="nacionalidade" value="#{FuncionarioController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" required="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{NacionalidadeController.listarNacionalidade()}"  />
                                 </p:selectOneMenu>
@@ -56,7 +56,7 @@
                   
                                 
                                 <h:outputLabel value="Cargo*:"/>
-                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}" required="true" >
+                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}" converter="#{cargoConverter}" required="true">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItems value="#{CargoController.listarCargos()}" />
                                 </p:selectOneMenu>
@@ -82,7 +82,7 @@
                                 <p:inputText size="20" value="#{FuncionarioController.entidade.enderecoCep}" required="true" />
                                 
                                 <h:outputLabel value="Estado*:" />
-                                <p:selectOneMenu id="estado" value="#{imovelController.idEstado}" required="true">
+                                <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItem itemLabel="AC" itemValue="1"/>
                                     <f:selectItem itemLabel="AL" itemValue="2"/>
@@ -112,15 +112,16 @@
                                     <f:selectItem itemLabel="SP" itemValue="26"/>                               
                                     <f:selectItem itemLabel="TO" itemValue="27"/>
                                     
-                                    <p:ajax update="cidades" listener="#{imovelController.adicionarEstado()}" />
+                                    <p:ajax update="cidades" listener="#{CidadeController.adicionarEstado()}" />
                                     
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Cidade*:" />
-                                <p:selectOneMenu id="cidades" value="#{imovelController.entidadeCidade}" >
-                                    <f:selectItems value="#{imovelController.listaCidades}" />
+                                <p:selectOneMenu id="cidades" value="#{FuncionarioController.entidade.cidade}" converter="${cidadeConverter}" required="true" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{CidadeController.filtrarCidade()}" />
                                 </p:selectOneMenu>
-                            
+                              
                             </h:panelGrid>
                         </p:tab>
                     </p:tabView>
