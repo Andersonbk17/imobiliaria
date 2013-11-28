@@ -7,6 +7,7 @@
 package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Cidade;
+import br.edu.ifnmg.imobiliaria.domainModel.Estado;
 import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
 import java.util.List;
 import javax.ejb.EJB;
@@ -32,9 +33,14 @@ public class CidadeController {
     Cidade filtro;
     List<Cidade> listagem;
     
+    
+    Estado estado;
+    int idEstado;
+    
     public CidadeController() {
         entidade = new Cidade();
         filtro = new Cidade();
+        estado = new Estado();
     }
     
     public void exibirMensagem(String msg) {
@@ -73,6 +79,17 @@ public class CidadeController {
     public String voltar(){
         return "index.xhtml";
     }
+    
+    public void adicionarEstado(){
+        filtro.setEstado(idEstado);
+        filtrarCidade();
+    }
+    
+    public List<Cidade> filtrarCidade(){
+         listagem = dao.Buscar(filtro);
+         return listagem;
+         
+    }
 
     public ICidadeRepositorio getDao() {
         return dao;
@@ -105,6 +122,25 @@ public class CidadeController {
     public void setListagem(List<Cidade> listagem) {
         this.listagem = listagem;
     }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public int getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
+    }
+    
+    
+    
     
     
     
