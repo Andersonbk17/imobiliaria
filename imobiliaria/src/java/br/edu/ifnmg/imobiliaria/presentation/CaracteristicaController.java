@@ -8,10 +8,9 @@ package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Caracteristica;
 import br.edu.ifnmg.imobiliaria.domainModel.ICaracteristicaRepositorio;
-import javax.inject.Named;
-import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -20,54 +19,58 @@ import javax.faces.context.FacesContext;
  *
  * @author Anderson
  */
-@Named(value = "caracteristicaImovelController")
+@Named(value = "caracteristicaController")
 @RequestScoped
-public class caracteristicaImovelController implements Serializable {
+public class CaracteristicaController {
 
     /**
-     * Creates a new instance of caracteristicaImovelController
+     * Creates a new instance of CaracteristicaController
      */
     @EJB
     ICaracteristicaRepositorio dao;
     Caracteristica entidade;
+    List<Caracteristica>listagem;
     Caracteristica filtro;
-    List<Caracteristica> listagem;
-    
-    
-    public caracteristicaImovelController() {
-        entidade = new Caracteristica();
-        filtro = new Caracteristica();
+
+    public CaracteristicaController() {
+        this.entidade = new Caracteristica();
+      
+        this.filtro = new Caracteristica();
     }
     
      public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
     }
-
-    public void salvar() {
+    
+    public void salvar(){
         dao.Salvar(entidade);
         listagem = null;
-        exibirMensagem("Salvo com Sucesso!");
-
+        exibirMensagem("Salvo com sucesso!");
     }
-
-    public String editar() {
-        return "CadastroTipoDeImovel.xhtml";
+    
+    public String editar(){
+        return "ListagemCaracteristica.xhtml";
     }
-
-    public String criar() {
+    
+    public String criar(){
         entidade = new Caracteristica();
-        return "CadastroTipoDeImovel.xhtml";
+        return "CadastradoCaracteristica.xhtml";
     }
-
-    public String apagar() {
+    
+    public String apagar(){
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "TipoImovelListagem.xhtml";
+        return "ListagemCaracteristica.xhtml";
     }
     
-    public String voltar() {
+    public String filtrar() {
+        listagem = dao.Buscar(filtro);
+        return "ListagemCaracteristica.xhtml";
+    }
+    
+    public String voltar(){
         listagem = null;
         return "index.xhtml";
     }
@@ -88,14 +91,6 @@ public class caracteristicaImovelController implements Serializable {
         this.entidade = entidade;
     }
 
-    public Caracteristica getFiltro() {
-        return filtro;
-    }
-
-    public void setFiltro(Caracteristica filtro) {
-        this.filtro = filtro;
-    }
-
     public List<Caracteristica> getListagem() {
         return listagem;
     }
@@ -103,7 +98,19 @@ public class caracteristicaImovelController implements Serializable {
     public void setListagem(List<Caracteristica> listagem) {
         this.listagem = listagem;
     }
+
+    public Caracteristica getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(Caracteristica filtro) {
+        this.filtro = filtro;
+    }
     
+    public List<Caracteristica> listarTodos(){
+         listagem = dao.Buscar(filtro);
+         return listagem;
+     }
     
     
 }

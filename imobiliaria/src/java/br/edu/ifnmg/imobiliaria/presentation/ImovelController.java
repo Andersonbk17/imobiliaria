@@ -7,13 +7,11 @@
 package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Cidade;
-import br.edu.ifnmg.imobiliaria.domainModel.Estado;
-import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.Cliente;
+import br.edu.ifnmg.imobiliaria.domainModel.FormaDePagamento;
 import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
-import br.edu.ifnmg.imobiliaria.domainModel.ITipoDeImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
-import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -33,96 +31,101 @@ public class ImovelController{
      * Creates a new instance of ImovelController
      */
     
-    @EJB
-    IImovelRepositorio dao;
-    Imovel entidade;
-    Imovel filtro;
-    List<Imovel> listagem;
-    Estado estado;
-    int idEstado;
-    
-    @EJB
-    ICidadeRepositorio daoCidade;
-    List<Cidade> listaCidades;
-    Cidade cidadeFiltro;
-    Cidade entidadeCidade;
-    
-    @EJB
-    ITipoDeImovelRepositorio daoTipoImovel;
-    TipoDeImovel entidadeTipoImovel;
-    List<TipoDeImovel> listaTipoImovel;
-    
-    
+   @EJB
+   IImovelRepositorio dao;
+   Cidade cidade;
+   FormaDePagamento formaDePagamento;
+   Cliente clienteProprietario;
+   TipoDeImovel tipoImovel;
+   Imovel entidade;
+   Imovel filtro;
+   List<Imovel> listagem;
+
     public ImovelController() {
-        entidade = new Imovel();
-        filtro = new Imovel();
-        estado = new Estado();
-        cidadeFiltro = new Cidade();
-        entidadeTipoImovel = new TipoDeImovel();
-        listarTipoImveis();
-        listaTipoImovel = new LinkedList<>();
-        
-        //verificar 
+        this.cidade = null;
+        this.formaDePagamento = null;
+        this.clienteProprietario = null;
+        this.tipoImovel = null;
+        this.filtro = new Imovel();
+        listagem = null;
     }
-    
-    public void exibirMensagem(String msg) {
+
+     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
     }
-
-    public void salvar() {
+    
+    public void salvar(){
         dao.Salvar(entidade);
         listagem = null;
-        exibirMensagem("Salvo com Sucesso!");
-
+        exibirMensagem("Salvo com sucesso!");
     }
     
-    public void adicionarEstado(){
-        cidadeFiltro.setEstado(idEstado);
-        filtrarCidade();
+    public String editar(){
+        return "ListagemInteressado.xhtml";
     }
-
-    public String editar() {
-        return "CadastroImovel.xhtml";
-    }
-
-    public String criar() {
+    
+    public String criar(){
         entidade = new Imovel();
-        return "CadastroImovel.xhtml";
+        return "CadastradoCargo.xhtml";
     }
-
-    public String apagar() {
+    
+    public String apagar(){
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "ImovelListagem.xhtml";
+        return "ListagemCargo.xhtml";
     }
-
-    public String voltar() {
+    
+    public String filtrar() {
+        listagem = dao.Buscar(filtro);
+        return "ListagemInteressado.xhtml";
+    }
+    
+    public String voltar(){
         listagem = null;
         return "index.xhtml";
     }
     
-    public void listarTipoImveis(){
-        listaTipoImovel = daoTipoImovel.Buscar(null);
-    }
     
-     public String filtrar() {
-        listagem = dao.Buscar(filtro);
-        return "ListagemImovel.xhtml";
-    }
-     
-     public void filtrarCidade(){
-         listaCidades = daoCidade.Buscar(cidadeFiltro);
-         
-     }
-
     public IImovelRepositorio getDao() {
         return dao;
     }
 
     public void setDao(IImovelRepositorio dao) {
         this.dao = dao;
+    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    public FormaDePagamento getFormaDePagamento() {
+        return formaDePagamento;
+    }
+
+    public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+        this.formaDePagamento = formaDePagamento;
+    }
+
+    public Cliente getClienteProprietario() {
+        return clienteProprietario;
+    }
+
+    public void setClienteProprietario(Cliente clienteProprietario) {
+        this.clienteProprietario = clienteProprietario;
+    }
+
+    public TipoDeImovel getTipoImovel() {
+        return tipoImovel;
+    }
+
+    public void setTipoImovel(TipoDeImovel tipoImovel) {
+        this.tipoImovel = tipoImovel;
     }
 
     public Imovel getEntidade() {
@@ -148,79 +151,6 @@ public class ImovelController{
     public void setListagem(List<Imovel> listagem) {
         this.listagem = listagem;
     }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public int getIdEstado() {
-        return idEstado;
-    }
-
-    public void setIdEstado(int idEstado) {
-        this.idEstado = idEstado;
-    }
-
-    public ICidadeRepositorio getDaoCidade() {
-        return daoCidade;
-    }
-
-    public void setDaoCidade(ICidadeRepositorio daoCidade) {
-        this.daoCidade = daoCidade;
-    }
-
-    public List<Cidade> getListaCidades() {
-        return listaCidades;
-    }
-
-    public void setListaCidades(List<Cidade> listaCidades) {
-        this.listaCidades = listaCidades;
-    }
-
-    public Cidade getCidadeFiltro() {
-        return cidadeFiltro;
-    }
-
-    public void setCidadeFiltro(Cidade cidadeFiltro) {
-        this.cidadeFiltro = cidadeFiltro;
-    }
-
-    public Cidade getEntidadeCidade() {
-        return entidadeCidade;
-    }
-
-    public void setEntidadeCidade(Cidade entidadeCidade) {
-        this.entidadeCidade = entidadeCidade;
-    }
-
-    public ITipoDeImovelRepositorio getDaoTipoImovel() {
-        return daoTipoImovel;
-    }
-
-    public void setDaoTipoImovel(ITipoDeImovelRepositorio daoTipoImovel) {
-        this.daoTipoImovel = daoTipoImovel;
-    }
-
-    public TipoDeImovel getEntidadeTipoImovel() {
-        return entidadeTipoImovel;
-    }
-
-    public void setEntidadeTipoImovel(TipoDeImovel entidadeTipoImovel) {
-        this.entidadeTipoImovel = entidadeTipoImovel;
-    }
-
-    public List<TipoDeImovel> getListaTipoImovel() {
-        return listaTipoImovel;
-    }
-
-    public void setListaTipoImovel(List<TipoDeImovel> listaTipoImovel) {
-        this.listaTipoImovel = listaTipoImovel;
-    }
-    
     
     
 }

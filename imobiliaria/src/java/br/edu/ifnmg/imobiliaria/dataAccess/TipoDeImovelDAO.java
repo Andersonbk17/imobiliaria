@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,26 +35,27 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
         //Guarda a lista de parametros da query
         HashMap<String, Object> parametros = new HashMap<String, Object>();
 
+        // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
-            //verifica campo por campo os valores que serão filtrados
-            if (obj.getId()!= null) {
-                filtro += " c.id=:id ";
-                parametros.put("id", obj.getId());
+            //Nome
+            if (obj.getNome() != null && obj.getNome().length() > 0) {
+                filtro += " c.nome like nome ";
+                parametros.put("nome", obj.getNome());
             }
-            if (obj.getNome()!= null && obj.getNome().length() > 0) {
+            //Id
+            if (obj.getId() != null && obj.getId() > 0) {
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += "c.nome like '%:nome %'";
-                parametros.put("nome", obj.getNome());
-
+                filtro += " c.id like id";
+                parametros.put("id", obj.getId());
             }
            
-            
+
             // Se houver filtros, coloca o "where" na consulta
-           // if (filtro.length() > 0) {
-            //    consulta = consulta + " where " + filtro;
-            //}
+            if (filtro.length() > 0) {
+                consulta = consulta + " where " + filtro;
+            }
         }
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
@@ -63,7 +63,7 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
         // Aplica os parâmetros da consulta
 
         for (String par : parametros.keySet()) {
-            query.setParameter(par, parametros.get(par));
+           query.setParameter(par, parametros.get(par));
         }
 
         //JOptionPane.showMessageDialog(null,query);
