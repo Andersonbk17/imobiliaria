@@ -250,7 +250,7 @@ public class Cliente extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return conjugueNome;
+        return nome;
     }
     
 }
