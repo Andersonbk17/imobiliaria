@@ -70,10 +70,15 @@ public class FuncionarioController {
         listagem = dao.Buscar(filtro);
         return "FuncionarioListagem.xhtml";
     }
-
     
     public String voltar(){
         return "index.xhtml";
+    }
+    
+    
+    public List<Funcionario> listarFuncionario(){
+        listagem = dao.Buscar(filtro);
+        return listagem;
     }
     
     public IFuncionarioRepositorio getDao() {

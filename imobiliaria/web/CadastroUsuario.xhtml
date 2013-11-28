@@ -17,10 +17,9 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Funcionário*:" />
-                                <p:selectOneMenu id="funcionario" value="#{usuarioController.entidade.funcionario}" required="true">
+                                <p:selectOneMenu id="funcionario" value="#{usuarioController.entidade.funcionario}" converter="${funcionarioConverter}" required="true">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
-                                    <f:selectItem itemLabel="Administrador" itemValue="2"/>
-                                    <f:selectItem itemLabel="Usuario" itemValue="1"/>
+                                    <f:selectItems value="#{FuncionarioController.listarFuncionario()}"/>
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Nível*:" />

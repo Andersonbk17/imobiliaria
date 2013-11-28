@@ -99,7 +99,7 @@ public class Funcionario extends Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.imobiliaria.domainModel.Funcionario[ id=" + id + " ]";
+        return nome;
     }
     
 }
