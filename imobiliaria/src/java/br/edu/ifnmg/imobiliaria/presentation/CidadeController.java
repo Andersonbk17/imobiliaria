@@ -31,16 +31,20 @@ public class CidadeController {
     ICidadeRepositorio dao;
     Cidade entidade;
     Cidade filtro;
+    Cidade f;
     List<Cidade> listagem;
     
     
     Estado estado;
     int idEstado;
+    int conf;
     
     public CidadeController() {
         entidade = new Cidade();
         filtro = new Cidade();
         estado = new Estado();
+        idEstado = 0;
+        f = new Cidade();
     }
     
     public void exibirMensagem(String msg) {
@@ -86,9 +90,15 @@ public class CidadeController {
     }
     
     public List<Cidade> filtrarCidade(){
-         listagem = dao.Buscar(filtro);
-         return listagem;
-         
+        if(filtro.getEstado() != 0){
+            f.setEstado(idEstado);
+        }else{
+            f.setEstado(1);
+        }
+        
+        listagem = dao.Buscar(f);
+        return listagem;
+        
     }
 
     public ICidadeRepositorio getDao() {
