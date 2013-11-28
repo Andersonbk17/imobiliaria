@@ -8,6 +8,7 @@ package br.edu.ifnmg.imobiliaria.dataAccess;
 
 import br.edu.ifnmg.imobiliaria.domainModel.FormaDePagamento;
 import br.edu.ifnmg.imobiliaria.domainModel.IFormaDePagamentoRepositorio;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -25,43 +26,47 @@ public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implement
 
     @Override
     public List<FormaDePagamento> Buscar(FormaDePagamento obj) {
-        
+    // Corpo da consulta
+        String consulta = "select c from FormaDePagamento c";
 
-throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // A parte where da consulta
+        String filtro = "";
 
+        // Guarda a lista de parâmetros da query
+        HashMap<String, Object> parametros = new HashMap<String, Object>();
 
-
-
-
-
-/*
-
-// Corpo da consulta
-        EntityTransaction transacao = manager.getTransaction();
-        try {
-
-            String consulta = "";
-            if (obj.getId() != null) {
-                 consulta = "Select s from FormaDePagamento s Where s.ativo = 1 and s.id like '%" + obj.getId() + "%'";
-                 
-             }else if(obj.getNome() != null){
-                 consulta = "Select s from FormaDePagamento s Where s.ativo = 1 and s.nome like '%" + obj.getNome() + "%'";
-             }
-            transacao.begin();
-            // Cria a consulta no JPA
-            Query query = manager.createQuery(consulta);
-
-           
-            transacao.commit();
-            return query.getResultList();
-        } catch (Exception ex) {
-
-            ex.printStackTrace();
-            transacao.rollback();
-
-            return null;
+        // Verifica campo por campo os valores que serão filtrados
+        if (obj != null) {
+            //Nome
+            if (obj.getNome() != null && obj.getNome().length() > 0) {
+                filtro += " c.nome like nome ";
+                parametros.put("nome", obj.getNome());
+            }
+            //Id
+            if (obj.getId() != null && obj.getId() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " c.id like id";
+                parametros.put("id", obj.getId());
+            }
+         
+            // Se houver filtros, coloca o "where" na consulta
+            if (filtro.length() > 0) {
+                consulta = consulta + " where " + filtro;
+            }
         }
-        */
+
+        // Cria a consulta no JPA
+        Query query = manager.createQuery(consulta);
+
+        // Aplica os parâmetros da consulta
+        for (String par : parametros.keySet()) {
+            query.setParameter(par, parametros.get(par));
+        }
+
+        // Executa a consulta
+        return query.getResultList();
     }
 
     @Override

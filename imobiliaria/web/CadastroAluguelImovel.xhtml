@@ -11,29 +11,24 @@
         <ui:composition template="./Template.xhtml">
 
             <ui:define name="content">
-            <h:form>
+                <h:form>
                     
                     <p:tabView>
                         <p:tab title="Venda de Imovel"  id="cadastroVendaImovel" >
                             <h:panelGrid columns="2" cellpadding="10" >
 
                                 
-                                <h:outputLabel value="Cliente Proprietário*:"/>
-                                <p:selectOneMenu id="clienteVendedor"  filter="true" converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteVendedor}">
+                                <h:outputLabel value="Cliente*:"/>
+                                <p:selectOneMenu id="clienteVendedor"  filter="true" converter="${clienteConverter}" value="#{aluguelImovelController.entidade.cliente}">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{ClienteController.listarTodos()}"/>
                                 </p:selectOneMenu>
                                 
-                                <h:outputLabel value="Cliente Comprador*:"/>
-                                <p:selectOneMenu id="clienteComprador"  filter="true" converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteComprador}">
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
-                                </p:selectOneMenu>
-                                
-                                
-                                <h:outputLabel value="Data da Venda*:" />
-                                <p:calendar size="50" value="#{vendaImovel.entidade.dataVenda}" required="true" />
-                                <h:outputLabel value="Percentual de Comussão*:" />
+                                <h:outputLabel value="Data Inicio*:" />
+                                <p:calendar size="50" value="#{aluguelImovelController.entidade.dataInicio}" required="true" />
+                                <h:outputLabel value="Data Término*:" />
+                                <p:calendar size="50" value="#{aluguelImovelController.entidade.dataTermino}" required="true" />
+                                <h:outputLabel value="Percentual de Comissão*:" />
                                 <p:inputText size="50" value="#{vendaImovel.entidade.percentualComissao}" required="true" />
                                 <h:outputLabel value="Forma de Pagamento*:" />
                                 <p:selectOneMenu value="#{vendaImovel.entidade.formaDePagamento}" converter="${formaDePagamentoConverter}" required="true" >
@@ -78,5 +73,3 @@
 
     </body>
 </html>
-
-
