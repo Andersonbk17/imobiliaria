@@ -48,14 +48,14 @@
                                 <p:inputText size="20" value="#{ClienteController.entidade.email}" required="true" />
                                 
                                 <h:outputLabel value="Nacionalidade*:"/>
-                                <p:selectOneMenu id="nacionalidade" value="#{ClienteController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" rendered="true" >
+                                <p:selectOneMenu id="nacionalidade" value="#{ClienteController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" rendered="true"  filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{NacionalidadeController.listarNacionalidade()}"/>
                                     
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Profissão:"/>
-                                <p:selectOneMenu id="profissao" value="#{ClienteController.entidade.profissao}" converter="${profissaoConverter}" required="true">
+                                <p:selectOneMenu id="profissao" value="#{ClienteController.entidade.profissao}" converter="${profissaoConverter}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{ProfissaoController.listarProfissao()}"/>
                                     
@@ -90,7 +90,7 @@
                                 <p:inputText size="20" value="#{ClienteController.entidade.enderecoCep}" required="true" />
                                 
                                  <h:outputLabel value="Estado*:" />
-                                <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true">
+                                 <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItem itemLabel="AC" itemValue="1"/>
                                     <f:selectItem itemLabel="AL" itemValue="2"/>
@@ -169,14 +169,14 @@
                                 <p:calendar size="20" value="#{ClienteController.entidade.conjugueEmail}"  />
                                 
                                 <h:outputLabel value="Nacionalidade:"/>
-                                <p:selectOneMenu id="nacionalidadeConjugue" value="#{ClienteController.entidade.conjugueNacionalidade}" converter="${nacionalidadeConverter}" >
+                                <p:selectOneMenu id="nacionalidadeConjugue" value="#{ClienteController.entidade.conjugueNacionalidade}" converter="${nacionalidadeConverter}" filter="true" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{NacionalidadeController.listarNacionalidade()}"/>
                                     
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Profissão:"/>
-                                <p:selectOneMenu id="profissaoConjugue" value="#{ClienteController.entidade.conjugueProfissao}" converter="${profissaoConverter}" >
+                                <p:selectOneMenu id="profissaoConjugue" value="#{ClienteController.entidade.conjugueProfissao}" converter="${profissaoConverter}" filter="true" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{ProfissaoController.listarProfissao()}"/>
                                     
