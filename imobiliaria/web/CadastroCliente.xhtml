@@ -126,7 +126,7 @@
                                 
                                 
                                 <h:outputLabel value="Cidade*:"/>
-                                <p:selectOneMenu id="cidades" value="#{ClienteController.entidade.cidade}" converter="${cidadeConverter}" required="true" >
+                                <p:selectOneMenu id="cidades" value="#{ClienteController.entidade.cidade}" converter="${cidadeConverter}" required="true" filter="true" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{CidadeController.filtrarCidade()}" />
                                 </p:selectOneMenu>
