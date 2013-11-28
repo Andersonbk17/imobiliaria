@@ -22,9 +22,9 @@
                                 <h:outputLabel value="Percentual de Comussão*:" />
                                 <p:inputText size="50" value="#{vendaImovel.entidade.percentualComissao}" required="true" />
                                 <h:outputLabel value="Forma de Pagamento*:" />
-                                <h:selectOneMenu value="#{vendaImovel.entidadeFormaDepagamento}" required="true" >
+                                <h:selectOneMenu value="#{vendaImovel.entidade.formaDePagamento}" required="true" >
                                     <f:selectItem value="Selecione uma Forma de Pagamento" />
-                                    <f:selectItems value="#{vendaImovel.listaFormaPagamento}" />
+                                    <f:selectItems value="#{formaDePagamentoController.listarTodos}" />
                                 
                                 </h:selectOneMenu>
                                 

@@ -75,6 +75,11 @@ public class FormaDePagamentoController {
         listagem = dao.Buscar(filtro);
         return "ListagemFormaDePagamento.xhtml";
     }
+     
+     public List<FormaDePagamento>listarTodos(){
+         listagem = dao.Buscar(filtro);
+         return listagem;
+     }
 
     public IFormaDePagamentoRepositorio getDao() {
         return dao;
