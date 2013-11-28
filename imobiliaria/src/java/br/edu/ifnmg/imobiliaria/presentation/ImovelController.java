@@ -33,19 +33,12 @@ public class ImovelController{
     
    @EJB
    IImovelRepositorio dao;
-   Cidade cidade;
-   FormaDePagamento formaDePagamento;
-   Cliente clienteProprietario;
-   TipoDeImovel tipoImovel;
+   
    Imovel entidade;
    Imovel filtro;
    List<Imovel> listagem;
 
     public ImovelController() {
-        this.cidade = null;
-        this.formaDePagamento = null;
-        this.clienteProprietario = null;
-        this.tipoImovel = null;
         this.filtro = new Imovel();
         listagem = null;
     }
@@ -82,6 +75,11 @@ public class ImovelController{
         return "ListagemInteressado.xhtml";
     }
     
+    public List<Imovel> listarTodos(){
+         listagem = dao.Buscar(filtro);
+         return listagem;
+     }
+    
     public String voltar(){
         listagem = null;
         return "index.xhtml";
@@ -96,38 +94,7 @@ public class ImovelController{
         this.dao = dao;
     }
 
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
-    public FormaDePagamento getFormaDePagamento() {
-        return formaDePagamento;
-    }
-
-    public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
-        this.formaDePagamento = formaDePagamento;
-    }
-
-    public Cliente getClienteProprietario() {
-        return clienteProprietario;
-    }
-
-    public void setClienteProprietario(Cliente clienteProprietario) {
-        this.clienteProprietario = clienteProprietario;
-    }
-
-    public TipoDeImovel getTipoImovel() {
-        return tipoImovel;
-    }
-
-    public void setTipoImovel(TipoDeImovel tipoImovel) {
-        this.tipoImovel = tipoImovel;
-    }
-
+   
     public Imovel getEntidade() {
         return entidade;
     }
