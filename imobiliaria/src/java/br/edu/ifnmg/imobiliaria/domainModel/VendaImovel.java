@@ -55,7 +55,7 @@ public class VendaImovel implements Serializable {
 
     public VendaImovel() {
         this.dataRegistro = new Date();
-        this.dataVenda = new Date();
+        this.dataVenda = null;
         this.formaDePagamento = null;
         this.clienteVendedor = null;
         this.clienteComprador = null;

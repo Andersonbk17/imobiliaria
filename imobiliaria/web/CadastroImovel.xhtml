@@ -86,19 +86,24 @@
                                 
                                 <h:outputLabel value="Caracteristicas*:"/>
                                 <p:selectManyCheckbox id="caracteristicas" converter="${caracteristicaConverter}" value="#{imovelController.entidade.listaCaracteristicas}">
-                                <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{caracteristicaController.listarTodos()}"/>
+                                      <f:selectItems value="#{caracteristicaController.listarTodos()}"/>
                                 </p:selectManyCheckbox>
                             </h:panelGrid>
                         </p:tab>
                         
                         <p:tab title="Outros">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputLabel value="Caracteristicas*:"/>
-                                <p:selectManyCheckbox id="clienteProprietario" converter="${clienteConverter}" value="#{imovelController.entidade.clienteProprietario}">
-                                <f:selectItem itemLabel="Selecione" itemValue="" />
-                                <f:selectItems value="#{ClienteController.listagem()}"/>
-                                </p:selectManyCheckbox>
+                                <h:outputLabel value="Cliente*:"/>
+                                <p:selectOneMenu id="clienteProprietario"  filter="true" converter="${clienteConverter}" value="#{imovelController.entidade.clienteProprietario}">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Data Inicio de Construção:" />
+                                <p:calendar  value="#{imovelController.entidade.dataInicioConstrucao}" required="false"  />
+                                <h:outputLabel value="Data Termino de Construção:" />
+                                <p:calendar  value="#{imovelController.entidade.dataInicioConstrucao}" required="false"  />
+                                
                                 
                             </h:panelGrid>
                             

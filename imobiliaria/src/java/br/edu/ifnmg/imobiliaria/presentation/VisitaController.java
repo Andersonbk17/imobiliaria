@@ -6,8 +6,8 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
-import br.edu.ifnmg.imobiliaria.domainModel.FormaDePagamento;
-import br.edu.ifnmg.imobiliaria.domainModel.IFormaDePagamentoRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.IVisitaRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.Visita;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -19,23 +19,22 @@ import javax.faces.context.FacesContext;
  *
  * @author Anderson
  */
-@Named(value = "formaDePagamentoController")
+@Named(value = "visitaController")
 @RequestScoped
-public class FormaDePagamentoController {
+public class VisitaController {
 
     /**
-     * Creates a new instance of FormaDePagamentoController
+     * Creates a new instance of VisitaController
      */
     @EJB
-    IFormaDePagamentoRepositorio dao;
-    FormaDePagamento entidade;
-    FormaDePagamento filtro;
-    List<FormaDePagamento> listagem;
+    IVisitaRepositorio dao;
+    Visita entidade;
+    Visita filtro;
+    List<Visita> listagem;
     
-    
-    public FormaDePagamentoController() {
-        this.entidade = new FormaDePagamento();
-        this.filtro = new FormaDePagamento();
+    public VisitaController() {
+        this.entidade = new Visita();
+        this.filtro = new Visita();
     }
     
     public void exibirMensagem(String msg) {
@@ -51,19 +50,19 @@ public class FormaDePagamentoController {
     }
 
     public String editar() {
-        return "CadastroFormaDePagamento.xhtml";
+        return "CadastroVisita.xhtml";
     }
 
     public String criar() {
-        entidade = new FormaDePagamento();
-        return "CadastroFormaDePagamento.xhtml";
+        entidade = new Visita();
+        return "CadastroVisita.xhtml";
     }
 
     public String apagar() {
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "ListagemFormaDePagamento.xhtml";
+        return "VisitaListagem.xhtml";
     }
 
     public String voltar() {
@@ -73,43 +72,43 @@ public class FormaDePagamentoController {
     
      public String filtrar() {
         listagem = dao.Buscar(filtro);
-        return "ListagemFormaDePagamento.xhtml";
+        return "ListagemVisita.xhtml";
     }
      
-     public List<FormaDePagamento>listarTodos(){
+     public List<Visita> listarTodos(){
          listagem = dao.Buscar(filtro);
          return listagem;
      }
 
-    public IFormaDePagamentoRepositorio getDao() {
+    public IVisitaRepositorio getDao() {
         return dao;
     }
 
-    public void setDao(IFormaDePagamentoRepositorio dao) {
+    public void setDao(IVisitaRepositorio dao) {
         this.dao = dao;
     }
 
-    public FormaDePagamento getEntidade() {
+    public Visita getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(FormaDePagamento entidade) {
+    public void setEntidade(Visita entidade) {
         this.entidade = entidade;
     }
 
-    public FormaDePagamento getFiltro() {
+    public Visita getFiltro() {
         return filtro;
     }
 
-    public void setFiltro(FormaDePagamento filtro) {
+    public void setFiltro(Visita filtro) {
         this.filtro = filtro;
     }
 
-    public List<FormaDePagamento> getListagem() {
+    public List<Visita> getListagem() {
         return listagem;
     }
 
-    public void setListagem(List<FormaDePagamento> listagem) {
+    public void setListagem(List<Visita> listagem) {
         this.listagem = listagem;
     }
      

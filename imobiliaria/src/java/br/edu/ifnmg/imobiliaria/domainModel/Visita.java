@@ -88,6 +88,15 @@ public class Visita implements Serializable {
         this.imovel = imovel;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 5;
