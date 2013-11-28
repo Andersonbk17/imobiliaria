@@ -8,6 +8,7 @@ package br.edu.ifnmg.imobiliaria.domainModel;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,9 +31,9 @@ public class Reforma implements Serializable {
     private Long id;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataInicio;
+    private Date dataInicio;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataTermino;
+    private Date dataTermino;
     @Min(value = 1)
     private float valor;
     
@@ -59,19 +60,19 @@ public class Reforma implements Serializable {
         this.id = id;
     }
 
-    public Calendar getDataInicio() {
+    public Date getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Calendar dataInicio) {
+    public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Calendar getDataTermino() {
+    public Date getDataTermino() {
         return dataTermino;
     }
 
-    public void setDataTermino(Calendar dataTermino) {
+    public void setDataTermino(Date dataTermino) {
         this.dataTermino = dataTermino;
     }
 
