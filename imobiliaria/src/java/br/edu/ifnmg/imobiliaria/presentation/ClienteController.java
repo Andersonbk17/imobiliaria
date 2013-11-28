@@ -74,6 +74,11 @@ public class ClienteController {
         listagem = null;
         return "index.xhtml";
     }
+    
+    public List<Cliente> listarTodos(){
+        listagem = dao.Buscar(filtro);
+        return listagem;
+    }
 
     public IClienteRepositorio getDao() {
         return dao;
