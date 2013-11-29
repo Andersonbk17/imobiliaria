@@ -51,7 +51,7 @@ public class FuncionarioController {
     }
     
     public String editar(){
-        return "CadastroFuncionario.xhtml";
+        return "EditarFuncionario.xhtml";
     }
     
     public String criar(){
