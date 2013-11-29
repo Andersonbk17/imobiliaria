@@ -27,14 +27,14 @@
                 </p:panelGrid>
                 
                 <p:dataTable value="${logAcessoController.listagem}" var="log" emptyMessage="Registros não encontrados!">
-                    <p:column sortBy="id" headerText="Id" > #{log.id}</p:column>
-                    <p:column sortBy="usuario" headerText="Usuário" > #{log.usuario}</p:column>
-                    <p:column sortBy="horario" headerText="Horário" > #{log.dataHora.toLocaleString()}</p:column>
+                    <p:column sortBy="id" headerText="Id" >${log.id}</p:column>
+                    <p:column sortBy="usuario" headerText="Usuário" >${log.usuario}</p:column>
+                    <p:column sortBy="horario" headerText="Horário" >${log.dataHora.toLocaleString()}</p:column>
     
                     <!--
                     <p:column headerText="Editar">
                         <p:commandButton value="Editar" ajax="false" action="${logAcessoController.editar()}">
-                            <f:setPropertyActionListener target="${logAcessoController.entidade}" value="#{log}" />
+                            <f:setPropertyActionListener target="${logAcessoController.entidade}" value="${log}" />
                         </p:commandButton>
                     </p:column>
                     -->

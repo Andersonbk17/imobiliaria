@@ -30,16 +30,16 @@
                 </p:panelGrid>
                 
                 <p:dataTable value="${FuncionarioController.listagem}" var="funcionario" emptyMessage="Registros não encontrados!">
-                    <p:column sortBy="Id" headerText="Id" > #{funcionario.id}</p:column>
-                    <p:column sortBy="nome" headerText="Nome" > #{funcionario.nome}</p:column>
-                    <p:column sortBy="rg" headerText="Rg" > #{funcionario.rg}</p:column>
-                    <p:column sortBy="cpf" headerText="Cpf" > #{funcionario.cpf}</p:column>
-                    <p:column sortBy="telefone" headerText="Telefone" > #{funcionario.telefone}</p:column>
-                    <p:column sortBy="email" headerText="E-mail" > #{funcionario.email}</p:column>
+                    <p:column sortBy="Id" headerText="Id" > ${funcionario.id}</p:column>
+                    <p:column sortBy="nome" headerText="Nome" >${funcionario.nome}</p:column>
+                    <p:column sortBy="rg" headerText="Rg" >${funcionario.rg}</p:column>
+                    <p:column sortBy="cpf" headerText="Cpf" >${funcionario.cpf}</p:column>
+                    <p:column sortBy="telefone" headerText="Telefone" >${funcionario.telefone}</p:column>
+                    <p:column sortBy="email" headerText="E-mail" > ${funcionario.email}</p:column>
       
                     <p:column headerText="Editar">
                         <p:commandButton value="Editar" ajax="false" action="${FuncionarioController.editar()}">
-                            <f:setPropertyActionListener target="${FuncionarioController.entidade}" value="#{funcionario}" />
+                            <f:setPropertyActionListener target="${FuncionarioController.entidade}" value="${funcionario}" />
                         </p:commandButton>
                         
                     </p:column>

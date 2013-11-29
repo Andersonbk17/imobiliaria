@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <p:tabView>
+                        <p:tab title="Cadastro de Funcionario" id="cadastroFuncionario">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                                <h:outputLabel value="Data admissão*:"/>
+                                <p:calendar size="20" value="${FuncionarioController.entidade.dataAdmissao}"  required="true"/>
+                                
+                                <h:outputLabel value="Nome*:"/>
+                                <p:inputText size="50" value="${FuncionarioController.entidade.nome}" required="true" />
+                            
+                                <h:outputLabel value="Sexo*:"/>
+                                <p:selectOneMenu id="sexoFuncionario" value="${FuncionarioController.entidade.sexo}" required="true" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="1"/>
+                                    <f:selectItem itemLabel="Feminino"  itemValue="2"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Rg*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.rg}" required="true" />
+                                
+                                <h:outputLabel value="Orgão expedidor*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.orgaoExpedidor}" required="true" />
+                            
+                                <h:outputLabel value="cpf*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.cpf}" required="true" />
+                            
+                                <h:outputLabel value="Nascimento*:"/>
+                                <p:calendar size="20" value="${FuncionarioController.entidade.dataNascimento}" required="true" />
+                            
+                                <h:outputLabel value="Telefone*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.telefone}" required="true" />
+                                
+                                <h:outputLabel value="E-mail*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.email}" required="true" />
+                                
+                                <h:outputLabel value="Nacionalidade*:"/>
+                                <p:selectOneMenu id="nacionalidade" value="${FuncionarioController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" required="true" filter="true">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{NacionalidadeController.listarNacionalidade()}"  />
+                                </p:selectOneMenu>
+                                
+                  
+                                
+                                <h:outputLabel value="Cargo*:"/>
+                                <p:selectOneMenu id="cargo" value="${FuncionarioController.entidade.cargo}" converter="#{cargoConverter}" required="true" filter="true">
+                                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                                    <f:selectItems value="#{CargoController.listarCargos()}" />
+                                </p:selectOneMenu>
+                           
+                                <h:inputHidden value="${FuncionarioController.entidade.ativo}" required="true" />
+                            
+                            </h:panelGrid>
+                        </p:tab>
+                        
+                        <p:tab title="Endereço" id="cadastroFuncionarioEndereco">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                                <h:outputLabel value="Rua*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.enderecoRua}" required="true" />
+                            
+                                <h:outputLabel value="Número*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.enderecoNumero}" required="true" />
+                            
+                                <h:outputLabel value="Bairro*:"/>
+                                <p:inputText size="20" value="${FuncionarioController.entidade.enderecoBairro}" required="true" />
+                            
+                                <h:outputLabel value="Cep*:"/>
+                                <p:inputText size="20" value="#{FuncionarioController.entidade.enderecoCep}" required="true" />
+                                
+                                <h:outputLabel value="Estado*:" />
+                                <p:selectOneMenu id="estado" value="${CidadeController.idEstado}" required="true" filter="true">
+                                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                                    <f:selectItem itemLabel="AC" itemValue="1"/>
+                                    <f:selectItem itemLabel="AL" itemValue="2"/>
+                                    <f:selectItem itemLabel="AP" itemValue="3"/>
+                                    <f:selectItem itemLabel="AM" itemValue="4"/>
+                                    <f:selectItem itemLabel="BA" itemValue="5"/>
+                                    <f:selectItem itemLabel="CE" itemValue="6"/>
+                                    <f:selectItem itemLabel="DF" itemValue="7"/>
+                                    <f:selectItem itemLabel="ES" itemValue="8"/>
+                                    <f:selectItem itemLabel="GO" itemValue="9"/>
+                                    <f:selectItem itemLabel="MA" itemValue="10"/>                        
+                                    <f:selectItem itemLabel="MT" itemValue="11"/>
+                                    <f:selectItem itemLabel="MS" itemValue="12"/>
+                                    <f:selectItem itemLabel="MG" itemValue="13"/>                        
+                                    <f:selectItem itemLabel="PA" itemValue="14"/>
+                                    <f:selectItem itemLabel="PB" itemValue="15"/>
+                                    <f:selectItem itemLabel="PR" itemValue="16"/>
+                                    <f:selectItem itemLabel="PE" itemValue="17"/>
+                                    <f:selectItem itemLabel="PI" itemValue="18"/>                        
+                                    <f:selectItem itemLabel="RJ" itemValue="19"/>
+                                    <f:selectItem itemLabel="RN" itemValue="20"/>
+                                    <f:selectItem itemLabel="RS" itemValue="21"/>
+                                    <f:selectItem itemLabel="RO" itemValue="22"/>
+                                    <f:selectItem itemLabel="RR" itemValue="23"/>                            
+                                    <f:selectItem itemLabel="SC" itemValue="24"/>                            
+                                    <f:selectItem itemLabel="SE" itemValue="25"/>
+                                    <f:selectItem itemLabel="SP" itemValue="26"/>                               
+                                    <f:selectItem itemLabel="TO" itemValue="27"/>
+                                    
+                                    <p:ajax update="cidades" listener="#{CidadeController.adicionarEstado()}" />
+                                    
+                                </p:selectOneMenu>
+                                
+                                <h:outputLabel value="Cidade*:" />
+                                <p:selectOneMenu id="cidades" value="${FuncionarioController.entidade.cidade}" converter="${cidadeConverter}" required="true" filter="true" >
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{CidadeController.filtrarCidade()}" />
+                                </p:selectOneMenu>
+                              
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    
+                    <p:panel id="rodape">
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()"/>
+                        <p:commandButton value="Voltar" action="#{FuncionarioController.voltar()}"/>
+                        
+                    </p:panel>
+                    
+                    <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar as alterações?" header="Confirmação" 
+                                     severity="alert" widgetVar="msgSalvar" >
+                        
+                        <p:commandButton ajax="false" value="SIM" action="${FuncionarioController.salvar()}" />
+                        <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
+                    </p:confirmDialog>
+                    
+                    <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
+                        
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
