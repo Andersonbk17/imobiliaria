@@ -12,17 +12,18 @@ import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 /**
  *
  * @author Anderson
  */
-@RequestScoped
+
 @Named(value = "TipoImovelController")
+@ViewScoped
 public class TipoImovelController implements Serializable{
     
     @EJB

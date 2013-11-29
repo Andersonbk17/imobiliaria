@@ -11,6 +11,7 @@ import br.edu.ifnmg.imobiliaria.domainModel.Usuario;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 /**
@@ -78,9 +79,15 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuariolReposit
 
         // Aplica os parâmetros da consulta
         query.setParameter("login", login);
-
+        
+        try{
         // Executa a consulta
-        return (Usuario)query.getSingleResult();
+            return (Usuario)query.getSingleResult();
+        }catch(NoResultException ex){
+            ex.printStackTrace();
+            return null;
+        }
+        
 
 
     }

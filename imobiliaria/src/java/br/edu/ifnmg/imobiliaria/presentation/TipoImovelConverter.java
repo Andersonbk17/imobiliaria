@@ -15,6 +15,7 @@ import javax.ejb.EJB;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.view.ViewScoped;
 
 /**
  *

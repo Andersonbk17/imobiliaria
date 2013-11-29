@@ -6,9 +6,7 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
-import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.IUsuariolRepositorio;
-import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import br.edu.ifnmg.imobiliaria.domainModel.Usuario;
 import java.util.List;
 import javax.ejb.EJB;

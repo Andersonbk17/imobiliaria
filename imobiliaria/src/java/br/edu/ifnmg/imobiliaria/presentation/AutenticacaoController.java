@@ -15,6 +15,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author Anderson
  */
 @Named(value = "autenticacaoController")
-@RequestScoped
+@ViewScoped
 public class AutenticacaoController {
 
     /**
@@ -36,37 +37,37 @@ public class AutenticacaoController {
     public AutenticacaoController() {
     }
     
-    public void Mensagem(String msg) {
+    public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
     }
     
     public String validar() {
         try {
-        usuario = dao.porLogin(login);
+            usuario = dao.porLogin(login);
 
-        if (usuario == null) {
-            Mensagem("Login ou senha não correspondem");
-            return "login.xhtml";
-        } else {
-            if (senha.equals(usuario.getSenha())) {
-
-                HttpSession session;
-
-                FacesContext ctx = FacesContext.getCurrentInstance();
-                session = (HttpSession) ctx.getExternalContext().getSession(false);
-                session.setAttribute("usuarioAutenticado", usuario);
-
-               // AppendLog("Login");
-
-                return "index.xhtml";
-            } else {
-                Mensagem("Login ou senha não correspondem");
+            if (usuario == null) {
+                exibirMensagem("Login ou senha não Correspondem");
                 return "login.xhtml";
+            } else {
+                if (senha.equals(usuario.getSenha())) {
+
+                    HttpSession session;
+
+                    FacesContext ctx = FacesContext.getCurrentInstance();
+                    session = (HttpSession) ctx.getExternalContext().getSession(false);
+                    session.setAttribute("usuarioAutenticado", usuario);
+
+                    // AppendLog("Login");
+                    return "index.xhtml";
+                } else {
+                    exibirMensagem("Login ou senha não correspondem");
+                    return "login.xhtml";
+                }
             }
-        }
-        } catch(Exception ex){
-            Mensagem("Login ou senha não correspondem");
+        } catch (Exception ex) {
+            exibirMensagem("Login ou senha não correspondem");
+            ex.printStackTrace();
             return "login.xhtml";
         }
 
