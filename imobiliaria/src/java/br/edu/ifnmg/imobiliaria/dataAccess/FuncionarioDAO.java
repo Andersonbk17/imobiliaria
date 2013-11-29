@@ -39,7 +39,7 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " f.nome like nome ";
+                filtro += " f.nome=:nome ";
                 parametros.put("nome", obj.getNome());
             }
             //Id
@@ -47,7 +47,7 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " f.id like id";
+                filtro += " f.id=:id ";
                 parametros.put("id", obj.getId());
             }
             //Cpf
@@ -55,7 +55,7 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " f.cpf like cpf";
+                filtro += " f.cpf=:cpf ";
                 parametros.put("cpf", obj.getCpf());
             }
 
