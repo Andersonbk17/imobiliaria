@@ -38,16 +38,17 @@ public class LogAcessoDAO extends DAOGenerico<LogAcesso> implements ILogAcessoRe
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             //Nome
+            /*
             if (obj.getUsuario().getLogin() != null && obj.getUsuario().getLogin().length() > 0) {
-                filtro += " l.usuario_id like user ";
+                filtro += " l.usuario_id=:user ";
                 parametros.put("user", obj.getUsuario());
-            }
+            }*/
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " l.id like id";
+                filtro += " l.id=:id ";
                 parametros.put("id", obj.getId());
             }
             
