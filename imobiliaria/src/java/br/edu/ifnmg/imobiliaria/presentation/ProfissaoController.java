@@ -9,6 +9,7 @@ package br.edu.ifnmg.imobiliaria.presentation;
 import br.edu.ifnmg.imobiliaria.domainModel.IProfissaoRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Profissao;
 import java.util.List;
+import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -72,7 +73,7 @@ public class ProfissaoController {
     
     public String voltar(){
         listagem = null;
-        return "index.xhtml";
+        return "ListagemProfissao.xhtml";
     }
     
     public List<Profissao> listarProfissao(){

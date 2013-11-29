@@ -39,7 +39,7 @@ public class ImovelDAO extends DAOGenerico<Imovel> implements IImovelRepositorio
         if (obj != null) {
             //Nome
             if (obj.getCidade() != null ) {
-                filtro += " c.nome like nome ";
+                filtro += " c.nome=:nome ";
                 parametros.put("nome", obj.getCidade());
             }
             //Id
@@ -47,7 +47,7 @@ public class ImovelDAO extends DAOGenerico<Imovel> implements IImovelRepositorio
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " c.id like id";
+                filtro += " c.id=:id";
                 parametros.put("id", obj.getId());
             }
            

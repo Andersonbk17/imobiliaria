@@ -72,7 +72,7 @@ public class ClienteController {
     
     public String voltar(){
         listagem = null;
-        return "index.xhtml";
+        return "ListagemCliente.xhtml";
     }
     
     public List<Cliente> listarTodos(){

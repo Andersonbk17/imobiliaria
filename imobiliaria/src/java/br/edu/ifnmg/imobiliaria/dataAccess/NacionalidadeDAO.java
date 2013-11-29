@@ -39,7 +39,7 @@ public class NacionalidadeDAO extends DAOGenerico<Nacionalidade> implements INac
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " n.nome like nome ";
+                filtro += " n.nome=:nome ";
                 parametros.put("nome", obj.getNome());
             }
             //Id
@@ -47,7 +47,7 @@ public class NacionalidadeDAO extends DAOGenerico<Nacionalidade> implements INac
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " n.id like id";
+                filtro += " n.id=:id ";
                 parametros.put("id", obj.getId());
             }
 

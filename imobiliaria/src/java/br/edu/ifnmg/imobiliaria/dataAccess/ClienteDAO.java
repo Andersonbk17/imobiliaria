@@ -39,7 +39,7 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements IClienteReposito
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome like nome ";
+                filtro += " c.nome=:nome ";
                 parametros.put("nome", obj.getNome());
             }
             //Id
@@ -47,7 +47,7 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements IClienteReposito
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " c.id like id";
+                filtro += " c.id=:id ";
                 parametros.put("id", obj.getId());
             }
             //Cpf
@@ -55,7 +55,7 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements IClienteReposito
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " c.cpf like cpf";
+                filtro += " c.cpf=:cpf ";
                 parametros.put("cpf", obj.getCpf());
             }
 

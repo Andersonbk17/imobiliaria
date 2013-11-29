@@ -39,7 +39,7 @@ public class ProfissaoDAO extends DAOGenerico<Profissao> implements IProfissaoRe
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " p.nome like nome ";
+                filtro += " p.nome=:nome ";
                 parametros.put("nome", obj.getNome());
             }
             //Id
@@ -47,7 +47,7 @@ public class ProfissaoDAO extends DAOGenerico<Profissao> implements IProfissaoRe
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " p.id like id";
+                filtro += " p.id=:id ";
                 parametros.put("id", obj.getId());
             }
 

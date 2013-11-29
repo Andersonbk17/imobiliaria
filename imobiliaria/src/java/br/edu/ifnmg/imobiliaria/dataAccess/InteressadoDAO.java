@@ -39,7 +39,7 @@ public class InteressadoDAO extends DAOGenerico<Interessado> implements IInteres
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " i.nome like nome ";
+                filtro += " i.nome=:nome ";
                 parametros.put("nome", obj.getNome());
             }
             //Id
@@ -47,7 +47,7 @@ public class InteressadoDAO extends DAOGenerico<Interessado> implements IInteres
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " i.id like id";
+                filtro += " i.id=:id ";
                 parametros.put("id", obj.getId());
             }
            

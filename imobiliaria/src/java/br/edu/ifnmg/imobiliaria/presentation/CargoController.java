@@ -54,7 +54,7 @@ public class CargoController {
     
     public String criar(){
         entidade = new Cargo();
-        return "CadastradoCargo.xhtml";
+        return "CadastroCargo.xhtml";
     }
     
     public String apagar(){
@@ -66,13 +66,13 @@ public class CargoController {
     
     public String filtrar() {
         listagem = dao.Buscar(filtro);
-        return "CargoListagem.xhtml";
+        return "ListagemCargo.xhtml";
     }
 
     
     public String voltar(){
         listagem = null;
-        return "index.xhtml";
+        return "ListagemCargo.xhtml";
     }
     
     public List<Cargo> listarCargos() {

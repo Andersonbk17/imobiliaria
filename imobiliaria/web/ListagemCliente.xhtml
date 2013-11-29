@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">
+                    <f:facet name="header">Filtros</f:facet>
+                    
+                    <h:outputLabel value="Id:" />
+                    <p:inputText value="${ClienteController.filtro.id}" />
+                    
+                    <h:outputLabel value="Nome:" />
+                    <p:inputText value="${ClienteController.filtro.nome}" />
+                    
+                    <h:outputLabel value="Cpf:" />
+                    <p:inputText value="${ClienteController.filtro.cpf}" />        
+                    
+                    <f:facet name="footer"> 
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${ClienteController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Novo Cliente" action="${ClienteController.criar()}" />
+                    </f:facet>
+                </p:panelGrid>
+                
+                <p:dataTable value="${ClienteController.listagem}" var="cliente" emptyMessage="Registros não encontrados!">
+                    <p:column sortBy="Id" headerText="Id" > #{cliente.id}</p:column>
+                    <p:column sortBy="nome" headerText="Nome" > #{cliente.nome}</p:column>
+                    <p:column sortBy="rg" headerText="Rg" > #{cliente.rg}</p:column>
+                    <p:column sortBy="cpf" headerText="Cpf" > #{cliente.cpf}</p:column>
+                    <p:column sortBy="telefone" headerText="Telefone" > #{cliente.telefone}</p:column>
+                    <p:column sortBy="email" headerText="E-mail" > #{cliente.email}</p:column>
+      
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${ClienteController.editar()}">
+                            <f:setPropertyActionListener target="${ClienteController.entidade}" value="#{cliente}" />
+                        </p:commandButton>
+                        
+                    </p:column>
+                
+                </p:dataTable>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
