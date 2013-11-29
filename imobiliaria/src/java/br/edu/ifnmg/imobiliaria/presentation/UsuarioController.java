@@ -74,7 +74,7 @@ public class UsuarioController {
 
     public String voltar(){
         listagem = null;
-        return "index.xhtml";
+        return "ListagemUsuario.xhtml";
     }
     
     public IUsuariolRepositorio getDao() {
