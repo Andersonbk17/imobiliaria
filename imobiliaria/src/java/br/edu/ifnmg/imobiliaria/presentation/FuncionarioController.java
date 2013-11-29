@@ -68,7 +68,7 @@ public class FuncionarioController {
     
     public String filtrar() {
         listagem = dao.Buscar(filtro);
-        return "FuncionarioListagem.xhtml";
+        return "ListagemFuncionario.xhtml";
     }
     
     public String voltar(){
