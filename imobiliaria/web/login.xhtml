@@ -11,20 +11,21 @@
         <h:form>
             <p:growl id="growl" showDetail="true" sticky="true" />   
 
+            <div align="center" >
+                <p:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Autenticação  
+                    </f:facet> 
+                    <p:outputLabel value="Login:" />
+                    <p:inputText id="usuario" value="#{autenticacaoController.login}" required="true"/>
+                    <p:outputLabel value="Senha:" />
+                    <p:password id="senha" value="#{autenticacaoController.senha}" required="true" />
 
-            <p:panelGrid columns="2">  
-                <f:facet name="header">  
-                    Autenticação  
-                </f:facet> 
-                <p:outputLabel value="Login:" />
-                <p:inputText id="usuario" value="#{autenticacaoController.login}" required="true"/>
-                <p:outputLabel value="Senha:" />
-                <p:password id="senha" value="#{autenticacaoController.senha}" required="true" />
-
-            </p:panelGrid>
-            <p:panel id="Rodape">
-                <p:commandButton value="Entrar" action="#{autenticacaoController.validar()}"/>
-            </p:panel>
+                </p:panelGrid>
+                <p:panel id="Rodape" style="width: 305px">
+                    <p:commandButton value="Entrar" action="#{autenticacaoController.validar()}"/>
+                </p:panel>
+                </div>
         </h:form>
     </h:body>
 </html>
