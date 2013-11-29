@@ -47,7 +47,7 @@ public class ProfissaoDAO extends DAOGenerico<Profissao> implements IProfissaoRe
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " p.id=:id";
+                filtro += " p.id=:id ";
                 parametros.put("id", obj.getId());
             }
 

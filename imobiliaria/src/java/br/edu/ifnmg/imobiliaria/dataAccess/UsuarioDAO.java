@@ -47,7 +47,7 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuariolReposit
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " u.id=:id";
+                filtro += " u.id=:id ";
                 parametros.put("id", obj.getId());
             }
 

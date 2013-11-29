@@ -47,7 +47,7 @@ public class NacionalidadeDAO extends DAOGenerico<Nacionalidade> implements INac
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " n.id=:id";
+                filtro += " n.id=:id ";
                 parametros.put("id", obj.getId());
             }
 
