@@ -27,11 +27,11 @@
                 </p:panelGrid>
                 
                 <p:dataTable value="${InteressadoController.listagem}" var="interessado" emptyMessage="Registros não encontrados!">
-                    <p:column sortBy="Id" headerText="Id" > #{interessado.id}</p:column>
-                    <p:column sortBy="nome" headerText="Nome" > #{interessado.nome}</p:column>
-                    <p:column sortBy="telefone" headerText="Telefone" > #{interessado.telefone}</p:column>
-                    <p:column sortBy="email" headerText="E-mail" > #{interessado.email}</p:column>
-                    <p:column sortBy="dataRegistro" headerText="Data do Registro" > #{interessado.dataRegistro.toLocaleString()}</p:column>
+                    <p:column sortBy="Id" headerText="Id" >${interessado.id}</p:column>
+                    <p:column sortBy="nome" headerText="Nome" >${interessado.nome}</p:column>
+                    <p:column sortBy="telefone" headerText="Telefone" >${interessado.telefone}</p:column>
+                    <p:column sortBy="email" headerText="E-mail" >${interessado.email}</p:column>
+                    <p:column sortBy="dataRegistro" headerText="Data do Registro" >${interessado.dataRegistro.toLocaleString()}</p:column>
                     
                     <!--
                     <p:column headerText="Editar">
