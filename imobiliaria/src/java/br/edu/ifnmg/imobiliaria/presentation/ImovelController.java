@@ -55,12 +55,12 @@ public class ImovelController{
     }
     
     public String editar(){
-        return "ListagemInteressado.xhtml";
+        return "ListagemImovel.xhtml";
     }
     
     public String criar(){
         entidade = new Imovel();
-        return "CadastradoCargo.xhtml";
+        return "CadastroImovel.xhtml";
     }
     
     public String apagar(){
@@ -72,7 +72,7 @@ public class ImovelController{
     
     public String filtrar() {
         listagem = dao.Buscar(filtro);
-        return "ListagemInteressado.xhtml";
+        return "ListagemImovel.xhtml";
     }
     
     public List<Imovel> listarTodos(){
@@ -82,7 +82,7 @@ public class ImovelController{
     
     public String voltar(){
         listagem = null;
-        return "index.xhtml";
+        return "ListagemImovel.xhtml";
     }
     
     
