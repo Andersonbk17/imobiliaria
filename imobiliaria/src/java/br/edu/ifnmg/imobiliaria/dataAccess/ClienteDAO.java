@@ -55,7 +55,7 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements IClienteReposito
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " c.cpf =: cpf ";
+                filtro += " c.cpf=:cpf ";
                 parametros.put("cpf", obj.getCpf());
             }
 
