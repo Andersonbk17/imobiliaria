@@ -68,7 +68,7 @@ public class FormaDePagamentoController {
 
     public String voltar() {
         listagem = null;
-        return "index.xhtml";
+        return "ListagemFormaDePagamento.xhtml";
     }
     
      public String filtrar() {
