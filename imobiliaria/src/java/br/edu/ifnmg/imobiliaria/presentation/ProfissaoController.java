@@ -73,7 +73,7 @@ public class ProfissaoController {
     
     public String voltar(){
         listagem = null;
-        return "index.xhtml";
+        return "ListagemProfissao.xhtml";
     }
     
     public List<Profissao> listarProfissao(){
