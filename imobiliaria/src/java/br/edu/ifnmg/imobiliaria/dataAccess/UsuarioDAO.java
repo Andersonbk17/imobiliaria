@@ -69,6 +69,21 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuariolReposit
         return query.getResultList();
 
     }
+    
+    @Override
+     public Usuario porLogin(String login){
+        String consulta = "select f from Usuario f where f.ativo = 1 and f.login=:login ";
+                // Cria a consulta no JPA
+        Query query = manager.createQuery(consulta);
+
+        // Aplica os parâmetros da consulta
+        query.setParameter("login", login);
+
+        // Executa a consulta
+        return (Usuario)query.getSingleResult();
+
+
+    }
 
     @Override
     public boolean Apagar(Usuario obj) {

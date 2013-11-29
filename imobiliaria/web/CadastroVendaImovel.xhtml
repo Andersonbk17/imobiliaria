@@ -34,7 +34,9 @@
                                 <h:outputLabel value="Data da Venda*:" />
                                 <p:calendar size="50" value="#{vendaImovel.entidade.dataVenda}" required="true" />
                                 <h:outputLabel value="Percentual de Comussão*:" />
-                                <p:inputText size="50" value="#{vendaImovel.entidade.percentualComissao}" required="true" />
+                                <p:inputText size="50" value="#{vendaImovel.entidade.percentualComissao}" required="true"  >
+                                    
+                                </p:inputText>
                                 <h:outputLabel value="Forma de Pagamento*:" />
                                 <p:selectOneMenu value="#{vendaImovel.entidade.formaDePagamento}" converter="${formaDePagamentoConverter}" required="true" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
