@@ -12,7 +12,6 @@ import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -21,7 +20,7 @@ import javax.faces.context.FacesContext;
  * @author emerson
  */
 @Named(value = "CidadeController")
-@RequestScoped
+@javax.faces.view.ViewScoped
 public class CidadeController {
 
     /**
