@@ -39,7 +39,7 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuariolReposit
         if (obj != null) {
             //Nome
             if (obj.getLogin()!= null && obj.getLogin().length() > 0) {
-                filtro += " u.login like login ";
+                filtro += " u.login=:login ";
                 parametros.put("login", obj.getLogin());
             }
             //Id
@@ -47,7 +47,7 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuariolReposit
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " u.id like id";
+                filtro += " u.id=:id";
                 parametros.put("id", obj.getId());
             }
 
