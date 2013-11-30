@@ -38,11 +38,13 @@
                     <p:column sortBy="email" headerText="E-mail" > ${funcionario.email}</p:column>
       
                     <p:column headerText="Editar">
-                        <p:commandButton value="Editar" ajax="false" action="${FuncionarioController.editar()}">
+                        <p:commandButton value="Editar" ajax="false" onclick="${FuncionarioController.editar()}">
                             <f:setPropertyActionListener target="${FuncionarioController.entidade}" value="${funcionario}" />
                         </p:commandButton>
                         
                     </p:column>
+                    
+                    
                 
                 </p:dataTable>
             </ui:define>
