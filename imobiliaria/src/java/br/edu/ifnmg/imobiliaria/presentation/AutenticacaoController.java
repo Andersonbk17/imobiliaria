@@ -72,6 +72,17 @@ public class AutenticacaoController {
         }
 
     }
+    
+    public Usuario pegarDaSessao(){
+       HttpSession session;
+
+                    FacesContext ctx = FacesContext.getCurrentInstance();
+                    session = (HttpSession) ctx.getExternalContext().getSession(false);
+      
+        return (Usuario) session.getAttribute("usuarioAutenticado"); 
+     
+    
+    }
 
     public String logout() {
         HttpSession session;

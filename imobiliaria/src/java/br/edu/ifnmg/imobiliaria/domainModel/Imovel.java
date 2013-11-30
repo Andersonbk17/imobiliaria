@@ -7,7 +7,7 @@
 package br.edu.ifnmg.imobiliaria.domainModel;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -40,7 +40,7 @@ public class Imovel implements Serializable {
     private float iptu;
     private float dimensoes;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataInicioConstrucao;
+    private Date dataInicioConstrucao;
     @ManyToOne
     TipoDeImovel tipoDeImovel;
     @ManyToOne
@@ -49,7 +49,7 @@ public class Imovel implements Serializable {
     @ManyToOne
     Cliente clienteProprietario;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataTerminoConstrucao;
+    private Date dataTerminoConstrucao;
     private String latitude;
     private String longitude;
     @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER,mappedBy = "imovel")
@@ -138,11 +138,11 @@ public class Imovel implements Serializable {
         this.dimensoes = dimensoes;
     }
 
-    public Calendar getDataInicioConstrucao() {
+    public Date getDataInicioConstrucao() {
         return dataInicioConstrucao;
     }
 
-    public void setDataInicioConstrucao(Calendar dataInicioConstrucao) {
+    public void setDataInicioConstrucao(Date dataInicioConstrucao) {
         this.dataInicioConstrucao = dataInicioConstrucao;
     }
 
@@ -170,11 +170,11 @@ public class Imovel implements Serializable {
         this.clienteProprietario = clienteProprietario;
     }
 
-    public Calendar getDataTerminoConstrucao() {
+    public Date getDataTerminoConstrucao() {
         return dataTerminoConstrucao;
     }
 
-    public void setDataTerminoConstrucao(Calendar dataTerminoConstrucao) {
+    public void setDataTerminoConstrucao(Date dataTerminoConstrucao) {
         this.dataTerminoConstrucao = dataTerminoConstrucao;
     }
 

@@ -10,14 +10,14 @@
         <ui:composition template="./Template.xhtml">
 
             <ui:define name="content">
-               
-                <h:form>
+               <h:form>
                     
                     <p:tabView>
-                        <p:tab title="Nova Forma de Pagamento">
+                        <p:tab title="Nova Foto">
                             <h:panelGrid columns="2" cellpadding="10">
-                                <h:outputLabel value="Nome:*" />
-                                <p:inputText size="50" value="#{formaDePagamentoController.entidade.nome}" required="true"  />
+                                <p:fileUpload mode="advanced" dragDropSupport="false" sizeLimit="100000"
+                                               allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                
                                
                                 
                             </h:panelGrid>
@@ -40,13 +40,12 @@
                     
                     <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
                     
-                    <p:dialog id="dialog" header="Salvando .."  onShow="msgSalvar.hide()" widgetVar="dlg" dynamic="true" height="20" width="200" modal="true">  
-                          <p:graphicImage value="Aguarde ......." />
+                    <p:dialog id="dialog" header="Salvando"  onShow="msgSalvar.hide()" widgetVar="dlg" dynamic="true" height="20" width="200" modal="true">  
+                    <h:outputText value="Aguarde ......." />  
                 </p:dialog>
                     
                     
                 </h:form>
-                
             </ui:define>
 
         </ui:composition>
