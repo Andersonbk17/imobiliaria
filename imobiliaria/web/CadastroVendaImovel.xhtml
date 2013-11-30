@@ -38,12 +38,13 @@
                                     
                                 </p:inputText>
                                 <h:outputLabel value="Forma de Pagamento*:" />
-                                <p:selectOneMenu value="#{vendaImovel.entidade.formaDePagamento}" converter="${formaDePagamentoConverter}" required="true" >
+                                <p:selectOneMenu value="#{vendaImovel.entidade.formaDePagamento}" converter="${formaDePagementoConverter}" required="true" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{formaDePagamentoController.listarTodos()}" />
                                 </p:selectOneMenu>
                                 <h:outputLabel value="Observações:" />
                                 <p:inputTextarea value="#{vendaImovel.entidade.observacoes}" rows="5" cols="52" />
+                               
                                 
                                 
                                 
@@ -67,11 +68,15 @@
                     <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
                                      severity="alert" widgetVar="msgSalvar" >
                         
-                        <p:commandButton ajax="false" value="SIM" action="${TipoImovelController.salvar()}" />
+                        <p:commandButton ajax="false" value="SIM" action="${TipoImovelController.salvar()}"  onclick="dlg.show()"/>
                         <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
                     </p:confirmDialog>
                     
                     <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
+                    
+                    <p:dialog id="dialog" header="Salvando .."  onShow="msgSalvar.hide()" widgetVar="dlg" dynamic="true" height="20" width="200" modal="true">  
+                          <p:graphicImage value="Aguarde ......." />
+                </p:dialog>
 
                 </h:form>
             </ui:define>

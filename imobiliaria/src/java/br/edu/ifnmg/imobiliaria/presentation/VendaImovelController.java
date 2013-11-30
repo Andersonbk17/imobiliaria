@@ -7,12 +7,12 @@
 package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.IVendaImovelRepositorio;
-import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import br.edu.ifnmg.imobiliaria.domainModel.VendaImovel;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -21,8 +21,8 @@ import javax.faces.context.FacesContext;
  * @author Anderson
  */
 @Named(value = "vendaImovel")
-@RequestScoped
-public class VendaImovelController {
+@SessionScoped
+public class VendaImovelController implements Serializable{
 
     /**
      * Creates a new instance of VendaImovel
@@ -44,7 +44,14 @@ public class VendaImovelController {
         context.addMessage(null, new FacesMessage(msg));
     }
 
+     public void adicionaFuncionario(){
+         AutenticacaoController a = new AutenticacaoController();
+         
+         entidade.setFuncionario(a.pegarDaSessao().getFuncionario());
+     
+     }
     public void salvar() {
+        adicionaFuncionario();
         if(dao.Salvar(entidade)){
             exibirMensagem("Salvo com Sucesso!");
         }else{

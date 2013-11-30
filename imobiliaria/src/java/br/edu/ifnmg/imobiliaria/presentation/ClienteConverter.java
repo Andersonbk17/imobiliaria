@@ -11,7 +11,6 @@ import br.edu.ifnmg.imobiliaria.domainModel.IClienteRepositorio;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;

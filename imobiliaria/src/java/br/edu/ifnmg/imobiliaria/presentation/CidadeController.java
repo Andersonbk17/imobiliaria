@@ -9,8 +9,10 @@ package br.edu.ifnmg.imobiliaria.presentation;
 import br.edu.ifnmg.imobiliaria.domainModel.Cidade;
 import br.edu.ifnmg.imobiliaria.domainModel.Estado;
 import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -20,8 +22,8 @@ import javax.faces.context.FacesContext;
  * @author emerson
  */
 @Named(value = "CidadeController")
-@javax.faces.view.ViewScoped
-public class CidadeController {
+@SessionScoped
+public class CidadeController implements Serializable{
 
     /**
      * Creates a new instance of CidadeController

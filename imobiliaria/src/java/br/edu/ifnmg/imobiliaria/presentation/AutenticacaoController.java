@@ -6,16 +6,15 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
-import br.edu.ifnmg.imobiliaria.domainModel.Funcionario;
 import br.edu.ifnmg.imobiliaria.domainModel.IUsuariolRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Usuario;
+import java.io.Serializable;
 import java.util.Enumeration;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -23,8 +22,8 @@ import javax.servlet.http.HttpSession;
  * @author Anderson
  */
 @Named(value = "autenticacaoController")
-@ViewScoped
-public class AutenticacaoController {
+@SessionScoped
+public class AutenticacaoController implements Serializable{
 
     /**
      * Creates a new instance of AutenticacaoController
@@ -73,15 +72,14 @@ public class AutenticacaoController {
 
     }
     
-    public Usuario pegarDaSessao(){
-       HttpSession session;
+    public Usuario pegarDaSessao() {
+        HttpSession session;
 
-                    FacesContext ctx = FacesContext.getCurrentInstance();
-                    session = (HttpSession) ctx.getExternalContext().getSession(false);
-      
-        return (Usuario) session.getAttribute("usuarioAutenticado"); 
-     
-    
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        session = (HttpSession) ctx.getExternalContext().getSession(false);
+
+        return (Usuario) session.getAttribute("usuarioAutenticado");
+
     }
 
     public String logout() {
