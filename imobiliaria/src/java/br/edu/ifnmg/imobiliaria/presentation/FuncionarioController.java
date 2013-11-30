@@ -8,11 +8,13 @@ package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Funcionario;
 import br.edu.ifnmg.imobiliaria.domainModel.IFuncionarioRepositorio;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+
 import javax.faces.context.FacesContext;
 
 /**
@@ -20,8 +22,8 @@ import javax.faces.context.FacesContext;
  * @author emerson
  */
 @Named(value = "FuncionarioController")
-@RequestScoped
-public class FuncionarioController {
+@SessionScoped
+public class FuncionarioController implements Serializable{
 
     /**
      * Creates a new instance of FuncionarioController
@@ -51,10 +53,11 @@ public class FuncionarioController {
     }
     
     public String editar(){
-        return "EditarFuncionario.xhtml";
+       return "CadastroFuncionario.xhtml";
     }
     
     public String criar(){
+        listagem = null;
         entidade = new Funcionario();
         return "CadastroFuncionario.xhtml";
     }
@@ -72,7 +75,8 @@ public class FuncionarioController {
     }
     
     public String voltar(){
-        return "index.xhtml";
+        listagem = null;
+        return "ListagemFuncionario.xhtml";
     }
     
     
@@ -112,6 +116,7 @@ public class FuncionarioController {
     public void setListagem(List<Funcionario> listagem) {
         this.listagem = listagem;
     }
+    
     
     
      
