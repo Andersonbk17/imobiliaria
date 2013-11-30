@@ -32,8 +32,8 @@ public class Visita implements Serializable {
     private Cliente cliente;
     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar dataAgenda;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataAgenda;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataRegistro;
     @ManyToOne
     private Imovel imovel;
@@ -63,11 +63,11 @@ public class Visita implements Serializable {
         this.cliente = cliente;
     }
 
-    public Calendar getDataAgenda() {
+    public Date getDataAgenda() {
         return dataAgenda;
     }
 
-    public void setDataAgenda(Calendar dataAgenda) {
+    public void setDataAgenda(Date dataAgenda) {
         this.dataAgenda = dataAgenda;
     }
 
