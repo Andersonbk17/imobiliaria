@@ -58,7 +58,7 @@ public class Pessoa implements Serializable {
         this.rg = null;
         this.orgaoExpedidor = null;
         this.email = null;
-        this.dataNascimento = new Date();
+        this.dataNascimento = null;
         this.telefone = null;
         this.enderecoRua = null;
         this.enderecoNumero = null;
