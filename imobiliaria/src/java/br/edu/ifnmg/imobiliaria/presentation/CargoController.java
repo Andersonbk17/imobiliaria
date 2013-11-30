@@ -8,10 +8,12 @@ package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Cargo;
 import br.edu.ifnmg.imobiliaria.domainModel.ICargoRepositorio;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -20,8 +22,8 @@ import javax.faces.context.FacesContext;
  * @author emerson
  */
 @Named(value = "CargoController")
-@RequestScoped
-public class CargoController {
+@SessionScoped
+public class CargoController implements Serializable{
 
     /**
      * Creates a new instance of CargoController
@@ -49,7 +51,7 @@ public class CargoController {
     }
     
     public String editar(){
-        return "ListagemCargo.xhtml";
+        return "CadastroCargo.xhtml";
     }
     
     public String criar(){
