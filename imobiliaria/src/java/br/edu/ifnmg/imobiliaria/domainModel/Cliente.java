@@ -64,9 +64,9 @@ public class Cliente extends Pessoa implements Serializable {
         this.profissao = null;
         this.conjugueNome = null;
         this.conjugueCpf = null;
-        this.conjugueDataNascimento = new Date();
+        this.conjugueDataNascimento = null;
         this.conjugueOrgaoExpedidor = null;
-        this.dataCasamento = new Date();
+        this.dataCasamento = null;
         this.conjugueTelefone = null;
         this.conjugueEmail = null;
         this.conjugueProfissao = null;
