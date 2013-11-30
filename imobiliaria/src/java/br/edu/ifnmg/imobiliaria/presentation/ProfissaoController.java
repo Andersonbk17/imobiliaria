@@ -8,11 +8,12 @@ package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.IProfissaoRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Profissao;
+import java.io.Serializable;
 import java.util.List;
-import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -21,8 +22,8 @@ import javax.faces.context.FacesContext;
  * @author emerson
  */
 @Named(value = "ProfissaoController")
-@RequestScoped
-public class ProfissaoController {
+@SessionScoped
+public class ProfissaoController implements Serializable{
 
     /**
      * Creates a new instance of ProfissaoController
@@ -50,6 +51,7 @@ public class ProfissaoController {
     }
     
     public String editar(){
+        //listagem = null;
         return "CadastroProfissao.xhtml";
     }
     
