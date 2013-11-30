@@ -39,7 +39,7 @@
       
                     <p:column headerText="Editar">
                         <p:commandButton value="Editar" ajax="false" action="${ClienteController.editar()}">
-                            <f:setPropertyActionListener target="${ClienteController.entidade}" value="#{cliente}" />
+                            <f:setPropertyActionListener target="${ClienteController.entidade}" value="${cliente}" />
                         </p:commandButton>
                         
                     </p:column>
