@@ -34,7 +34,7 @@
     
                     <p:column headerText="Editar">
                         <p:commandButton value="Editar" ajax="false" action="${CargoController.editar()}">
-                            <f:setPropertyActionListener target="${CargoController.entidade}" value="#{cargo}" />
+                            <f:setPropertyActionListener target="${CargoController.entidade}" value="${cargo}" />
                         </p:commandButton>
                         
                     </p:column>
