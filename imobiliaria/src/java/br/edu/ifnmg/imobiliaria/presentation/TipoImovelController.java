@@ -12,10 +12,10 @@ import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 
 /**
  *
@@ -23,7 +23,7 @@ import javax.faces.view.ViewScoped;
  */
 
 @Named(value = "TipoImovelController")
-@ViewScoped
+@SessionScoped
 public class TipoImovelController implements Serializable{
     
     @EJB
@@ -68,7 +68,7 @@ public class TipoImovelController implements Serializable{
 
     public String voltar() {
         listagem = null;
-        return "index.xhtml";
+        return "ListagemTipoDeImovel.xhtml";
     }
     
      public String filtrar() {
