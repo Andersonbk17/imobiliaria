@@ -100,9 +100,9 @@
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Data Inicio de Construção:" />
-                                <p:calendar  value="#{imovelController.entidade.dataInicioConstrucao}" required="false"  />
+                                <p:calendar  value="#{imovelController.entidade.dataInicioConstrucao}" required="true"  />
                                 <h:outputLabel value="Data Termino de Construção:" />
-                                <p:calendar  value="#{imovelController.entidade.dataInicioConstrucao}" required="false"  />
+                                <p:calendar  value="#{imovelController.entidade.dataTerminoConstrucao}" required="true"  />
                                 
                                 
                             </h:panelGrid>
@@ -112,7 +112,7 @@
                     
                     <p:panel id="rodape">
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-                        <p:commandButton value="Voltar" onclick="#{imovelController.voltar()}" />
+                        <p:commandButton value="Voltar" action="#{imovelController.voltar()}" />
                     </p:panel>
                     
                     <!-- dialogo de confirmacao -->
