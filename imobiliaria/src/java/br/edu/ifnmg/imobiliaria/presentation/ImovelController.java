@@ -51,7 +51,7 @@ public class ImovelController implements Serializable{
     }
 
     public String editar() {
-        return "ListagemImovel.xhtml";
+        return "CadastroImovel.xhtml";
     }
 
     public String criar() {
