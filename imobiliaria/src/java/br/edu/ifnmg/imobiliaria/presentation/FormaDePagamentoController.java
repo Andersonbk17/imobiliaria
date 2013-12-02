@@ -57,10 +57,6 @@ public class FormaDePagamentoController implements Serializable{
         }catch(Exception ex){
             exibirMensagem(ex.getMessage());
         }
-        
-        
-        
-
     }
 
     public String editar() {

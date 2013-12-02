@@ -5,6 +5,7 @@
  */
 package br.edu.ifnmg.imobiliaria.presentation;
 
+import br.edu.ifnmg.imobiliaria.domainModel.Foto;
 import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.FileUploadEvent;
 
 /**
  *
@@ -32,11 +34,13 @@ public class ImovelController implements Serializable{
     Imovel entidade;
     Imovel filtro;
     List<Imovel> listagem;
+    Foto foto;
 
     public ImovelController() {
         this.filtro = new Imovel();
         listagem = null;
         entidade = new Imovel();
+        foto = new Foto();
     }
 
     public void exibirMensagem(String msg) {
@@ -76,7 +80,21 @@ public class ImovelController implements Serializable{
         listagem = dao.Buscar(filtro);
         return "ListagemImovel.xhtml";
     }
+    
+    
+    public void handleFileUpload(FileUploadEvent event) {  
+       // FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");  
+        //FacesContext.getCurrentInstance().addMessage(null, msg);  
+        exibirMensagem(event.getFile().getFileName() );
+    }  
+    
+    
+    
 
+    public void addFoto(){
+        entidade.addFoto(foto);
+        foto = new Foto();
+    }
     public List<Imovel> listarTodos() {
         listagem = dao.Buscar(filtro);
         return listagem;

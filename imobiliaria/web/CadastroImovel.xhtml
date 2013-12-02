@@ -110,6 +110,17 @@
                             </h:panelGrid>
                             
                         </p:tab>
+                        
+                        <p:tab title="Fotos">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:fileUpload  mode="advanced" dragDropSupport="false" sizeLimit="100000" 
+                                   fileUploadListener="#{imovelController.handleFileUpload}" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
+                                   
+                                   />
+                                    
+                            </h:panelGrid>
+                            
+                        </p:tab>
                     </p:tabView>
                     
                     <p:panel id="rodape">
