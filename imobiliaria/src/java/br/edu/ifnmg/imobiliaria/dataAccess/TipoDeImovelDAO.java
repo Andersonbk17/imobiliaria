@@ -39,7 +39,7 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome like nome ";
+                filtro += " c.nome=:nome ";
                 parametros.put("nome", obj.getNome());
             }
             //Id
@@ -47,7 +47,7 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " c.id like id";
+                filtro += " c.id=:id";
                 parametros.put("id", obj.getId());
             }
            
