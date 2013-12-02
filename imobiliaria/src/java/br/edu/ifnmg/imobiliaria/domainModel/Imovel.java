@@ -54,10 +54,10 @@ public class Imovel implements Serializable {
     private String longitude;
     @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER,mappedBy = "imovel")
     private List<Foto> listaFotos;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     List<Caracteristica> listaCaracteristicas;
     
-    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.LAZY,mappedBy = "imovel")
+    @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER,mappedBy = "imovel")
     List<Reforma> listaReformas;
 
     private boolean ativo;

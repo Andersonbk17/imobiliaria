@@ -52,7 +52,7 @@ public class ImovelController implements Serializable{
         if(dao.Salvar(entidade)){
             listagem = null;
             entidade = new Imovel();
-            
+            exibirMensagem("Salvo com Sucesso !");
         }else{
             exibirMensagem("Erro ao salvar!");
         }
