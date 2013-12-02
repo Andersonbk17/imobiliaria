@@ -12,7 +12,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -46,9 +45,21 @@ public class FormaDePagamentoController implements Serializable{
     }
 
     public void salvar() {
-        dao.Salvar(entidade);
-        listagem = null;
-        exibirMensagem("Salvo com Sucesso!");
+        try{
+            if(dao.verificaESalva(entidade)){
+            exibirMensagem("Salvo com Sucesso!");
+            listagem = null;
+            entidade = new FormaDePagamento();
+        }else{
+            exibirMensagem("Erro ao salvar!");
+        }
+        
+        }catch(Exception ex){
+            exibirMensagem(ex.getMessage());
+        }
+        
+        
+        
 
     }
 

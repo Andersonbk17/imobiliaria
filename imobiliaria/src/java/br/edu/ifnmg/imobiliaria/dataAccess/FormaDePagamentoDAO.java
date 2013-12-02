@@ -86,4 +86,23 @@ public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implement
         }
     }
     
+    /**
+     *
+     * @param obj
+     * @return
+     * @throws Exception
+     */
+   
+    @Override
+    public boolean verificaESalva(FormaDePagamento obj) throws Exception {
+        
+        //Verifica se nao existe forma de pagamento com mesmo nome
+        if(!this.Buscar(obj).isEmpty()){
+            
+            throw new Exception("Forma de pagamento já existente !");
+        }else{
+            return this.Salvar(obj);
+        }
+    }
+    
 }

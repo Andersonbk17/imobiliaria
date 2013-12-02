@@ -10,10 +10,10 @@ import br.edu.ifnmg.imobiliaria.domainModel.Cidade;
 import br.edu.ifnmg.imobiliaria.domainModel.ICidadeRepositorio;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -21,7 +21,7 @@ import javax.inject.Named;
  * @author emerson
  */
 @Named(value = "cidadeConverter")
-@ViewScoped
+@SessionScoped
 public class CidadeConverter implements Serializable, Converter {
 
     /**

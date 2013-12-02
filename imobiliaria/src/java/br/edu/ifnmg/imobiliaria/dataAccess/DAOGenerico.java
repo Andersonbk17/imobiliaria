@@ -33,7 +33,7 @@ public abstract class DAOGenerico<T> implements IRepositorio<T>{
             manager.merge(obj);
             return true;
         }catch (Exception ex){
-        System.out.println(ex.getMessage());
+            ex.printStackTrace();
         return false;
         }
     }

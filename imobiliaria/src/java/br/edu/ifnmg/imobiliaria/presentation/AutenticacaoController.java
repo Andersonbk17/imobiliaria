@@ -97,7 +97,7 @@ public class AutenticacaoController implements Serializable{
             session.removeAttribute(vals.nextElement());
         }
 
-        return "login.xhtml";
+        return "window.location('login.xhtml');";
 
     }
 

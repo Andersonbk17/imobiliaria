@@ -85,9 +85,11 @@
                                 <p:inputText size="50" value="#{imovelController.entidade.dimensoes}" required="false"  />
                                 
                                 <h:outputLabel value="Caracteristicas*:"/>
-                                <p:selectManyCheckbox id="caracteristicas" converter="${caracteristicaConverter}" value="#{imovelController.entidade.listaCaracteristicas}">
-                                      <f:selectItems value="#{caracteristicaController.listarTodos()}"/>
-                                </p:selectManyCheckbox>
+                                <h:panelGrid columns="5" cellpadding="10">
+                                    <p:selectManyCheckbox id="caracteristicas" converter="${caracteristicaConverter}" value="#{imovelController.entidade.listaCaracteristicas}">
+                                        <f:selectItems value="#{caracteristicaController.listarTodos()}"/>
+                                    </p:selectManyCheckbox>
+                                </h:panelGrid>
                             </h:panelGrid>
                         </p:tab>
                         
