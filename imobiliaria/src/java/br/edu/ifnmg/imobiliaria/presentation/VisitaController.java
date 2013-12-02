@@ -8,10 +8,12 @@ package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.IVisitaRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Visita;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -20,8 +22,8 @@ import javax.faces.context.FacesContext;
  * @author Anderson
  */
 @Named(value = "visitaController")
-@RequestScoped
-public class VisitaController {
+@SessionScoped
+public class VisitaController implements Serializable{
 
     /**
      * Creates a new instance of VisitaController
@@ -67,7 +69,7 @@ public class VisitaController {
 
     public String voltar() {
         listagem = null;
-        return "index.xhtml";
+        return "ListagemVisita.xhtml";
     }
     
      public String filtrar() {
