@@ -10,6 +10,7 @@ import br.edu.ifnmg.imobiliaria.domainModel.IReformaRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import br.edu.ifnmg.imobiliaria.domainModel.Reforma;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -31,11 +32,14 @@ public class ReformaController implements Serializable{
     @EJB
     IReformaRepositorio dao;
     Imovel entidadeImovel;
+    Reforma filtro;
     Reforma entidade;
+    List<Reforma> listagem;
     
     public ReformaController() {
         entidade = new Reforma();
         entidadeImovel = new Imovel();
+        filtro = new Reforma();
     }
     
     
@@ -54,29 +58,29 @@ public class ReformaController implements Serializable{
     }
 
     public String editar() {
-        return "CadastroTipoDeImovel.xhtml";
+        return "CadastroReforma.xhtml";
     }
 
     public String criar() {
         entidade = new Reforma();
-        return "CadastroTipoDeImovel.xhtml";
+        return "CadastroReforma.xhtml";
     }
 
     public String apagar() {
         dao.Apagar(entidade);
-      //  listagem = null;
+      listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "TipoImovelListagem.xhtml";
+        return "ListagemReforma.xhtml";
     }
 
     public String voltar() {
-      //  listagem = null;
-        return "index.xhtml";
+      listagem = null;
+        return "ListagemReforma.xhtml";
     }
     
      public String filtrar() {
-     //   listagem = dao.Buscar(filtro);
-        return "ListagemTipoDeImovel.xhtml";
+     listagem = dao.Buscar(filtro);
+     return "ListagemReforma.xhtml";
     }
 
     public IReformaRepositorio getDao() {
@@ -102,6 +106,23 @@ public class ReformaController implements Serializable{
     public void setEntidade(Reforma entidade) {
         this.entidade = entidade;
     }
+
+    public Reforma getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(Reforma filtro) {
+        this.filtro = filtro;
+    }
+
+    public List<Reforma> getListagem() {
+        return listagem;
+    }
+
+    public void setListagem(List<Reforma> listagem) {
+        this.listagem = listagem;
+    }
      
+    
      
 }
