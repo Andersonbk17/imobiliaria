@@ -8,7 +8,6 @@ package br.edu.ifnmg.imobiliaria.dataAccess;
 
 import br.edu.ifnmg.imobiliaria.domainModel.FormaDePagamento;
 import br.edu.ifnmg.imobiliaria.domainModel.IFormaDePagamentoRepositorio;
-import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -27,43 +26,32 @@ public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implement
     @Override
     public List<FormaDePagamento> Buscar(FormaDePagamento obj) {
     // Corpo da consulta
-        String consulta = "select c from FormaDePagamento c where c.ativo =1";
+        String consulta = "select c from FormaDePagamento c where c.ativo =1 ";
 
         // A parte where da consulta
         String filtro = "";
-
-        // Guarda a lista de parâmetros da query
-        HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND c.nome like '%"+obj.getNome()+"%' ";
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.id=:id ";
-                parametros.put("id", obj.getId());
+                
+                filtro += "AND c.id like '%"+obj.getId()+"%'";
+                
             }
          
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta += filtro;
             }
         }
 
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
-
-        // Aplica os parâmetros da consulta
-        for (String par : parametros.keySet()) {
-            query.setParameter(par, parametros.get(par));
-        }
 
         // Executa a consulta
         return query.getResultList();

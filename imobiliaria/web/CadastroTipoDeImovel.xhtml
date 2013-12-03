@@ -14,11 +14,12 @@
                 <h:form>
                     
                     <p:tabView>
-                        <p:tab title="Cadastro de Tipo de Imovel"  id="cadastroTipoDeImovel" >
+                        <p:tab title="Tipo de Imóvel"  id="cadastroTipoDeImovel" >
                             <h:panelGrid columns="2" cellpadding="10" >
 
                                 <h:outputLabel value="Nome:" />
-                                <p:inputText size="50" value="#{TipoImovelController.entidade.nome}" required="true" />
+                                <p:inputText size="50" maxlength="50" value="#{TipoImovelController.entidade.nome}" 
+                                             requiredMessage="Insira o tipo de imovel !" required="true"  />
                             </h:panelGrid>
                         </p:tab>
 
@@ -42,6 +43,7 @@
                         <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
                     </p:confirmDialog>
                     
+                   
                     <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
 
                 </h:form>

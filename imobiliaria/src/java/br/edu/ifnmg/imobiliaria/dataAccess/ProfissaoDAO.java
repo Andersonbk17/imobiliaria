@@ -27,43 +27,33 @@ public class ProfissaoDAO extends DAOGenerico<Profissao> implements IProfissaoRe
     @Override
     public List<Profissao> Buscar(Profissao obj) {
         // Corpo da consulta
-        String consulta = "select p from Profissao p";
+        String consulta = "select p from Profissao p WHERE p.ativo = 1 ";
 
         // A parte where da consulta
         String filtro = "";
-
-        // Guarda a lista de parâmetros da query
-        HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " p.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND p.nome like '%"+obj.getNome()+"%'";
+
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " p.id=:id ";
-                parametros.put("id", obj.getId());
+                
+                filtro += " AND p.id like '%"+obj.getId()+"%'";
+                
             }
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta += filtro;
             }
         }
 
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
-
-        // Aplica os parâmetros da consulta
-        for (String par : parametros.keySet()) {
-            query.setParameter(par, parametros.get(par));
-        }
 
         // Executa a consulta
         return query.getResultList();
@@ -83,6 +73,25 @@ public class ProfissaoDAO extends DAOGenerico<Profissao> implements IProfissaoRe
             ex.printStackTrace();
 
             return false;
+        }
+    }
+    
+     /**
+     *
+     * @param obj
+     * @return
+     * @throws Exception
+     */
+   
+    @Override
+    public boolean verificaESalva(Profissao obj) throws Exception {
+        
+        //Verifica se nao existe forma de pagamento com mesmo nome
+        if(!this.Buscar(obj).isEmpty()){
+            
+            throw new Exception("Profissão já existente !");
+        }else{
+            return this.Salvar(obj);
         }
     }
     

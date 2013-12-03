@@ -29,12 +29,8 @@ public class Cargo implements Serializable {
     private boolean ativo;
     
     public Cargo() {
-        this.nome = "";
-        this.salario = 0;
         this.ativo = true;
     }
-    
-    
     
     public Long getId() {
         return id;

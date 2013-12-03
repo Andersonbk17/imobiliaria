@@ -15,5 +15,7 @@ import javax.ejb.Remote;
 
 @Remote
 public interface IProfissaoRepositorio extends IRepositorio<Profissao>{
+
+    public boolean verificaESalva(Profissao obj) throws Exception;
     
 }

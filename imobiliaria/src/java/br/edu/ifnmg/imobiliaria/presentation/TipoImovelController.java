@@ -11,6 +11,8 @@ import br.edu.ifnmg.imobiliaria.domainModel.ITipoDeImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.TipoDeImovel;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -43,11 +45,18 @@ public class TipoImovelController implements Serializable{
     }
 
     public void salvar() {
-        dao.Salvar(entidade);
-        listagem = null;
-        exibirMensagem("Salvo com Sucesso!");
-        entidade = new TipoDeImovel();
-
+        try {
+            if(dao.verificaESalva(entidade)){
+                listagem = null;
+                exibirMensagem("Salvo com Sucesso!");
+                entidade = new TipoDeImovel();
+                
+            }else{
+                exibirMensagem("Erro ao Salvar!");
+            }
+        } catch (Exception ex) {
+            exibirMensagem(ex.getMessage());
+        }
     }
 
     public String editar() {

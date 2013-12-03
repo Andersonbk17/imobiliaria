@@ -27,46 +27,34 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
     @Override
     public List<TipoDeImovel> Buscar(TipoDeImovel obj) {
          //corpo da consuta
-        String consulta = "select c from TipoDeImovel c ";
+        String consulta = "select c from TipoDeImovel c where c.ativo = 1 ";
 
         //A parte Where da consulta
         String filtro = "";
 
-        //Guarda a lista de parametros da query
-        HashMap<String, Object> parametros = new HashMap<String, Object>();
 
-        // Verifica campo por campo os valores que serão filtrados
+        // Verifica campo por campo os valores que serão filtradoss
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND c.nome like '%"+obj.getNome()+"%'";
             }
-            //Id
+            
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.id=:id";
-                parametros.put("id", obj.getId());
+                
+                filtro += "AND c.id ="+obj.getId();
+           //     parametros.put("id", obj.getId());
             }
            
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta += filtro;
             }
         }
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
 
-        // Aplica os parâmetros da consulta
-
-        for (String par : parametros.keySet()) {
-           query.setParameter(par, parametros.get(par));
-        }
-
-        //JOptionPane.showMessageDialog(null,query);
         // Executa a consulta
         return query.getResultList();
     }
@@ -86,6 +74,25 @@ public class TipoDeImovelDAO extends DAOGenerico<TipoDeImovel> implements ITipoD
             ex.printStackTrace();
 
             return false;
+        }
+    }
+    
+    /**
+     *
+     * @param obj
+     * @return
+     * @throws Exception
+     */
+   
+    @Override
+    public boolean verificaESalva(TipoDeImovel obj) throws Exception {
+        
+        //Verifica se nao existe forma de pagamento com mesmo nome
+        if(!this.Buscar(obj).isEmpty()){
+            
+            throw new Exception("Tipo de imóvel já existente !");
+        }else{
+            return this.Salvar(obj);
         }
     }
     
