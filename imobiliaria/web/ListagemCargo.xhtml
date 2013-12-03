@@ -28,12 +28,12 @@
                 </p:panelGrid>
                 <br />
                 
-                <p:dataTable value="${CargoController.listagem}" var="cargo" emptyMessage="Registros não encontrados!">
+                <p:dataTable style="text-align: center" value="${CargoController.listagem}" var="cargo" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" headerText="Id" > #{cargo.id}</p:column>
                     <p:column sortBy="nome" headerText="Nome" > #{cargo.nome}</p:column>
-                    <p:column sortBy="salario" headerText="Salario" > #{cargo.salario}</p:column>
+                    <p:column sortBy="salario" headerText="Salário" > #{cargo.salario}</p:column>
     
-                    <p:column headerText="Editar">
+                    <p:column >
                         <p:commandButton value="Editar" ajax="false" action="${CargoController.editar()}">
                             <f:setPropertyActionListener target="${CargoController.entidade}" value="${cargo}" />
                         </p:commandButton>
