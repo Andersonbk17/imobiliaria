@@ -41,7 +41,7 @@ public class CaracteristicaController implements Serializable{
     
      public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(msg));
+        context.addMessage(null, new FacesMessage("Aviso",msg));
     }
     
     public void salvar(){

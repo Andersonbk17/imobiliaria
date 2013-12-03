@@ -6,6 +6,7 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
+import br.edu.ifnmg.imobiliaria.domainModel.Funcionario;
 import br.edu.ifnmg.imobiliaria.domainModel.IVendaImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.VendaImovel;
 import java.io.Serializable;
@@ -29,6 +30,7 @@ public class VendaImovelController implements Serializable{
      */
     @EJB
     IVendaImovelRepositorio dao;
+    
     VendaImovel entidade;
     VendaImovel filtro;
     List<VendaImovel> listagem;
@@ -41,13 +43,16 @@ public class VendaImovelController implements Serializable{
     
       public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(msg));
+        context.addMessage(null, new FacesMessage("Aviso",msg));
+        
     }
 
      public void adicionaFuncionario(){
          AutenticacaoController a = new AutenticacaoController();
          
-         entidade.setFuncionario(a.pegarDaSessao().getFuncionario());
+         //entidade.setFuncionario(a.pegarDaSessao().getFuncionario());
+         entidade.setFuncionario((Funcionario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioAutenticado"));
+         
      
      }
     public void salvar() {

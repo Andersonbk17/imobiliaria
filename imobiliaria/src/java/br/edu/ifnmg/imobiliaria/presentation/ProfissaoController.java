@@ -11,7 +11,6 @@ import br.edu.ifnmg.imobiliaria.domainModel.Profissao;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
@@ -41,7 +40,7 @@ public class ProfissaoController implements Serializable{
     
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(msg));
+        context.addMessage(null, new FacesMessage("Aviso",msg));
     }
     
     public void salvar(){

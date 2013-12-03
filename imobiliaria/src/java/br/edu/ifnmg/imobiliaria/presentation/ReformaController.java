@@ -9,9 +9,10 @@ package br.edu.ifnmg.imobiliaria.presentation;
 import br.edu.ifnmg.imobiliaria.domainModel.IReformaRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
 import br.edu.ifnmg.imobiliaria.domainModel.Reforma;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -20,8 +21,8 @@ import javax.faces.context.FacesContext;
  * @author Anderson
  */
 @Named(value = "reformaController")
-@RequestScoped
-public class ReformaController {
+@SessionScoped
+public class ReformaController implements Serializable{
 
     /**
      * Creates a new instance of ReformaController
@@ -40,7 +41,7 @@ public class ReformaController {
     
       public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(msg));
+        context.addMessage(null, new FacesMessage("Aviso",msg));
     }
 
     public void salvar() {

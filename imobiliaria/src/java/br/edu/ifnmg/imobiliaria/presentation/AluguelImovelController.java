@@ -8,10 +8,11 @@ package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.AluguelImovel;
 import br.edu.ifnmg.imobiliaria.domainModel.IAluguelImovelRepositorio;
+import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -20,8 +21,8 @@ import javax.faces.context.FacesContext;
  * @author Anderson
  */
 @Named(value = "aluguelImovelController")
-@RequestScoped
-public class AluguelImovelController {
+@SessionScoped
+public class AluguelImovelController implements Serializable{
 
     /**
      * Creates a new instance of AluguelImovelController
@@ -38,7 +39,7 @@ public class AluguelImovelController {
     
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(msg));
+        context.addMessage(null, new FacesMessage("Aviso",msg));
     }
 
     public void salvar() {
