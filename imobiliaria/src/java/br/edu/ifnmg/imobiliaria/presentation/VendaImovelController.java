@@ -93,7 +93,7 @@ public class VendaImovelController implements Serializable{
     }
     
      public String filtrar() {
-       // listagem = dao.Buscar(filtro);
+        listagem = dao.Buscar(filtro);
         return "ListagemVendaImovel.xhtml";
     }
 
