@@ -72,7 +72,7 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuariolReposit
     }
     
     @Override
-     public Usuario porLogin(String login){
+     public Usuario porLogin(String login) throws Exception{
         String consulta = "select f from Usuario f where f.ativo = 1 and f.login=:login ";
                 // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
@@ -84,8 +84,8 @@ public class UsuarioDAO extends DAOGenerico<Usuario> implements IUsuariolReposit
         // Executa a consulta
             return (Usuario)query.getSingleResult();
         }catch(NoResultException ex){
-            ex.printStackTrace();
-            return null;
+            throw new Exception("Usuário não encontrado!");
+            
         }
         
 

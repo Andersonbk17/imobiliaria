@@ -65,10 +65,12 @@ public class AutenticacaoController implements Serializable{
                 }
             }
         } catch (Exception ex) {
-            exibirMensagem("Login ou senha não correspondem");
-            ex.printStackTrace();
+            //ex.printStackTrace();
+            exibirMensagem(ex.getMessage());
+            
             return "login.xhtml";
         }
+        
 
     }
     

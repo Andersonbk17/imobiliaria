@@ -17,18 +17,18 @@
                         Autenticação  
                     </f:facet> 
                     <p:outputLabel value="Login:" />
-                    <p:inputText id="usuario" value="#{autenticacaoController.login}" required="true"/>
+                    <p:inputText id="usuario" value="#{autenticacaoController.login}" required="true" requiredMessage="Insira o Usuario!"/>
                     <p:outputLabel value="Senha:" />
-                    <p:password id="senha" value="#{autenticacaoController.senha}" required="true" />
+                    <p:password id="senha" value="#{autenticacaoController.senha}" required="true" requiredMessage="Insira a senha!" />
 
                 </p:panelGrid>
-                <p:panel id="Rodape" style="width: 305px">
-                    <p:commandButton value="Entrar" action="#{autenticacaoController.validar()}"/>
+                <p:panel id="Rodape" style="width: 300px">
+                    <p:commandButton value="Entrar" onclick="alerta.show()" action="#{autenticacaoController.validar()}"/>
                     
                 </p:panel>
                 
                 </div>
-            <p:growl id="growl" showDetail="true" life="3000" sticky="true" />   
+            <p:growl id="alerta" showDetail="true" life="3000"  sticky="true" />   
         </h:form>
     </h:body>
 </html>

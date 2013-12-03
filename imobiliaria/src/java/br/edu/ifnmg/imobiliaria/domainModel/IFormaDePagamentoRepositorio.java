@@ -15,6 +15,12 @@ import javax.ejb.Remote;
 @Remote
 public interface IFormaDePagamentoRepositorio extends IRepositorio<FormaDePagamento> {
 
+    /**
+     *
+     * @param obj
+     * @return
+     * @throws Exception
+     */
     public boolean verificaESalva(FormaDePagamento obj) throws Exception;
     
 }
