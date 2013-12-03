@@ -18,7 +18,7 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 <h:outputLabel value="Nome:*" />
                                 <p:inputText size="50" value="#{formaDePagamentoController.entidade.nome}" required="true"  />
-                               
+                                <h:inputHidden value="#{formaDePagamentoController.entidade.ativo}" required="true"/>
                                 
                             </h:panelGrid>
                         </p:tab>
