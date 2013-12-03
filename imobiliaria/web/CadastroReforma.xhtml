@@ -18,7 +18,7 @@
                             <h:panelGrid columns="2" cellpadding="10" >
 
                                 <h:outputLabel value="Imóvel*:"/>
-                                <p:selectOneMenu id="imovel" value="#{InteressadoController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true">
+                                <p:selectOneMenu id="imovel" value="#{reformaController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{imovelController.listarTodos()}"/>
                                 </p:selectOneMenu>
