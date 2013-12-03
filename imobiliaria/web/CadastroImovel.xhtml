@@ -21,8 +21,8 @@
                                 <h:outputLabel value="Bairro*" />
                                 <p:inputText size="50" value="#{imovelController.entidade.enderecoBairro}" required="true"  />
                                 <h:outputLabel value="Cep*" />
-                                <p:inputText size="50" value="#{imovelController.entidade.enderecoCep}" required="true"  />
-                                <h:outputLabel value="Complemento*" />
+                                <p:inputMask mask="99999-999" size="50" value="#{imovelController.entidade.enderecoCep}" required="true"  />
+                                <h:outputLabel value="Complemento" />
                                 <p:inputText size="50" value="#{imovelController.entidade.enderecoComplemento}" required="false"  />
                                 <h:outputLabel value="Estado*" />
                                 
