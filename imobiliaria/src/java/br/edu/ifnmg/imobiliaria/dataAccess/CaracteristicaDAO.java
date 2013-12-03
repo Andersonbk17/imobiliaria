@@ -88,4 +88,23 @@ public class CaracteristicaDAO extends DAOGenerico<Caracteristica> implements IC
         }
     }
     
+    /**
+     *
+     * @param obj
+     * @return
+     * @throws Exception
+     */
+   
+    @Override
+    public boolean verificaESalva(Caracteristica obj) throws Exception {
+        
+        //Verifica se nao existe forma de pagamento com mesmo nome
+        if(!this.Buscar(obj).isEmpty()){
+            
+            throw new Exception("Característica já existente !");
+        }else{
+            return this.Salvar(obj);
+        }
+    }
+    
 }

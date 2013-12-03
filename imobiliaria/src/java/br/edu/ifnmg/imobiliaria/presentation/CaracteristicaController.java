@@ -44,13 +44,23 @@ public class CaracteristicaController implements Serializable{
         context.addMessage(null, new FacesMessage("Aviso",msg));
     }
     
-    public void salvar(){
-        dao.Salvar(entidade);
-        listagem = null;
-        exibirMensagem("Salvo com sucesso!");
-        entidade = new Caracteristica();
+    public void salvar() {
+
+        try {
+            if (dao.verificaESalva(entidade)) {
+                listagem = null;
+                exibirMensagem("Salvo com sucesso!");
+                entidade = new Caracteristica();
+            } else {
+                exibirMensagem("Erro ao Salvar!");
+            }
+
+        } catch (Exception ex) {
+            exibirMensagem(ex.getMessage());
+        }
+
     }
-    
+
     public String editar(){
         return "ListagemCaracteristica.xhtml";
     }

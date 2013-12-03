@@ -27,7 +27,7 @@ public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implement
     @Override
     public List<FormaDePagamento> Buscar(FormaDePagamento obj) {
     // Corpo da consulta
-        String consulta = "select c from FormaDePagamento c";
+        String consulta = "select c from FormaDePagamento c where c.ativo =1";
 
         // A parte where da consulta
         String filtro = "";

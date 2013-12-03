@@ -47,9 +47,14 @@ public class FuncionarioController implements Serializable{
     }
     
     public void salvar(){
-        dao.Salvar(entidade);
-        listagem = null;
-        exibirMensagem("Salvo com sucesso!");
+        if(dao.Salvar(entidade)){
+            listagem = null;
+            exibirMensagem("Salvo com sucesso!");
+            entidade = new Funcionario();
+        }else{
+            exibirMensagem("Erro ao Salvar!");
+        }
+        
     }
     
     public String editar(){

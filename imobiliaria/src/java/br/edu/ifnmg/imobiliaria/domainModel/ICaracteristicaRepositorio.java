@@ -14,5 +14,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ICaracteristicaRepositorio extends IRepositorio<Caracteristica>{
+
+    public boolean verificaESalva(Caracteristica obj) throws Exception;
     
 }

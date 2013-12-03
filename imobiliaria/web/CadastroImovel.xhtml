@@ -96,10 +96,16 @@
                         <p:tab title="Outros">
                             <h:panelGrid columns="2" cellpadding="10">
                                 <h:outputLabel value="Cliente*:"/>
-                                <p:selectOneMenu id="clienteProprietario"  filter="true" converter="${clienteConverter}" value="#{imovelController.entidade.clienteProprietario}">
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
-                                </p:selectOneMenu>
+                                <p:autoComplete completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
+                                                converter="${clienteConverter}" value="#{imovelController.entidade.clienteProprietario}">
+                                    <p:column>
+                                        #{p.cpf}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.nome}
+                                    </p:column>
+                                </p:autoComplete>
+                                
                                 
                                 <h:outputLabel value="Data Inicio de Construção:" />
                                 <p:calendar  value="#{imovelController.entidade.dataInicioConstrucao}" required="false"  />

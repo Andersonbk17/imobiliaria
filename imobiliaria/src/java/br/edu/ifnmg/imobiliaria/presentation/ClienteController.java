@@ -38,6 +38,12 @@ public class ClienteController implements Serializable{
         filtro = new Cliente();
     }
     
+    public List<Cliente> autoCompletar(String tmp){
+        Cliente c = new Cliente();
+        c.setNome(tmp);
+        return dao.Buscar(c);
+    }
+    
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Aviso",msg));

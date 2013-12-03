@@ -39,8 +39,8 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements IClienteReposito
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " c.nome like '%"+obj.getNome()+"%' ";
+                //parametros.put("nome", obj.getNome());
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
