@@ -84,7 +84,7 @@ public class VendaImovelController implements Serializable{
 
     public String voltar() {
         listagem = null;
-        return "index.xhtml";
+        return "ListagemVendaImovel.xhtml";
     }
     
     public List<VendaImovel>listarTodos(){
