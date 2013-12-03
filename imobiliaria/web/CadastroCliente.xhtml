@@ -16,9 +16,6 @@
                         <p:tab title="Cadastro de Cliente" id="cadastroCliente">
                             <h:panelGrid columns="2" cellpadding="10">
                                 
-                                <h:outputLabel value="Data cadastro*:"/>
-                                <p:calendar size="20" value="#{ClienteController.entidade.dataCadastro}"  required="true"/>
-                                
                                 <h:outputLabel value="Nome*:"/>
                                 <p:inputText size="50" value="#{ClienteController.entidade.nome}" required="true" />
                             
@@ -36,16 +33,19 @@
                                 <p:inputText size="20" value="#{ClienteController.entidade.orgaoExpedidor}" required="true" />
                             
                                 <h:outputLabel value="cpf*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.cpf}" required="true" />
+                                <p:inputMask mask="999.999.999-99" size="20" value="#{ClienteController.entidade.cpf}" required="true" />
                             
                                 <h:outputLabel value="Nascimento*:"/>
                                 <p:calendar size="20" value="#{ClienteController.entidade.dataNascimento}" required="true" />
                             
                                 <h:outputLabel value="Telefone*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.telefone}" required="true" />
+                                <p:inputMask mask="(999)9999-9999" size="20" value="#{ClienteController.entidade.telefone}" required="true" />
                                 
                                 <h:outputLabel value="E-mail*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.email}" required="true" />
+                                <p:inputText size="20" value="#{ClienteController.entidade.email}" validatorMessage="Insira um e-mail válido !" required="true" >
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                
+                                </p:inputText>
                                 
                                 <h:outputLabel value="Nacionalidade*:"/>
                                 <p:selectOneMenu id="nacionalidade" value="#{ClienteController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" rendered="true"  filter="true">
@@ -87,7 +87,7 @@
                                 <p:inputText size="20" value="#{ClienteController.entidade.enderecoBairro}" required="true" />
                             
                                 <h:outputLabel value="Cep*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoCep}" required="true" />
+                                <p:inputMask mask="99999-999" size="20" value="#{ClienteController.entidade.enderecoCep}" required="true" />
                                 
                                  <h:outputLabel value="Estado*:" />
                                  <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true" filter="true">
@@ -157,16 +157,19 @@
                                 <p:inputText size="20" value="#{ClienteController.entidade.conjugueOrgaoExpedidor}" />
                             
                                 <h:outputLabel value="Cpf:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.conjugueCpf}"  />
+                                <p:inputMask mask="999.999.999-99" size="20" value="#{ClienteController.entidade.conjugueCpf}"  />
                                 
                                 <h:outputLabel value="Nascimento:"/>
                                 <p:calendar size="20" value="#{ClienteController.entidade.conjugueDataNascimento}"  />
                                 
                                 <h:outputLabel value="Telefone:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.conjugueTelefone}"  />
+                                <p:inputMask mask="(999)9999-9999" size="20" value="#{ClienteController.entidade.conjugueTelefone}"  />
                                 
                                 <h:outputLabel value="E-mail:"/>
-                                <p:calendar size="20" value="#{ClienteController.entidade.conjugueEmail}"  />
+                                <p:inputText required="false" size="20" value="#{ClienteController.entidade.conjugueEmail}"  validatorMessage="Insira um e-mail válido!">
+                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"  />
+                                
+                                </p:inputText>
                                 
                                 <h:outputLabel value="Nacionalidade:"/>
                                 <p:selectOneMenu id="nacionalidadeConjugue" value="#{ClienteController.entidade.conjugueNacionalidade}" converter="${nacionalidadeConverter}" filter="true" >
