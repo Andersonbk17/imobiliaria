@@ -24,6 +24,13 @@
                                     <f:selectItems value="#{ClienteController.listarTodos()}"/>
                                 </p:selectOneMenu>
                                 
+                                <h:outputLabel value="Código do Imóvel*:"/>
+                                <p:selectOneMenu id="imovel"  filter="true" converter="${imovelConverter}" value="#{vendaImovel.entidade.imovel}">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{imovelController.listarTodos()}"/>
+                                </p:selectOneMenu>
+                                
+                                
                                 <h:outputLabel value="Cliente Comprador*:"/>
                                 <p:selectOneMenu id="clienteComprador"  filter="true" converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteComprador}">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
@@ -45,7 +52,7 @@
                                 <h:outputLabel value="Observações:" />
                                 <p:inputTextarea value="#{vendaImovel.entidade.observacoes}" rows="5" cols="52" />
                                
-                                
+                                <h:inputHidden value="#{vendaImovel.entidade.ativo}" required="true" />
                                 
                                 
                                 
@@ -58,7 +65,7 @@
                     <p:panel id="rodape">
                     
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-                        <p:commandButton value="Voltar" action="${TipoImovelController.voltar()}" />
+                        <p:commandButton value="Voltar" action="${vendaImovel.voltar()}" />
                         
                     </p:panel>
                     
@@ -68,7 +75,7 @@
                     <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
                                      severity="alert" widgetVar="msgSalvar" >
                         
-                        <p:commandButton ajax="false" value="SIM" action="${TipoImovelController.salvar()}"  onclick="dlg.show()"/>
+                        <p:commandButton ajax="false" value="SIM" action="${vendaImovel.salvar()}"  onclick="dlg.show()"/>
                         <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
                     </p:confirmDialog>
                     
