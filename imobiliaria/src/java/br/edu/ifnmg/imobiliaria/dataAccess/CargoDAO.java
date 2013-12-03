@@ -27,43 +27,33 @@ public class CargoDAO extends DAOGenerico<Cargo> implements ICargoRepositorio{
     @Override
     public List<Cargo> Buscar(Cargo obj) {
         // Corpo da consulta
-        String consulta = "select c from Cargo c";
+        String consulta = "select c from Cargo c WHERE c.ativo = 1 ";
 
         // A parte where da consulta
         String filtro = "";
 
-        // Guarda a lista de parâmetros da query
-        HashMap<String, Object> parametros = new HashMap<String, Object>();
+        
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND c.nome like '%"+obj.getNome()+"%'";
+               
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.id=:id ";
-                parametros.put("id", obj.getId());
+                filtro += " AND c.id like '%"+obj.getId()+"%'";
             }
          
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta += filtro;
             }
         }
 
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
-
-        // Aplica os parâmetros da consulta
-        for (String par : parametros.keySet()) {
-            query.setParameter(par, parametros.get(par));
-        }
 
         // Executa a consulta
         return query.getResultList();
@@ -83,6 +73,25 @@ public class CargoDAO extends DAOGenerico<Cargo> implements ICargoRepositorio{
             ex.printStackTrace();
 
             return false;
+        }
+    }
+    
+    /**
+     *
+     * @param obj
+     * @return
+     * @throws Exception
+     */
+   
+    @Override
+    public boolean verificaESalva(Cargo obj) throws Exception {
+        
+        //Verifica se nao existe cargo com mesmo nome
+        if(!this.Buscar(obj).isEmpty()){
+            
+            throw new Exception("Cargo já existente !");
+        }else{
+            return this.Salvar(obj);
         }
     }
     

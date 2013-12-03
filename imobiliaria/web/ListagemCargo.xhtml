@@ -26,6 +26,7 @@
                         <p:commandButton ajax="false" value="Novo Cargo" action="${CargoController.criar()}" />
                     </f:facet>
                 </p:panelGrid>
+                <br />
                 
                 <p:dataTable value="${CargoController.listagem}" var="cargo" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" headerText="Id" > #{cargo.id}</p:column>

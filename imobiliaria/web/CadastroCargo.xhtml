@@ -12,16 +12,14 @@
             <ui:define name="content">
                 <h:form>
                     <p:tabView>
-                        <p:tab title="Cadastro de Cargo" id="cadastroCargo">
+                        <p:tab title="Cargo" id="cadastroCargo">
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputText value="Nome*:"/>
-                                <p:inputText value="#{CargoController.entidade.nome}" required="true"/>
+                                <p:inputText maxlength="50"  value="#{CargoController.entidade.nome}" required="true"/>
                                 
                                 <h:outputText value="Salario*:"/>
                                 <p:inputText value="#{CargoController.entidade.salario}" required="true"/>
-                                
-                                <h:inputHidden value="#{CargoController.entidade.ativo}"/>
                                 
                             </h:panelGrid> 
                         </p:tab>
@@ -36,11 +34,14 @@
                     <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
                                      severity="alert" widgetVar="msgSalvar" >
                         
-                        <p:commandButton ajax="false" value="SIM" action="${CargoController.salvar()}" />
+                        <p:commandButton ajax="false" value="SIM" action="${CargoController.salvar()}" onclick="dlg.show()" />
                         <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
                     </p:confirmDialog>
                     
                     <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
+                    <p:dialog id="dialog" header="Salvando"  onShow="msgSalvar.hide()" widgetVar="dlg" dynamic="true" height="20" width="200" modal="true">  
+                        <p:outputLabel value="Aguarde ......." />
+                </p:dialog>
                     
                 </h:form>
             </ui:define>

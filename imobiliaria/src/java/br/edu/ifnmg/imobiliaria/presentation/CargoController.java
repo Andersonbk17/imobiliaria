@@ -10,6 +10,8 @@ import br.edu.ifnmg.imobiliaria.domainModel.Cargo;
 import br.edu.ifnmg.imobiliaria.domainModel.ICargoRepositorio;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -44,9 +46,18 @@ public class CargoController implements Serializable{
     }
     
     public void salvar(){
-        dao.Salvar(entidade);
-        listagem = null;
-        exibirMensagem("Salvo com sucesso!");
+        try {
+            if(dao.verificaESalva(entidade)){
+                listagem = null;
+                exibirMensagem("Salvo com sucesso!");
+                entidade = new Cargo();
+            }else{
+                exibirMensagem("Erro ao Salvar!");
+            }
+        } catch (Exception ex) {
+            exibirMensagem(ex.getMessage());
+        }
+        
     }
     
     public String editar(){

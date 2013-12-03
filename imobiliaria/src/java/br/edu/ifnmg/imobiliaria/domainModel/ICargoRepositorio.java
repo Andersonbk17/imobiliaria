@@ -14,5 +14,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ICargoRepositorio extends IRepositorio<Cargo>{
+
+    public boolean verificaESalva(Cargo obj) throws Exception;
     
 }
