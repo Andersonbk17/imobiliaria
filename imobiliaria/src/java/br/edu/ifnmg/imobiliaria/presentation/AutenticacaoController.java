@@ -6,7 +6,9 @@
 
 package br.edu.ifnmg.imobiliaria.presentation;
 
+import br.edu.ifnmg.imobiliaria.domainModel.ILogAcessoRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.IUsuariolRepositorio;
+import br.edu.ifnmg.imobiliaria.domainModel.LogAcesso;
 import br.edu.ifnmg.imobiliaria.domainModel.Usuario;
 import java.io.Serializable;
 import java.util.Enumeration;
@@ -30,6 +32,9 @@ public class AutenticacaoController implements Serializable{
      */
     @EJB
     IUsuariolRepositorio dao;
+    
+    @EJB
+    ILogAcessoRepositorio daoLogAcesso;
     String login;
     String senha;
     Usuario usuario;
@@ -56,6 +61,13 @@ public class AutenticacaoController implements Serializable{
                     FacesContext ctx = FacesContext.getCurrentInstance();
                     session = (HttpSession) ctx.getExternalContext().getSession(false);
                     session.setAttribute("usuarioAutenticado", usuario);
+                    
+                    //Adicionando logIn entrada no sistema
+                    LogAcesso log = new LogAcesso();
+                    log.setTipo(1);
+                    log.setUsuario(usuario);
+                    
+                    daoLogAcesso.Salvar(log);
 
                     // AppendLog("Login");
                     return "index.xhtml";
@@ -92,12 +104,18 @@ public class AutenticacaoController implements Serializable{
         session.setAttribute("usuarioAutenticado", null);
 
        // AppendLog("Logout");
-        
-        Enumeration<String> vals = session.getAttributeNames(); 
-        
-        while(vals.hasMoreElements()){
+        Enumeration<String> vals = session.getAttributeNames();
+
+        while (vals.hasMoreElements()) {
             session.removeAttribute(vals.nextElement());
         }
+
+        //Adicionando logOut saída no sistema
+        LogAcesso log = new LogAcesso();
+        log.setTipo(2);
+        log.setUsuario(usuario);
+
+        daoLogAcesso.Salvar(log);
 
         return "login.xhtml";
 

@@ -12,10 +12,10 @@
 
             <ui:define name="content">
                 <p:panelGrid columns="2">
-                    <f:facet name="header">Filtros</f:facet>
+                    <f:facet name="header">Filtro</f:facet>
                     
                     <h:outputLabel value="Id:" />
-                    <p:inputText id="id" value="${logAcessoController.filtro.id}" />
+                    <p:inputText id="id" value="${logAcessoController.filtro.id}"  validatorMessage="Insira um id válido!"/>
                     <!--
                     <h:outputLabel value="Usuario:" />
                     <p:inputText value="${logAcessoController.filtro.usuario}" />          
@@ -25,9 +25,10 @@
                        <!-- <p:commandButton ajax="false" value="Novo Log de Acesso" action="${logAcessoController.criar()}" />-->
                     </f:facet>
                 </p:panelGrid>
+                <br />
                 
-                <p:dataTable value="${logAcessoController.listagem}" var="log" emptyMessage="Registros não encontrados!">
-                    <p:column sortBy="id" headerText="Id" >${log.id}</p:column>
+                <p:dataTable style="text-align: center" value="${logAcessoController.listagem}" var="log" emptyMessage="Registros não encontrados!">
+                    <p:column sortBy="id" width="30" headerText="Id" >${log.id}</p:column>
                     <p:column sortBy="usuario" headerText="Usuário" >${log.usuario}</p:column>
                     <p:column sortBy="horario" headerText="Horário" >${log.dataHora.toLocaleString()}</p:column>
     
@@ -40,6 +41,7 @@
                     -->
                 
                 </p:dataTable>
+                <p:growl id="alerta"  life="5000"/>
             </ui:define>
 
         </ui:composition>
