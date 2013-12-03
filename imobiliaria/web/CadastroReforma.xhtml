@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -16,6 +17,12 @@
                         <p:tab title="Cadastro de Reforma"  id="cadastroTipoDeImovel" >
                             <h:panelGrid columns="2" cellpadding="10" >
 
+                                <h:outputLabel value="Imóvel*:"/>
+                                <p:selectOneMenu id="imovel" value="#{InteressadoController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{imovelController.listarTodos()}"/>
+                                </p:selectOneMenu>
+                                
                                 <h:outputLabel value="Data de Inicio*" />
                                 <p:calendar size="50" pattern="dd/MM/yyyy" locale="pt_BR" value="#{reformaController.entidade.dataInicio}" required="true" />
                                 <h:outputLabel value="Data de Termino*" />
@@ -24,6 +31,8 @@
                                 <p:inputText size="50" value="#{reformaController.entidade.valor}" required="false" />
                                 <h:outputLabel value="Observações:*" />
                                 <p:inputTextarea maxlength="200" cols="60" rows="10" value="#{reformaController.entidade.observacos}" required="false" />
+                                
+                                <h:inputHidden value="#{reformaController.entidade.ativo}" required="true" />
                             </h:panelGrid>
                         </p:tab>
 
@@ -33,7 +42,7 @@
                     <p:panel id="rodape">
                     
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-                        <p:commandButton value="Voltar" action="${TipoImovelController.voltar()}" />
+                        <p:commandButton value="Voltar" action="${reformaController.voltar()}" />
                         
                     </p:panel>
                     
@@ -43,7 +52,7 @@
                     <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
                                      severity="alert" widgetVar="msgSalvar" >
                         
-                        <p:commandButton ajax="false" value="SIM" action="${TipoImovelController.salvar()}" />
+                        <p:commandButton ajax="false" value="SIM" action="${reformaController.salvar()}" />
                         <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
                     </p:confirmDialog>
                     
