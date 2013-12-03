@@ -25,7 +25,37 @@ public class ReformaDAO extends DAOGenerico<Reforma> implements IReformaReposito
 
     @Override
     public List<Reforma> Buscar(Reforma obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //corpo da consuta
+        String consulta = "select c from Reforma c where c.ativo = 1 ";
+
+        //A parte Where da consulta
+        String filtro = "";
+
+
+        // Verifica campo por campo os valores que serão filtradoss
+        if (obj != null) {
+            //Nome
+            if (obj.getDataInicio() != null) {
+                filtro += " AND c.dataInicio like '%"+obj.getDataInicio()+"%'";
+            }
+            
+            if (obj.getId() != null && obj.getId() > 0) {
+                
+                filtro += "AND c.id ="+obj.getId();
+           //     parametros.put("id", obj.getId());
+            }
+           
+
+            // Se houver filtros, coloca o "where" na consulta
+            if (filtro.length() > 0) {
+                consulta += filtro;
+            }
+        }
+        // Cria a consulta no JPA
+        Query query = manager.createQuery(consulta);
+
+        // Executa a consulta
+        return query.getResultList();
     }
 
     @Override
