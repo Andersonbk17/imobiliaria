@@ -27,8 +27,7 @@ public class Profissao implements Serializable {
     private boolean ativo;
 
     public Profissao() {
-        this.nome = null;
-        this.ativo = true;
+      this.ativo = true;
     }
     
     
