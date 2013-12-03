@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">
+                     
+                    <f:facet name="header">Filtros</f:facet>
+                    
+                    <h:outputLabel value="Id:" />
+                    <p:inputText id="id" value="${reformaController.filtro.id}" />
+                    
+                    <h:outputLabel value="Data Inicio:" />
+                    <p:calendar id="dataInicio" value="${reformaController.filtro.dataInicio}" />
+                    
+                   
+                    <f:facet name="footer"> 
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${reformaController.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Nova Reforma" action="${reformaController.criar()}" />
+                    </f:facet>
+                </p:panelGrid>
+                
+                <p:dataTable value="${reformaController.listagem}" var="reforma" emptyMessage="Registros não encontrados!">
+                    <p:column sortBy="id" headerText="Id" > #{reforma.id}</p:column>
+                    <p:column sortBy="dataInicio" headerText="Data Inicio" > #{reforma.dataInicio.toLocaleString()}</p:column>
+                    <p:column sortBy="dataTermino" headerText="Data Término" > #{reforma.dataTermino.toLocaleString()}</p:column>
+                    <p:column sortBy="imovel" headerText="Código do Imóvel" > #{reforma.imovel}</p:column>
+                    <p:column sortBy="valor" headerText="Valor" > #{reforma.valor}</p:column>
+                    <p:column sortBy="observacoes" headerText="Observações" > #{reforma.observacos}</p:column>
+    
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${reformaController.editar()}">
+                            <f:setPropertyActionListener target="${reformaController.entidade}" value="${reforma}" />
+                        </p:commandButton>
+                        
+                    </p:column>
+                
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
