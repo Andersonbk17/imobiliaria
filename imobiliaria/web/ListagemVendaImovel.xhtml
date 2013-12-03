@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <p:panelGrid columns="2">
+                     
+                    <f:facet name="header">Filtros</f:facet>
+                    
+                    <h:outputLabel value="Id:" />
+                    <p:inputText id="id" value="${vendaImovel.filtro.id}" />
+                    
+                    <!--
+                    <h:outputLabel value="Data da Venda:" />
+                    <p:inputText value="${vendaImovel.filtro.dataVenda}" />   
+                    
+                    -->
+                    
+                    <f:facet name="footer"> 
+                        <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${vendaImovel.filtrar()}" style="margin:0"/>  
+                        <p:commandButton ajax="false" value="Nova venda" action="${vendaImovel.criar()}" />
+                    </f:facet>
+                </p:panelGrid>
+                
+                <p:dataTable value="${vendaImovel.listagem}" var="venda" emptyMessage="Registros não encontrados!">
+                    <p:column sortBy="id" headerText="Id" > #{venda.id}</p:column>
+                    <p:column sortBy="dataVenda" headerText="Data da Venda" > #{venda.dataVenda.toLocaleString()}</p:column>
+                    <p:column sortBy="imovel" headerText="Código do Imóvel" > #{venda.imovel}</p:column>
+                    <p:column sortBy="vendedor" headerText="Antigo Dono" > #{venda.clienteVendedor.nome}</p:column>
+                    <p:column sortBy="comprador" headerText="Comprador" > #{venda.clienteComprador.nome}</p:column>
+                    <p:column sortBy="funcionario" headerText="Funcionário" > #{venda.funcionario.nome}</p:column>
+                    <p:column sortBy="comissao" headerText="Comissão" > #{venda.percentualComissao}</p:column>
+                    <p:column sortBy="observacoes" headerText="Observações" > #{venda.observacoes}</p:column>
+    
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" ajax="false" action="${vendaImovel.editar()}">
+                            <f:setPropertyActionListener target="${vendaImovel.entidade}" value="${venda}" />
+                        </p:commandButton>
+                        
+                    </p:column>
+                
+                </p:dataTable>
+            </ui:define>
+      
+
+           
+
+        </ui:composition>
+
+    </body>
+</html>
