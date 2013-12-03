@@ -67,7 +67,7 @@ public class AluguelImovelController implements Serializable{
 
     public String voltar() {
         listagem = null;
-        return "index.xhtml";
+        return "ListagemAluguelImovel.xhtml";
     }
     
      public String filtrar() {
