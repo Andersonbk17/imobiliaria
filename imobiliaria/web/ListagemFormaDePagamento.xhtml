@@ -25,12 +25,12 @@
                         <p:commandButton ajax="false" value="Nova forma de agamento" action="${formaDePagamentoController.criar()}" />
                     </f:facet>
                  </p:panelGrid>
-                
-                <p:dataTable value="${formaDePagamentoController.listagem}" var="pagamento" emptyMessage="Registros não encontrados!">
+                <br />
+                <p:dataTable style="text-align: center" value="${formaDePagamentoController.listagem}" var="pagamento" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" headerText="Id" > #{pagamento.id}</p:column>
                     <p:column sortBy="nome" headerText="Nome" > #{pagamento.nome}</p:column>
          
-                    <p:column headerText="Editar">
+                    <p:column >
                         <p:commandButton value="Editar" ajax="false" action="${formaDePagamentoController.editar()}">
                             <f:setPropertyActionListener target="${formaDePagamentoController.entidade}" value="#{pagamento}" />
                         </p:commandButton>
