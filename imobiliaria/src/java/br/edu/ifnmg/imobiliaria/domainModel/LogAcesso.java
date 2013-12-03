@@ -26,7 +26,7 @@ public class LogAcesso implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dataHora;
     
     @ManyToOne
@@ -34,12 +34,11 @@ public class LogAcesso implements Serializable {
     
     private int tipo;
 
-    private boolean ativo;
+  
     
     public LogAcesso() {
         this.dataHora = new Date();
         this.usuario = null;
-        this.ativo = true;
         
     }
     
@@ -76,16 +75,6 @@ public class LogAcesso implements Serializable {
         this.tipo = tipo;
     }
 
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-    
-    
-    
 
     @Override
     public int hashCode() {
