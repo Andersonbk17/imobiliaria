@@ -14,5 +14,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ITipoDeImovelRepositorio extends IRepositorio<TipoDeImovel>{
+
+    public boolean verificaESalva(TipoDeImovel obj) throws Exception;
     
 }
