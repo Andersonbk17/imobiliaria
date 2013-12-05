@@ -59,6 +59,12 @@ public class ImovelController implements Serializable{
         
         
     }
+    
+     public List<Imovel> autoCompletar(String tmp){
+        Imovel c = new Imovel();
+        c.setId(Long.parseLong(tmp));
+        return dao.Buscar(c);
+    }
 
     public String editar() {
         return "CadastroImovel.xhtml";

@@ -66,9 +66,12 @@ public class VendaImovelController implements Serializable{
      }
     public void salvar() {
         adicionaFuncionario();
+        // setando o cliente vendedor (dono do imovel)
+        entidade.setClienteVendedor(entidade.getImovel().getClienteProprietario());
         
         //mudando o dono do imovel
         entidade.getImovel().setClienteProprietario(entidade.getClienteComprador());
+        
         
         
         if(dao.Salvar(entidade) && daoImovel.MudarDono(entidade.getImovel())){
