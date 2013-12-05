@@ -7,6 +7,7 @@
 package br.edu.ifnmg.imobiliaria.presentation;
 
 import br.edu.ifnmg.imobiliaria.domainModel.Funcionario;
+import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.IVendaImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.VendaImovel;
 import java.io.Serializable;
@@ -31,6 +32,11 @@ public class VendaImovelController implements Serializable{
     @EJB
     IVendaImovelRepositorio dao;
     
+    @EJB
+    IImovelRepositorio daoImovel;
+            
+            
+    
     VendaImovel entidade;
     VendaImovel filtro;
     List<VendaImovel> listagem;
@@ -51,18 +57,28 @@ public class VendaImovelController implements Serializable{
          AutenticacaoController a = new AutenticacaoController();
          
          //entidade.setFuncionario(a.pegarDaSessao().getFuncionario());
-         entidade.setFuncionario((Funcionario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioAutenticado"));
+         /*
+         (Funcionario)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuarioAutenticado")
+         */
+         entidade.setFuncionario(a.pegarDaSessao().getFuncionario());
          
      
      }
     public void salvar() {
         adicionaFuncionario();
-        if(dao.Salvar(entidade)){
+        
+        //mudando o dono do imovel
+        entidade.getImovel().setClienteProprietario(entidade.getClienteComprador());
+        
+        
+        if(dao.Salvar(entidade) && daoImovel.MudarDono(entidade.getImovel())){
             exibirMensagem("Salvo com Sucesso!");
+            listagem = null;
+            entidade = new VendaImovel();
         }else{
             exibirMensagem("Erro ao Salvar !");
         }
-        listagem = null;
+        
 
     }
 

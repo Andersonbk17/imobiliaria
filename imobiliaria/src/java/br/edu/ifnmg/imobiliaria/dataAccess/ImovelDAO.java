@@ -88,4 +88,23 @@ public class ImovelDAO extends DAOGenerico<Imovel> implements IImovelRepositorio
         }
     }
     
+    @Override
+    public boolean MudarDono(Imovel obj){
+        try {
+
+            Query query = manager.createQuery("Update Imovel s set s.clienteProprietario =:cliente WHERE s.id =:id");
+            query.setParameter("cliente", obj.getClienteProprietario());
+            query.setParameter("id", obj.getId());
+            
+            query.executeUpdate();
+
+            return true;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+            return false;
+        }
+    }
+    
 }

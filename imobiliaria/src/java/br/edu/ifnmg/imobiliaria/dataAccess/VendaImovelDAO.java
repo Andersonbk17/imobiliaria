@@ -27,7 +27,7 @@ public class VendaImovelDAO extends DAOGenerico<VendaImovel> implements IVendaIm
     @Override
     public List<VendaImovel> Buscar(VendaImovel obj) {
          // Corpo da consulta
-        String consulta = "select c from VendaImovel c";
+        String consulta = "select c from VendaImovel c WHERE c.ativo = 1 ";
 
         // A parte where da consulta
         String filtro = "";
@@ -80,5 +80,6 @@ public class VendaImovelDAO extends DAOGenerico<VendaImovel> implements IVendaIm
             return false;
         }
     }
+    
     
 }

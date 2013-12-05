@@ -14,5 +14,7 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface IImovelRepositorio extends IRepositorio<Imovel>{
+
+    public boolean MudarDono(Imovel obj);
     
 }
