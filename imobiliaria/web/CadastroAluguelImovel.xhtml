@@ -14,21 +14,40 @@
                 <h:form>
                     
                     <p:tabView>
-                        <p:tab title="Venda de Imovel"  id="cadastroVendaImovel" >
+                        <p:tab title="Aluguel de Imóvel"  id="cadastroVendaImovel" >
                             <h:panelGrid columns="2" cellpadding="10" >
 
                                 
                                 <h:outputLabel value="Cliente*:"/>
-                                <p:selectOneMenu id="clienteVendedor"  filter="true" converter="${clienteConverter}" value="#{aluguelImovelController.entidade.cliente}">
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
-                                </p:selectOneMenu>
+                                <p:autoComplete size="50" completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
+                                                converter="${clienteConverter}" value="#{aluguelImovelController.entidade.cliente}">
+                                    <p:column>
+                                        #{p.cpf}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.nome}
+                                    </p:column>
+                                </p:autoComplete>
                                 
                                 <h:outputLabel value="Código do Imóvel*:"/>
-                                <p:selectOneMenu id="imovel"  filter="true" converter="${imovelConverter}" value="#{aluguelImovelController.entidade.imovel}">
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{imovelController.listarTodos()}"/>
-                                </p:selectOneMenu>
+                                <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}"  
+                                                converter="${imovelConverter}" value="#{aluguelImovelController.entidade.imovel}">
+                                    <p:column>
+                                        #{p.id}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoRua}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoNumero}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoBairro}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.cidade}
+                                    </p:column>
+                                </p:autoComplete>
                                 
                                 
                                 <h:outputLabel value="Data Inicio*:" />
@@ -67,11 +86,14 @@
                     <p:confirmDialog id="confirmarSalvar" message="Deseja realmente salvar os dados?" header="Confirmação" 
                                      severity="alert" widgetVar="msgSalvar" >
                         
-                        <p:commandButton ajax="false" value="SIM" action="${aluguelImovelController.salvar()}" />
+                        <p:commandButton ajax="false" value="SIM" action="${aluguelImovelController.salvar()}" onclick="dlg.show()" />
                         <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />
                     </p:confirmDialog>
                     
-                    <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
+                    <p:growl id="alerta" showDetail="true"  life="10000"/>
+                    <p:dialog id="dialog" header="Salvando .."  onShow="msgSalvar.hide()" widgetVar="dlg" dynamic="true" height="20" width="200" modal="true">  
+                        <p:outputLabel value="Aguarde ......." />
+                </p:dialog>
 
                 </h:form>
             </ui:define>

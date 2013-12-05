@@ -43,12 +43,26 @@ public class AluguelImovelController implements Serializable{
     }
 
     public void salvar() {
-        dao.Salvar(entidade);
-        listagem = null;
-        exibirMensagem("Salvo com Sucesso!");
+        adicionaFuncionario();
+        
+        if(dao.Salvar(entidade)){
+            listagem = null;
+            exibirMensagem("Salvo com Sucesso!");
+            entidade = new AluguelImovel();
+        }else{
+                exibirMensagem("Erro ao Salvar!");
+        }
+        
 
     }
 
+    public void adicionaFuncionario(){
+         AutenticacaoController a = new AutenticacaoController();
+                 
+         entidade.setFuncionario(a.pegarDaSessao().getFuncionario());
+         
+     
+     }
     public String editar() {
         return "CadastroAluguelImovel.xhtml";
     }
