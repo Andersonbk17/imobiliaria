@@ -18,6 +18,7 @@
                     <h:outputLabel value="Id:" />
                     <p:inputText id="id" value="${vendaImovel.filtro.id}" />
                     
+                    
                     <!--
                     <h:outputLabel value="Data da Venda:" />
                     <p:inputText value="${vendaImovel.filtro.dataVenda}" />   
@@ -29,18 +30,19 @@
                         <p:commandButton ajax="false" value="Nova venda" action="${vendaImovel.criar()}" />
                     </f:facet>
                 </p:panelGrid>
+                <br />
                 
-                <p:dataTable value="${vendaImovel.listagem}" var="venda" emptyMessage="Registros não encontrados!">
+                <p:dataTable  style="text-align: center" value="${vendaImovel.listagem}" var="venda" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" headerText="Id" > #{venda.id}</p:column>
                     <p:column sortBy="dataVenda" headerText="Data da Venda" > #{venda.dataVenda.toLocaleString()}</p:column>
                     <p:column sortBy="imovel" headerText="Código do Imóvel" > #{venda.imovel}</p:column>
                     <p:column sortBy="vendedor" headerText="Antigo Dono" > #{venda.clienteVendedor.nome}</p:column>
                     <p:column sortBy="comprador" headerText="Comprador" > #{venda.clienteComprador.nome}</p:column>
                     <p:column sortBy="funcionario" headerText="Funcionário" > #{venda.funcionario.nome}</p:column>
-                    <p:column sortBy="comissao" headerText="Comissão" > #{venda.percentualComissao}</p:column>
+                    <p:column sortBy="comissao" headerText="Comissão (%)" > #{venda.percentualComissao}</p:column>
                     <p:column sortBy="observacoes" headerText="Observações" > #{venda.observacoes}</p:column>
     
-                    <p:column headerText="Editar">
+                    <p:column >
                         <p:commandButton value="Editar" ajax="false" action="${vendaImovel.editar()}">
                             <f:setPropertyActionListener target="${vendaImovel.entidade}" value="${venda}" />
                         </p:commandButton>

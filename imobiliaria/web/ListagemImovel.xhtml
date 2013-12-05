@@ -22,19 +22,20 @@
                         <p:commandButton ajax="false" value="Novo Imóvel" action="${imovelController.criar()}" />
                     </f:facet>
                 </p:panelGrid>
+                <br />
                 
-                <p:dataTable value="${imovelController.listagem}" var="imovel" emptyMessage="Registros não encontrados!">
+                <p:dataTable style="text-align: center" value="${imovelController.listagem}" var="imovel" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="Id" headerText="Id" >${imovel.id}</p:column>
                     <p:column sortBy="rua" headerText="Rua" >${imovel.enderecoRua}</p:column>
                     <p:column sortBy="numero" headerText="Número" >${imovel.enderecoNumero}</p:column>
                     <p:column sortBy="bairro" headerText="Bairro" >${imovel.enderecoBairro}</p:column>
                    
                     <p:column sortBy="cidade" headerText="Cidade" >${imovel.cidade.nome}</p:column>
-                    <p:column sortBy="rg" headerText="Proprietario" >${imovel.clienteProprietario.nome}</p:column>
+                    <p:column sortBy="rg" headerText="Proprietário" >${imovel.clienteProprietario.nome}</p:column>
                    
                     
       
-                    <p:column headerText="Editar">
+                    <p:column >
                         <p:commandButton value="Editar" ajax="false" action="${imovelController.editar()}">
                             <f:setPropertyActionListener target="${imovelController.entidade}" value="${imovel}" />
                         </p:commandButton>
