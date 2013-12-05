@@ -27,46 +27,56 @@ public class ImovelDAO extends DAOGenerico<Imovel> implements IImovelRepositorio
     @Override
     public List<Imovel> Buscar(Imovel obj) {
           //corpo da consuta
-        String consulta = "select c from Imovel c ";
+        String consulta = "select c from Imovel c WHERE c.ativo = 1 ";
 
         //A parte Where da consulta
         String filtro = "";
 
-        //Guarda a lista de parametros da query
-        HashMap<String, Object> parametros = new HashMap<String, Object>();
-
+      
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             //Nome
             if (obj.getCidade() != null ) {
-                filtro += " c.nome=:nome ";
-                parametros.put("nome", obj.getCidade());
+                filtro += " AND c.cidade like '%"+obj.getCidade()+"%'";
+                
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.id=:id";
-                parametros.put("id", obj.getId());
+               
+                filtro += " AND c.id like '%"+obj.getId()+"%'";
+               
+            }
+            
+            if (obj.getClienteProprietario() != null ) {
+               filtro += " c.clienteProprietario like '%"+obj.getClienteProprietario()+"%'";               
+            }
+            
+            if (obj.getEnderecoRua() != null ) {
+               filtro += " AND c.enderecoRua like '%"+obj.getEnderecoRua()+"%'";               
+            }
+            
+            if (obj.getEnderecoBairro()!= null ) {
+               filtro += " AND c.enderecoBairro like '%"+obj.getEnderecoBairro()+"%'";               
+            }
+            
+            if (obj.getEnderecoCep()!= null ) {
+               filtro += " AND c.enderecoCep like '%"+obj.getEnderecoCep()+"%'";               
+            }
+            
+            if (obj.getEnderecoNumero()!= 0 ) {
+               filtro += " AND c.enderecoNumero like '%"+obj.getEnderecoNumero()+"%'";               
             }
            
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta +=  filtro;
             }
         }
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
 
-        // Aplica os parâmetros da consulta
-
-        for (String par : parametros.keySet()) {
-           query.setParameter(par, parametros.get(par));
-        }
-
-        //JOptionPane.showMessageDialog(null,query);
+        
         // Executa a consulta
         return query.getResultList();
     }

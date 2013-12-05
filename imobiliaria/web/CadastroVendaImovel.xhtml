@@ -18,12 +18,7 @@
                             <h:panelGrid columns="2" cellpadding="10" >
 
                                 
-                                <h:outputLabel value="Cliente Proprietário*:"/>
-                                <p:selectOneMenu id="clienteVendedor"  filter="true" converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteVendedor}">
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
-                                </p:selectOneMenu>
-                                
+                               
                                 <h:outputLabel value="Código do Imóvel*:"/>
                                 <p:selectOneMenu id="imovel"  filter="true" converter="${imovelConverter}" value="#{vendaImovel.entidade.imovel}">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
