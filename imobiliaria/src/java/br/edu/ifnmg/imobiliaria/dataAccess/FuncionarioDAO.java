@@ -27,51 +27,40 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
     @Override
     public List<Funcionario> Buscar(Funcionario obj) {
          // Corpo da consulta
-        String consulta = "select f from Funcionario f";
+        String consulta = "select f from Funcionario f WHERE f.ativo = 1 ";
 
         // A parte where da consulta
         String filtro = "";
 
-        // Guarda a lista de parâmetros da query
-        HashMap<String, Object> parametros = new HashMap<String, Object>();
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " f.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND f.nome like '%"+obj.getNome()+"%' ";
+              
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.id=:id ";
-                parametros.put("id", obj.getId());
+                
+                filtro += " AND f.id like '%"+obj.getId()+"%'";
+                
             }
             //Cpf
             if (obj.getCpf() != null && obj.getCpf().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.cpf=:cpf ";
-                parametros.put("cpf", obj.getCpf());
+                
+                filtro += " AND f.cpf like '%"+obj.getCpf()+"%'";
+                
             }
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta += filtro;
             }
         }
 
         // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
-
-        // Aplica os parâmetros da consulta
-        for (String par : parametros.keySet()) {
-            query.setParameter(par, parametros.get(par));
-        }
 
         // Executa a consulta
         return query.getResultList();

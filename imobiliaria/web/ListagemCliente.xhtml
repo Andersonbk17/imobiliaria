@@ -28,8 +28,9 @@
                         <p:commandButton ajax="false" value="Novo Cliente" action="${ClienteController.criar()}" />
                     </f:facet>
                 </p:panelGrid>
+                <br />
                 
-                <p:dataTable value="${ClienteController.listagem}" var="cliente" emptyMessage="Registros não encontrados!">
+                <p:dataTable style="text-align: center" value="${ClienteController.listagem}" var="cliente" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="Id" headerText="Id" > #{cliente.id}</p:column>
                     <p:column sortBy="nome" headerText="Nome" > #{cliente.nome}</p:column>
                     <p:column sortBy="rg" headerText="Rg" > #{cliente.rg}</p:column>
