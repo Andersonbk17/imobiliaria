@@ -98,7 +98,7 @@ public class VendaImovelController implements Serializable{
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "VendaImovelListagem.xhtml";
+        return "ListagemVendaImovel.xhtml";
     }
 
     public String voltar() {
