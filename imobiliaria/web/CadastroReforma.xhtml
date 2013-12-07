@@ -42,6 +42,7 @@
                     <p:panel id="rodape">
                     
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        <p:commandButton value="Remover" rendered="#{reformaController.entidade.id > 0}" onclick="msgRemover.show()"/>
                         <p:commandButton value="Voltar" action="${reformaController.voltar()}" />
                         
                     </p:panel>
@@ -59,6 +60,12 @@
                     <p:growl id="alerta" showDetail="true" sticky="true" life="3"/>
 
                 </h:form>
+                 <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgRemover">
+                     <p:commandButton ajax="false" value="SIM" action="${reformaController.apagar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+
+                </p:confirmDialog> 
             </ui:define>
 
         </ui:composition>
