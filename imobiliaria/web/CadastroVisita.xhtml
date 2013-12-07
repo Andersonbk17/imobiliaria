@@ -41,6 +41,8 @@
                     
                     <p:panel id="rodape">
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        
+                        <p:commandButton value="Remover" rendered="#{visitaController.entidade.id > 0}" onclick="msgRemover.show()"/>
                         <p:commandButton value="Voltar" action="#{visitaController.voltar()}" />
                     </p:panel>
                     
@@ -57,6 +59,13 @@
                     
                     
                 </h:form>
+                 <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgRemover">
+                     <p:commandButton ajax="false" value="SIM" action="${visitaController.apagar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+
+                </p:confirmDialog> 
+                
             </ui:define>
 
         </ui:composition>
