@@ -62,7 +62,7 @@ public class ReformaDAO extends DAOGenerico<Reforma> implements IReformaReposito
     public boolean Apagar(Reforma obj) {
          try {
 
-            Query query = manager.createQuery("Update Reforma s set s.ativo = 0 WHERE s.id :=id");
+            Query query = manager.createQuery("Update Reforma s set s.ativo = 0 WHERE s.id =:id");
             query.setParameter("id", obj.getId());
             query.executeUpdate();
 
