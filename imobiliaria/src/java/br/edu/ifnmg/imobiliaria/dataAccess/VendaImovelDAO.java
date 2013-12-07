@@ -73,7 +73,7 @@ public class VendaImovelDAO extends DAOGenerico<VendaImovel> implements IVendaIm
     public boolean Apagar(VendaImovel obj) {
         try {
 
-            Query query = manager.createQuery("Update VendaImovel s set s.ativo = 0 WHERE s.id :=id");
+            Query query = manager.createQuery("Update VendaImovel s set s.ativo = 0 WHERE s.id =:id");
             query.setParameter("id", obj.getId());
             query.executeUpdate();
 
