@@ -68,7 +68,7 @@ public class ClienteController implements Serializable{
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "ListagemProfissao.xhtml";
+        return "ListagemCliente.xhtml";
     }
     
     public String filtrar() {
