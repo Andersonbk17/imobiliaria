@@ -57,6 +57,12 @@ public class FuncionarioController implements Serializable{
         
     }
     
+     public List<Funcionario> autoCompletar(String tmp){
+        Funcionario c = new Funcionario();
+        c.setNome(tmp);
+        return dao.Buscar(c);
+    }
+    
     public String editar(){
        return "CadastroFuncionario.xhtml";
     }

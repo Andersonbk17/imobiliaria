@@ -98,7 +98,7 @@
                         <p:tab title="Outros">
                             <h:panelGrid columns="2" cellpadding="10">
                                 <h:outputLabel value="Cliente*:"/>
-                                <p:autoComplete completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
+                                <p:autoComplete size="50" completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
                                                 converter="${clienteConverter}" value="#{imovelController.entidade.clienteProprietario}">
                                     <p:column>
                                         #{p.cpf}

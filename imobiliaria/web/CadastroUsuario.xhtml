@@ -19,10 +19,15 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Funcionário*:" />
-                                <p:selectOneMenu id="funcionario" value="#{usuarioController.entidade.funcionario}" converter="${funcionarioConverter}" required="true" filter="true">
-                                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                                    <f:selectItems value="#{FuncionarioController.listarFuncionario()}"/>
-                                </p:selectOneMenu>
+                                <p:autoComplete size="50" completeMethod="#{FuncionarioController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
+                                                converter="${funcionarioConverter}" value="#{usuarioController.entidade.funcionario}">
+                                    <p:column>
+                                        #{p.cpf}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.nome}
+                                    </p:column>
+                                </p:autoComplete>
                                 
                                 <h:outputLabel value="Nível*:" />
                                 <p:selectOneMenu id="nivel" value="#{usuarioController.entidade.nivel}" required="true">

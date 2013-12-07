@@ -26,13 +26,15 @@
                     </f:facet>
                 </p:panelGrid>
                 
-                <p:dataTable value="${usuarioController.listagem}" var="usuario" emptyMessage="Registros não encontrados!">
+                <br />
+                
+                <p:dataTable style="text-align: center" value="${usuarioController.listagem}" var="usuario" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="Id" headerText="Id" > ${usuario.id}</p:column>
                     <p:column sortBy="login" headerText="Login" > ${usuario.login}</p:column>
                     <p:column sortBy="password" headerText="Password" > ${usuario.senha}</p:column>
                     <p:column sortBy="funcionario" headerText="Funcionário" >${usuario.funcionario.nome}</p:column>
     
-                    <p:column headerText="Editar">
+                    <p:column >
                         <p:commandButton value="Editar" ajax="false" action="${usuarioController.editar()}">
                             <f:setPropertyActionListener target="${usuarioController.entidade}" value="${usuario}" />
                         </p:commandButton>
