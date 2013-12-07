@@ -54,14 +54,14 @@ public class InteressadoController {
     
     public String criar(){
         entidade = new Interessado();
-        return "CadastradoCargo.xhtml";
+        return "CadastradoInteressado.xhtml";
     }
     
     public String apagar(){
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "ListagemCargo.xhtml";
+        return "ListagemInteressado.xhtml";
     }
     
     public String filtrar() {
@@ -71,7 +71,7 @@ public class InteressadoController {
     
     public String voltar(){
         listagem = null;
-        return "index.xhtml";
+        return "ListagemInteressado.xhtml";
     }
 
     public IInteressadoRepositorio getDao() {
