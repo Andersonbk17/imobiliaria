@@ -63,7 +63,7 @@ public class VisitaController implements Serializable{
         dao.Apagar(entidade);
         listagem = null;
         exibirMensagem("Apagado com sucesso!");
-        return "VisitaListagem.xhtml";
+        return "ListagemVisita.xhtml";
     }
 
     public String voltar() {
