@@ -63,7 +63,7 @@ public class ProfissaoDAO extends DAOGenerico<Profissao> implements IProfissaoRe
     @Override
     public boolean Apagar(Profissao obj) {
        try {
-            Query query = manager.createQuery("Update Profissao s set s.ativo = 0 WHERE s.id :=id");
+            Query query = manager.createQuery("Update Profissao s set s.ativo = 0 WHERE s.id =:id");
             query.setParameter("id", obj.getId());
             query.executeUpdate();
 
