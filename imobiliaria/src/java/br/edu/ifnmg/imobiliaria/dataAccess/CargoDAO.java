@@ -63,7 +63,7 @@ public class CargoDAO extends DAOGenerico<Cargo> implements ICargoRepositorio{
     @Override
     public boolean Apagar(Cargo obj) {
        try {
-            Query query = manager.createQuery("Update Cargo s set s.ativo = 0 WHERE s.id :=id");
+            Query query = manager.createQuery("Update Cargo s set s.ativo = 0 WHERE s.id =:id");
             query.setParameter("id", obj.getId());
             query.executeUpdate();
 
