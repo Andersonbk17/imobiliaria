@@ -8,13 +8,30 @@ package br.edu.ifnmg.imobiliaria.presentation;
 import br.edu.ifnmg.imobiliaria.domainModel.Foto;
 import br.edu.ifnmg.imobiliaria.domainModel.IImovelRepositorio;
 import br.edu.ifnmg.imobiliaria.domainModel.Imovel;
+import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import org.primefaces.event.FileUploadEvent;
 
 /**
@@ -94,6 +111,66 @@ public class ImovelController implements Serializable{
         exibirMensagem(event.getFile().getFileName() );
     }  
     
+    public void PDF(ActionEvent actionEvent) throws JRException, IOException {
+        Connection conn;
+        String arquivo = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/relatorios/maisProcurados.jasper");
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/imobiliaria", "root", "");
+            java.sql.Statement sql = conn.createStatement();
+            ResultSet rs = sql.executeQuery("SELECT "
+                    + "     COUNT(imovel.`ID`) AS ID, "
+                    + "     imovel.`ENDERECOBAIRRO` AS ENDERECOBAIRRO, "
+                    + "     imovel.`ENDERECOCEP` AS ENDERECOCEP, "
+                    + "     imovel.`ENDERECOCOMPLEMENTO` AS ENDERECOCOMPLEMENTO, "
+                    + "     imovel.`ENDERECONUMERO` AS ENDERECONUMERO, "
+                    + "     imovel.`ENDERECORUA` AS ENDERECORUA, "
+                    + "     imovel.`LONGITUDE` AS LONGITUDE, "
+                    + "     imovel.`LATITUDE` AS LATITUDE, "
+                    + "     pessoa.`EMAIL` AS EMAIL, "
+                    + "     pessoa.`NOME` AS NOME, "
+                    + "     pessoa.`TELEFONE` AS TELEFONE, "
+                    + "     cidade.`NOME` AS NOME, "
+                    + "     count(imovel.`ID`) "
+                    + "FROM "
+                    + "     `pessoa` pessoa INNER JOIN `cliente` cliente ON pessoa.`ID` = cliente.`ID` "
+                    + "     INNER JOIN `imovel` imovel ON cliente.`ID` = imovel.`CLIENTEPROPRIETARIO_ID` "
+                    + "     INNER JOIN `interessado` interessado ON imovel.`ID` = interessado.`IMOVEL_ID` "
+                    + "     INNER JOIN `cidade` cidade ON imovel.`CIDADE_ID` = cidade.`ID` "
+                    + "GROUP BY "
+                    + "     imovel_ID Order by imovel_ID");
+            JRDataSource ds = new JRResultSetDataSource(rs);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(arquivo, null, ds);
+
+         //    JasperViewer.viewReport(jasperPrint, false);  
+             
+             byte[] b = JasperExportManager.exportReportToPdf(jasperPrint);
+
+                HttpServletResponse res = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+                res.setContentType("application/pdf");
+
+                //String nome = usuario.getNome().replace(" ", "_");
+
+                //Código abaixo gerar o relatório e disponibiliza diretamente na página 
+             //   res.setHeader("Content-disposition", "inline;filename=" + nome + "_Alergias.pdf");
+
+                //Código abaixo gerar o relatório e disponibiliza para o cliente baixar ou salvar 
+                res.getOutputStream().write(b);
+                res.getCharacterEncoding();
+                FacesContext.getCurrentInstance().responseComplete();
+             
+             
+           // HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+          //  httpServletResponse.addHeader("Content-disposition", "attachment; filename=report.pdf");
+           // ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+           // JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+           // FacesContext.getCurrentInstance().responseComplete();
+
+        } catch (JRException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ImovelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
 
