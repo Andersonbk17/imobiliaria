@@ -32,7 +32,7 @@ public class CargoDAO extends DAOGenerico<Cargo> implements ICargoRepositorio{
         // A parte where da consulta
         String filtro = "";
 
-        
+
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {

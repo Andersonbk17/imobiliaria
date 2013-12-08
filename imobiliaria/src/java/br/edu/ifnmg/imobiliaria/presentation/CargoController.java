@@ -9,9 +9,8 @@ package br.edu.ifnmg.imobiliaria.presentation;
 import br.edu.ifnmg.imobiliaria.domainModel.Cargo;
 import br.edu.ifnmg.imobiliaria.domainModel.ICargoRepositorio;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -88,7 +87,12 @@ public class CargoController implements Serializable{
     }
     
     public List<Cargo> listarCargos() {
+        //filtro = new Cargo();
         listagem = dao.Buscar(filtro);
+        listagem = new LinkedList<>();
+        filtro.setNome("435");
+        filtro.setId(Long.parseLong("23"));
+        listagem.add(filtro);
         return listagem;
     }
 

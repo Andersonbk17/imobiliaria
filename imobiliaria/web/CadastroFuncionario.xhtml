@@ -50,7 +50,7 @@
                                 </p:inputText>
                                 
                                 <h:outputLabel value="Nacionalidade*:"/>
-                                <p:selectOneMenu id="nacionalidade" value="#{FuncionarioController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" required="true" filter="true">
+                                <p:selectOneMenu id="nacionalidade" value="#{FuncionarioController.entidade.nacionalidade}" converter="#{nacionalidadeConverter}" required="true" filter="true">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{NacionalidadeController.listarNacionalidade()}"  />
                                 </p:selectOneMenu>
@@ -63,7 +63,7 @@
                                     <f:selectItems value="#{CargoController.listarCargos()}" />
                                 </p:selectOneMenu>
                            
-                                <h:inputHidden value="#{FuncionarioController.entidade.ativo}" required="true" />
+                                
                             
                             </h:panelGrid>
                         </p:tab>
