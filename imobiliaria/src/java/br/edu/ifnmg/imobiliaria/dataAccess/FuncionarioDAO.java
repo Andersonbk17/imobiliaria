@@ -27,10 +27,10 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements IFuncion
     @Override
     public List<Funcionario> Buscar(Funcionario obj) {
          // Corpo da consulta
-        String consulta = "select f from Funcionario f WHERE f.ativo = 1 ";
+        String consulta = "select f from Funcionario f WHERE f.ativo = 1 AND f.id != 1 ";
 
         // A parte where da consulta
-        String filtro = "";
+        String filtro = " ";
 
 
         // Verifica campo por campo os valores que serão filtrados

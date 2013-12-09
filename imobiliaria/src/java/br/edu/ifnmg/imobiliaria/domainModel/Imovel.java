@@ -52,7 +52,7 @@ public class Imovel implements Serializable {
     Cliente clienteProprietario;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataTerminoConstrucao;
-    private StringBuffer latitude;
+    private String latitude;
     private String longitude;
     @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER,mappedBy = "imovel")
     private List<Foto> listaFotos;
@@ -180,11 +180,11 @@ public class Imovel implements Serializable {
         this.dataTerminoConstrucao = dataTerminoConstrucao;
     }
 
-    public StringBuffer getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(StringBuffer latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 

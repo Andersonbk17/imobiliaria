@@ -26,8 +26,11 @@
                     </f:facet>
                 </p:panelGrid>
                
-                <p:dataTable  value="${InteressadoController.listagem}" var="interessado" emptyMessage="Registros não encontrados!">
+                <br />
+                
+                <p:dataTable style="text-align: center" value="${InteressadoController.listagem}" var="interessado" emptyMessage="Registros não encontrados!">
                     <p:column  sortBy="Id" headerText="Id" >${interessado.id}</p:column>
+                    <p:column sortBy="imovel" headerText="Imóvel" >${interessado.imovel}</p:column>
                     <p:column sortBy="nome" headerText="Nome" >${interessado.nome}</p:column>
                     <p:column sortBy="telefone" headerText="Telefone" >${interessado.telefone}</p:column>
                     <p:column sortBy="email" headerText="E-mail" >${interessado.email}</p:column>

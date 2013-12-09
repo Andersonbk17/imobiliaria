@@ -117,7 +117,7 @@ public class ImovelController implements Serializable{
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/imobiliaria", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Imobiliaria", "root", "epo123");
             java.sql.Statement sql = conn.createStatement();
             ResultSet rs = sql.executeQuery("SELECT\n"
                     + "     COUNT(imovel.`ID`) AS Quantidade,\n"
