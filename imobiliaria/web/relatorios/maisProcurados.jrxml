@@ -93,13 +93,6 @@ GROUP BY
 				</textElement>
 				<text><![CDATA[Imóves mais Procurados]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="172" y="94" width="383" height="42" uuid="3c7cd817-cd59-4bfd-a642-07ffc1a5ccc9"/>
-				<textElement textAlignment="Right">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
-			</staticText>
 			<image>
 				<reportElement x="633" y="-73" width="219" height="209" uuid="5c8b870a-8aef-44a0-be45-8f68e10f6f7e"/>
 				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
@@ -142,18 +135,6 @@ GROUP BY
 				<text><![CDATA[ENDERECOCOMPLEMENTO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="396" y="0" width="66" height="15" forecolor="#736343" uuid="d8208d41-0f36-4383-b548-4753fe238c82"/>
-				<text><![CDATA[LONGITUDE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="462" y="0" width="66" height="15" forecolor="#736343" uuid="0705f76a-ef3e-478d-aaad-152498cefa00"/>
-				<text><![CDATA[LATITUDE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="528" y="0" width="66" height="15" forecolor="#736343" uuid="cf894264-5e63-4f03-92a6-7efd02abb54d"/>
-				<text><![CDATA[ID]]></text>
-			</staticText>
-			<staticText>
 				<reportElement style="Column header" x="594" y="0" width="66" height="15" forecolor="#736343" uuid="7e696544-1b29-43e6-8a9c-edc5560499ca"/>
 				<text><![CDATA[TELEFONE]]></text>
 			</staticText>
@@ -194,18 +175,6 @@ GROUP BY
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="330" y="0" width="66" height="15" uuid="60d3b4e3-05c5-4b5b-9353-2d9681a3af3b"/>
 					<textFieldExpression><![CDATA[$F{ENDERECOCOMPLEMENTO}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="396" y="0" width="66" height="15" uuid="8f2aaf95-3914-4233-a0a1-4b2b75b7ba60"/>
-					<textFieldExpression><![CDATA[$F{LONGITUDE}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="462" y="0" width="66" height="15" uuid="28ccd482-4c4e-47ed-baf9-4c892c91fa0c"/>
-					<textFieldExpression><![CDATA[$F{LATITUDE}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="528" y="0" width="66" height="15" uuid="8e436176-255e-4c0f-8fea-08717e90b800"/>
-					<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement style="Detail" x="594" y="0" width="66" height="15" uuid="2a3f060f-dd71-4dc1-8d78-24ae2358db91"/>

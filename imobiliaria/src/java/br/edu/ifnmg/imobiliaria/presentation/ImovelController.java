@@ -113,60 +113,54 @@ public class ImovelController implements Serializable{
     
     public void PDF(ActionEvent actionEvent) throws JRException, IOException {
         Connection conn;
-        String arquivo = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/relatorios/maisProcurados.jasper");
+        String arquivo = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/relatorios/ImoveisMaisProcurados.jasper");
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/imobiliaria", "root", "");
             java.sql.Statement sql = conn.createStatement();
-            ResultSet rs = sql.executeQuery("SELECT "
-                    + "     COUNT(imovel.`ID`) AS ID, "
-                    + "     imovel.`ENDERECOBAIRRO` AS ENDERECOBAIRRO, "
-                    + "     imovel.`ENDERECOCEP` AS ENDERECOCEP, "
-                    + "     imovel.`ENDERECOCOMPLEMENTO` AS ENDERECOCOMPLEMENTO, "
-                    + "     imovel.`ENDERECONUMERO` AS ENDERECONUMERO, "
-                    + "     imovel.`ENDERECORUA` AS ENDERECORUA, "
-                    + "     imovel.`LONGITUDE` AS LONGITUDE, "
-                    + "     imovel.`LATITUDE` AS LATITUDE, "
-                    + "     pessoa.`EMAIL` AS EMAIL, "
-                    + "     pessoa.`NOME` AS NOME, "
-                    + "     pessoa.`TELEFONE` AS TELEFONE, "
-                    + "     cidade.`NOME` AS NOME, "
-                    + "     count(imovel.`ID`) "
-                    + "FROM "
-                    + "     `pessoa` pessoa INNER JOIN `cliente` cliente ON pessoa.`ID` = cliente.`ID` "
-                    + "     INNER JOIN `imovel` imovel ON cliente.`ID` = imovel.`CLIENTEPROPRIETARIO_ID` "
-                    + "     INNER JOIN `interessado` interessado ON imovel.`ID` = interessado.`IMOVEL_ID` "
-                    + "     INNER JOIN `cidade` cidade ON imovel.`CIDADE_ID` = cidade.`ID` "
-                    + "GROUP BY "
-                    + "     imovel_ID Order by imovel_ID");
+            ResultSet rs = sql.executeQuery("SELECT\n"
+                    + "     COUNT(imovel.`ID`) AS Quantidade,\n"
+                    + "     imovel.`ENDERECOBAIRRO` AS BAIRRO,\n"
+                    + "     imovel.`ENDERECOCEP` AS CEP,\n"
+                    + "     imovel.`ENDERECOCOMPLEMENTO` AS COMPLEMENTO,\n"
+                    + "     imovel.`ENDERECONUMERO` AS NUMERO,\n"
+                    + "     imovel.`ENDERECORUA` AS RUA,\n"
+                    + "     pessoa.`EMAIL` AS EMAIL,\n"
+                    + "     pessoa.`NOME` AS Proprietario,\n"
+                    + "     pessoa.`TELEFONE` AS TELEFONE,\n"
+                    + "     cidade.`NOME` AS Cidade\n"
+                    + "FROM\n"
+                    + "     `pessoa` pessoa INNER JOIN `cliente` cliente ON pessoa.`ID` = cliente.`ID`\n"
+                    + "     INNER JOIN `imovel` imovel ON cliente.`ID` = imovel.`CLIENTEPROPRIETARIO_ID`\n"
+                    + "     INNER JOIN `interessado` interessado ON imovel.`ID` = interessado.`IMOVEL_ID`\n"
+                    + "     INNER JOIN `cidade` cidade ON imovel.`CIDADE_ID` = cidade.`ID`\n"
+                    + "GROUP BY\n"
+                    + "     imovel_ID\n"
+                    + "ORDER BY\n"
+                    + "    Quantidade DESC");
             JRDataSource ds = new JRResultSetDataSource(rs);
             JasperPrint jasperPrint = JasperFillManager.fillReport(arquivo, null, ds);
 
          //    JasperViewer.viewReport(jasperPrint, false);  
-             
-             byte[] b = JasperExportManager.exportReportToPdf(jasperPrint);
+            byte[] b = JasperExportManager.exportReportToPdf(jasperPrint);
 
-                HttpServletResponse res = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-                res.setContentType("application/pdf");
+            HttpServletResponse res = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            res.setContentType("application/pdf");
 
                 //String nome = usuario.getNome().replace(" ", "_");
-
                 //Código abaixo gerar o relatório e disponibiliza diretamente na página 
-             //   res.setHeader("Content-disposition", "inline;filename=" + nome + "_Alergias.pdf");
+            //   res.setHeader("Content-disposition", "inline;filename=" + nome + "_Alergias.pdf");
+            //Código abaixo gerar o relatório e disponibiliza para o cliente baixar ou salvar 
+            res.getOutputStream().write(b);
+            res.getCharacterEncoding();
+            FacesContext.getCurrentInstance().responseComplete();
 
-                //Código abaixo gerar o relatório e disponibiliza para o cliente baixar ou salvar 
-                res.getOutputStream().write(b);
-                res.getCharacterEncoding();
-                FacesContext.getCurrentInstance().responseComplete();
-             
-             
            // HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-          //  httpServletResponse.addHeader("Content-disposition", "attachment; filename=report.pdf");
-           // ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
-           // JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-           // FacesContext.getCurrentInstance().responseComplete();
-
+            //  httpServletResponse.addHeader("Content-disposition", "attachment; filename=report.pdf");
+            // ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
+            // JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
+            // FacesContext.getCurrentInstance().responseComplete();
         } catch (JRException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ImovelController.class.getName()).log(Level.SEVERE, null, ex);
         }

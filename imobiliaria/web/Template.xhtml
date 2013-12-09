@@ -30,6 +30,19 @@
                         <p:menuitem url="ListagemProfissao.xhtml" value="Profissões" />
                         <p:menuitem url="ListagemTipoDeImovel.xhtml" value="Tipos de Imóveis" />
                     </p:submenu>
+                    
+                    <p:submenu label="Relatórios" >
+                        <p:menuitem ajax="false" actionListener="#{imovelController.PDF(actionEvent)}" value="Imóveis mais procurados" />
+                        <!--
+                        <p:menuitem url="ListagemCargo.xhtml" value="Cargos" />
+                        <p:menuitem url="ListagemCararacteristica.xhtml" value="Características de imovel" />
+                        <p:menuitem url="ListagemFormaDePagamento.xhtml" value="Formas de Pagamento" />
+                        <p:menuitem url="ListagemFuncionario.xhtml" value="Funcionários" />
+                        <p:menuitem url="ListagemImovel.xhtml" value="Imóveis" />
+                        <p:menuitem url="ListagemProfissao.xhtml" value="Profissões" />
+                        <p:menuitem url="ListagemTipoDeImovel.xhtml" value="Tipos de Imóveis" />
+                        -->
+                    </p:submenu>
                     <p:menuitem value="Logout" action="#{autenticacaoController.logout()}" />
                 </p:menubar>
 
