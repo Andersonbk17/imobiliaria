@@ -32,7 +32,8 @@
                     </p:submenu>
                     
                     <p:submenu label="Relatórios" >
-                        <p:menuitem ajax="false" actionListener="#{imovelController.PDF(actionEvent)}" value="Imóveis mais procurados" />
+                        <p:menuitem ajax="false" actionListener="#{imovelController.PDF(actionEvent)}" value="Imóveis mais Procurados" />
+                        <p:menuitem ajax="false" actionListener="#{aluguelImovelController.PDFImoveisMaisAlugados(actionEvent)}" value="Imóveis mais Alugados" />
                         <!--
                         <p:menuitem url="ListagemCargo.xhtml" value="Cargos" />
                         <p:menuitem url="ListagemCararacteristica.xhtml" value="Características de imovel" />
