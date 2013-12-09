@@ -67,11 +67,12 @@
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{CidadeController.filtrarCidade()}" />
                                 </p:selectOneMenu>
+                                <!--
                                 <h:outputLabel value="Latitude*" />
                                 <p:inputText size="50" value="#{imovelController.entidade.latitude}" required="true"  />
                                 <h:outputLabel value="Longitude*" />
                                 <p:inputText size="50" value="#{imovelController.entidade.longitude}" required="true"  />
-                          
+                                -->
                             </h:panelGrid>
                         </p:tab>
                         <p:tab title="Caracteristicas">
@@ -127,6 +128,26 @@
                                    />
                                     
                             </h:panelGrid>
+                            
+                        </p:tab>
+                        
+                        <p:tab title="Mapa">
+                           
+                            <h:panelGrid columns="2" cellpadding="10">
+                                
+                                <h:outputLabel value="Link: " />
+                                <p:inputText size="50" value="#{imovelController.entidade.latitude}" />                          
+                              
+                               
+                            </h:panelGrid>
+                            
+                            <h:outputScript value="#{imovelController.entidade.latitude}" rendered="true">
+                                #{imovelController.entidade.latitude}
+                            </h:outputScript>>
+                            
+                            <h:outputText value="#{imovelController.entidade.latitude}" rendered="true">
+                                #{imovelController.entidade.latitude}
+                            </h:outputText>
                             
                         </p:tab>
                     </p:tabView>
