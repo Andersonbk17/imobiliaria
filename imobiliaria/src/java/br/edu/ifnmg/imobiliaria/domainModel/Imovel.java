@@ -19,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -26,6 +27,7 @@ import javax.persistence.Temporal;
  * @author Anderson
  */
 @Entity
+@Table(name = "imovel")
 public class Imovel implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,7 +52,7 @@ public class Imovel implements Serializable {
     Cliente clienteProprietario;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataTerminoConstrucao;
-    private String latitude;
+    private StringBuffer latitude;
     private String longitude;
     @OneToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER,mappedBy = "imovel")
     private List<Foto> listaFotos;
@@ -178,11 +180,11 @@ public class Imovel implements Serializable {
         this.dataTerminoConstrucao = dataTerminoConstrucao;
     }
 
-    public String getLatitude() {
+    public StringBuffer getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(StringBuffer latitude) {
         this.latitude = latitude;
     }
 

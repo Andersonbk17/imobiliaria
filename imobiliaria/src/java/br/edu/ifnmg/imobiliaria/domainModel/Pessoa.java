@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -22,6 +23,7 @@ import javax.persistence.Temporal;
  * @author emerson
  */
 @Entity
+@Table(name = "pessoa")
 @Inheritance(strategy= InheritanceType.JOINED)//Responsavel por criar as classes filhas separadas das classes mãe no BD
 public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
