@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ImovesMaisProcurados" pageWidth="890" pageHeight="595" orientation="Landscape" columnWidth="850" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="11cb7bc9-23c0-4d1e-b702-82754b53ed6b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="464"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     COUNT(imovel.`ID`) AS Quantidade,
+     imovel.`ENDERECOBAIRRO` AS BAIRRO,
+     imovel.`ENDERECOCEP` AS CEP,
+     imovel.`ENDERECOCOMPLEMENTO` AS COMPLEMENTO,
+     imovel.`ENDERECONUMERO` AS NUMERO,
+     imovel.`ENDERECORUA` AS RUA,
+     pessoa.`EMAIL` AS EMAIL,
+     pessoa.`NOME` AS Proprietario,
+     pessoa.`TELEFONE` AS TELEFONE,
+     cidade.`NOME` AS Cidade
+FROM
+     `pessoa` pessoa INNER JOIN `cliente` cliente ON pessoa.`ID` = cliente.`ID`
+     INNER JOIN `imovel` imovel ON cliente.`ID` = imovel.`CLIENTEPROPRIETARIO_ID`
+     INNER JOIN `interessado` interessado ON imovel.`ID` = interessado.`IMOVEL_ID`
+     INNER JOIN `cidade` cidade ON imovel.`CIDADE_ID` = cidade.`ID`
+GROUP BY
+     imovel_ID
+ORDER BY
+    Quantidade DESC]]>
+	</queryString>
+	<field name="Quantidade" class="java.lang.Long"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.Integer"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="Cidade" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="Proprietario" class="java.lang.String"/>
+	<field name="TELEFONE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="566db082-cb19-4240-a846-08e521d2556d"/>
+				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="471ad718-cb80-4964-b5e8-3a9d3db175c2"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[ImobiSys]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="232" y="62" width="301" height="22" uuid="28f31f8d-e947-4518-a65b-abfb914934ee"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isItalic="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Relátorio de Imoves Mais Procurados]]></text>
+			</staticText>
+			<image>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="5bd9a81c-fa9e-416d-99e4-7a9ff3f8cc47"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="910" height="1" uuid="95cb58a3-47eb-49e6-886f-e5e2e94fbfa6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="113" height="15" forecolor="#736343" uuid="6828d30e-edc8-4d2d-9d53-bf930b3fb781"/>
+				<text><![CDATA[Nº INTERESSADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="115" y="0" width="114" height="15" forecolor="#736343" uuid="3d0510e8-3ee4-413b-813a-0060227b4efc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[RUA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="232" y="0" width="80" height="15" forecolor="#736343" uuid="a6dc763e-9d84-4f7c-9793-a47e6ce41b61"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[BAIRRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="312" y="0" width="70" height="15" forecolor="#736343" uuid="5dbe2745-9536-4e98-aae0-0e430d6817b3"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[NUMERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="392" y="0" width="94" height="15" forecolor="#736343" uuid="8a374dc4-ae85-49b9-9744-65998f5b0823"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CEP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="486" y="0" width="95" height="15" forecolor="#736343" uuid="e2943c56-09db-4ade-9fde-09f08dcfbe2e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="590" y="0" width="118" height="15" forecolor="#736343" uuid="42a29974-b5fc-40d4-bb6f-3593d20033eb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[PROPRIETÁRIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="708" y="0" width="97" height="15" forecolor="#736343" uuid="f546ee2f-f2f7-454c-a4b0-50a439fd4def"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TELEFONE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="73db8f5a-f726-44c4-b184-efa95c02bfc2"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="98" height="15" uuid="c9964d1f-7ccc-4cf9-b4e9-80f6e39b017b"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{Quantidade}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="115" y="0" width="114" height="15" uuid="78f4e80e-0ebe-47a6-b94a-9b609e65ed3e"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{RUA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="232" y="0" width="80" height="15" uuid="24583d1a-1f80-464f-929e-e62ae9ceb2e5"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{BAIRRO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="312" y="0" width="80" height="15" uuid="eecf1be4-d360-4ffb-a14c-9ada17d44ef8"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{NUMERO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="392" y="0" width="94" height="15" uuid="3c5513f8-c10a-4059-8f38-8fa77dfbaf64"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{CEP}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="486" y="0" width="95" height="15" uuid="7017d390-3657-443f-88d3-6d9e30b478f0"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{Cidade}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="592" y="0" width="116" height="15" uuid="da01d33f-2647-4e63-8393-3404fd3ad7fa"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{Proprietario}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="713" y="0" width="89" height="15" uuid="c337fe35-8af1-4109-88d4-de27e0a1775e"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[( ($F{TELEFONE} == null) ? "" : $F{TELEFONE} )]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="910" height="1" uuid="b819c6f7-1290-43fc-a79a-2f63add88285"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="873" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="d377310c-5596-4b6b-80b1-4286baf25598"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="781" y="1" width="40" height="20" forecolor="#736343" uuid="338e829c-acd8-4f10-89cb-e9478202a2df"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="701" y="1" width="80" height="20" forecolor="#736343" uuid="e4e4bc67-9457-4502-920d-71a24d18ef34"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="5b72b682-9722-4009-9528-dc99db643d76"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
