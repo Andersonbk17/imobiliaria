@@ -87,12 +87,7 @@ public class CargoController implements Serializable{
     }
     
     public List<Cargo> listarCargos() {
-        //filtro = new Cargo();
         listagem = dao.Buscar(filtro);
-        listagem = new LinkedList<>();
-        filtro.setNome("435");
-        filtro.setId(Long.parseLong("23"));
-        listagem.add(filtro);
         return listagem;
     }
 
