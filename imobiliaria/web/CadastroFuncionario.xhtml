@@ -58,7 +58,7 @@
                   
                                 
                                 <h:outputLabel value="Cargo*:"/>
-                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}" converter="#{cargoConverter}" required="true" filter="true">
+                                <p:selectOneMenu id="cargo" value="#{FuncionarioController.entidade.cargo}"  required="true" filter="true" converter="#{cargoConverter}">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItems value="#{CargoController.listarCargos()}" />
                                 </p:selectOneMenu>
