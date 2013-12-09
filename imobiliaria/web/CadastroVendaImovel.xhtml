@@ -41,10 +41,15 @@
                                 
                                 
                                 <h:outputLabel value="Cliente Comprador*:"/>
-                                <p:selectOneMenu id="clienteComprador"  filter="true" converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteComprador}">
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
-                                </p:selectOneMenu>
+                                <p:autoComplete size="50" completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
+                                                converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteComprador}">
+                                    <p:column>
+                                        #{p.cpf}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.nome}
+                                    </p:column>
+                                </p:autoComplete>
                                 
                                 
                                 <h:outputLabel value="Data da Venda*:" />
