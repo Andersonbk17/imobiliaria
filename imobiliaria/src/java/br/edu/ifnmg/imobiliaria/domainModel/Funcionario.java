@@ -36,7 +36,7 @@ public class Funcionario extends Pessoa implements Serializable {
     
     public Funcionario() {
         this.dataAdmissao = new Date();
-        this.cargo = new Cargo();
+        this.cargo = null;
     }
     
       
