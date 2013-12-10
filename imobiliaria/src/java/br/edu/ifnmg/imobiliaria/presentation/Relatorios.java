@@ -135,4 +135,42 @@ public class Relatorios implements Serializable {
     }
     
     
+    
+    public void PDFTipoImoveisMaisProcurados(ActionEvent actionEvent) throws JRException, IOException {
+        Connection conn;
+        String arquivo = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/relatorios/TipoImovelMaisProcurado.jasper");
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Imobiliaria", "root", "");
+            java.sql.Statement sql = conn.createStatement();
+            ResultSet rs = sql.executeQuery("SELECT\n"
+                    + "     count(interessado.`IMOVEL_ID`) AS Quantidade,\n"
+                    + "     tipodeimovel.`NOME` AS TIPO_IMOVEL\n"
+                    + "FROM\n"
+                    + "     `tipodeimovel` tipodeimovel INNER JOIN `imovel` imovel ON tipodeimovel.`ID` = imovel.`TIPODEIMOVEL_ID`\n"
+                    + "     INNER JOIN `interessado` interessado ON imovel.`ID` = interessado.`IMOVEL_ID`\n"
+                    + "GROUP BY\n"
+                    + "     TIPO_IMOVEL\n"
+                    + "ORDER BY\n"
+                    + "     tipodeimovel.`NOME` DESC");
+            JRDataSource ds = new JRResultSetDataSource(rs);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(arquivo, null, ds);
+
+            //    JasperViewer.viewReport(jasperPrint, false);  
+            byte[] b = JasperExportManager.exportReportToPdf(jasperPrint);
+
+            HttpServletResponse res = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            res.setContentType("application/pdf");
+
+            res.getOutputStream().write(b);
+            res.getCharacterEncoding();
+            FacesContext.getCurrentInstance().responseComplete();
+
+        } catch (JRException | ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ImovelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
 }
