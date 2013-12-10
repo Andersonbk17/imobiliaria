@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ImovesMaisProcurados" pageWidth="890" pageHeight="595" orientation="Landscape" columnWidth="850" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="11cb7bc9-23c0-4d1e-b702-82754b53ed6b">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="464"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="314"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -54,13 +54,9 @@ ORDER BY
 	</background>
 	<title>
 		<band height="136" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="164" height="126" uuid="566db082-cb19-4240-a846-08e521d2556d"/>
-				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="471ad718-cb80-4964-b5e8-3a9d3db175c2"/>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font pdfFontName="Times-Roman"/>
 				</textElement>
 				<text><![CDATA[ImobiSys]]></text>
@@ -75,6 +71,10 @@ ORDER BY
 			<image>
 				<reportElement x="633" y="-73" width="219" height="209" uuid="5bd9a81c-fa9e-416d-99e4-7a9ff3f8cc47"/>
 				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="232" height="107" uuid="bf281286-3325-479d-a2d7-7d9621165ac0"/>
+				<imageExpression><![CDATA["C:\\Users\\Anderson\\Documents\\NetBeansProjects\\TrabalhoFinalLTPIV\\imobiliaria\\imobiliaria\\images\\logo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -203,7 +203,7 @@ ORDER BY
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
 					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="5b72b682-9722-4009-9528-dc99db643d76"/>
