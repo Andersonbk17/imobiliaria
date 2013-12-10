@@ -31,8 +31,7 @@
                                                                   
                                 
                                 <h:outputLabel value="Código do Imóvel*:"/>
-                                <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}"  
-                                                converter="${imovelConverter}" value="#{InteressadoController.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!" >
+                                <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}" converter="${imovelConverter}" value="#{InteressadoController.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!" >
                                     <p:column>
                                         #{p.id}
                                     </p:column>
