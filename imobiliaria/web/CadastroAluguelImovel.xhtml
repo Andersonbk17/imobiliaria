@@ -20,7 +20,7 @@
                                 
                                 <h:outputLabel value="Cliente (Nome)*:"/>
                                 <p:autoComplete size="50" completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
-                                                converter="${clienteConverter}" value="#{aluguelImovelController.entidade.cliente}">
+                                                converter="${clienteConverter}" value="#{aluguelImovelController.entidade.cliente}" required="true" requiredMessage="O campo cliente deve ser preenchido!" >
                                     <p:column>
                                         #{p.cpf}
                                     </p:column>
@@ -31,7 +31,7 @@
                                 
                                 <h:outputLabel value="Código do Imóvel*:"/>
                                 <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}"  
-                                                converter="${imovelConverter}" value="#{aluguelImovelController.entidade.imovel}">
+                                                converter="${imovelConverter}" value="#{aluguelImovelController.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!">
                                     <p:column>
                                         #{p.id}
                                     </p:column>
@@ -51,13 +51,13 @@
                                 
                                 
                                 <h:outputLabel value="Data Inicio*:" />
-                                <p:calendar size="50" value="#{aluguelImovelController.entidade.dataInicio}" required="true" />
+                                <p:calendar size="50" value="#{aluguelImovelController.entidade.dataInicio}" required="true" requiredMessage="O campo data de inicio deve ser preenchido!" />
                                 <h:outputLabel value="Data Término*:" />
-                                <p:calendar size="50" value="#{aluguelImovelController.entidade.dataTermino}" required="true" />
+                                <p:calendar size="50" value="#{aluguelImovelController.entidade.dataTermino}" required="true" requiredMessage="O campo data de termino deve ser preenchido!" />
                                 <h:outputLabel value="Percentual de Comissão*:" />
-                                <p:inputText size="50" value="#{aluguelImovelController.entidade.percentualComissao}" required="true" />
+                                <p:inputText size="50" value="#{aluguelImovelController.entidade.percentualComissao}" required="true" requiredMessage="O campo comissão deve ser preenchido!" />
                                 <h:outputLabel value="Forma de Pagamento*:" />
-                                <p:selectOneMenu value="#{aluguelImovelController.entidade.formaDePagamento}" converter="${formaDePagementoConverter}" required="true" >
+                                <p:selectOneMenu value="#{aluguelImovelController.entidade.formaDePagamento}" converter="${formaDePagementoConverter}" required="true" requiredMessage="O campo forma de pagamento deve ser selecionado!" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{formaDePagamentoController.listarTodos()}" />
                                 </p:selectOneMenu>
