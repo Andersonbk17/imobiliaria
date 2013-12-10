@@ -70,7 +70,7 @@ public class CaracteristicaDAO extends DAOGenerico<Caracteristica> implements IC
     public boolean Apagar(Caracteristica obj) {
          try {
 
-            Query query = manager.createQuery("Update Caracteristica s set s.ativo = 0 WHERE s.id :=id");
+            Query query = manager.createQuery("Update Caracteristica s set s.ativo = 0 WHERE s.id =:id");
             query.setParameter("id", obj.getId());
             query.executeUpdate();
 
