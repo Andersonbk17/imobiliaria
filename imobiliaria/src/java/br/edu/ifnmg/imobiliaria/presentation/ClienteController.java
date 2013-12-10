@@ -53,6 +53,7 @@ public class ClienteController implements Serializable{
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Salvo com sucesso!");
+        entidade = new Cliente();
     }
     
     public String editar(){
