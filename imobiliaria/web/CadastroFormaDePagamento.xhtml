@@ -17,8 +17,8 @@
                         <p:tab title="Nova Forma de Pagamento">
                             <h:panelGrid columns="2" cellpadding="10">
                                 <h:outputLabel value="Nome:*" />
-                                <p:inputText size="50" value="#{formaDePagamentoController.entidade.nome}" required="true"  />
-                                <h:inputHidden value="#{formaDePagamentoController.entidade.ativo}" required="true"/>
+                                <p:inputText size="50" value="#{formaDePagamentoController.entidade.nome}" required="true" requiredMessage="O campo nome deve ser preenchido!"  />
+                                <h:inputHidden value="#{formaDePagamentoController.entidade.ativo}" required="true" />
                                 
                             </h:panelGrid>
                         </p:tab>
