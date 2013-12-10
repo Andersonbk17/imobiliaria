@@ -62,7 +62,7 @@ public class CaracteristicaController implements Serializable{
     }
 
     public String editar(){
-        return "ListagemCaracteristica.xhtml";
+        return "CadastroCaracteristica.xhtml";
     }
     
     public String criar(){
