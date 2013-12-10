@@ -20,8 +20,7 @@
                                 
                                
                                 <h:outputLabel value="Código do Imóvel*:"/>
-                                <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}"  
-                                                converter="${imovelConverter}" value="#{vendaImovel.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!" >
+                                <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}" converter="${imovelConverter}" value="#{vendaImovel.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!" >
                                     <p:column>
                                         #{p.id}
                                     </p:column>
@@ -42,7 +41,7 @@
                                 
                                 <h:outputLabel value="Cliente Comprador*:"/>
                                 <p:autoComplete size="50" completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}"  
-                                                converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteComprador}"required="true" requiredMessage="O campo cliente deve ser preenchido!" >
+                                                converter="${clienteConverter}" value="#{vendaImovel.entidade.clienteComprador}" required="true" requiredMessage="O campo cliente deve ser preenchido!" >
                                     <p:column>
                                         #{p.cpf}
                                     </p:column>
