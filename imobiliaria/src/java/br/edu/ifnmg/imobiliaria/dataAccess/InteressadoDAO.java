@@ -27,7 +27,7 @@ public class InteressadoDAO extends DAOGenerico<Interessado> implements IInteres
     @Override
     public List<Interessado> Buscar(Interessado obj) {
         // Corpo da consulta
-        String consulta = "select i from Interessado i";
+        String consulta = "select i from Interessado i where i.id > 0 ";
 
         // A parte where da consulta
         String filtro = "";
@@ -39,21 +39,16 @@ public class InteressadoDAO extends DAOGenerico<Interessado> implements IInteres
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " i.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND i.nome like '%"+obj.getNome()+"%'";
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " i.id=:id ";
-                parametros.put("id", obj.getId());
+                filtro += " AND i.id like '%"+obj.getId()+"%'";
             }
            
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta = consulta + filtro;
             }
         }
 

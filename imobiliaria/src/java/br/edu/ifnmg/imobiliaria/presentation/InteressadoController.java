@@ -46,6 +46,7 @@ public class InteressadoController {
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Salvo com sucesso!");
+        entidade = new Interessado();
     }
     
     public String editar(){

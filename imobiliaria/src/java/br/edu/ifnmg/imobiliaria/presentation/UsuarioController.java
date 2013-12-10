@@ -48,6 +48,7 @@ public class UsuarioController implements Serializable{
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Salvo com sucesso!");
+        entidade = new Usuario();
     }
     
     public String editar(){

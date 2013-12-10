@@ -27,7 +27,7 @@ public class NacionalidadeDAO extends DAOGenerico<Nacionalidade> implements INac
      @Override
     public List<Nacionalidade> Buscar(Nacionalidade obj) {
         // Corpo da consulta
-        String consulta = "select n from Nacionalidade n";
+        String consulta = "select n from Nacionalidade n WHERE n.id > 0 ";
 
         // A parte where da consulta
         String filtro = "";
@@ -39,21 +39,16 @@ public class NacionalidadeDAO extends DAOGenerico<Nacionalidade> implements INac
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " n.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND n.nome like '%"+obj.getNome()+"%'";
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " n.id=:id ";
-                parametros.put("id", obj.getId());
+                filtro += " AND n.id like '%"+obj.getId()+"%'";
             }
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta = consulta + filtro;
             }
         }
 

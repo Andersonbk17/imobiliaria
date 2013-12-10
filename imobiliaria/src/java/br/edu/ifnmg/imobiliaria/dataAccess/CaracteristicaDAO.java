@@ -27,7 +27,7 @@ public class CaracteristicaDAO extends DAOGenerico<Caracteristica> implements IC
     @Override
     public List<Caracteristica> Buscar(Caracteristica obj) {
        // Corpo da consulta
-        String consulta = "select c from Caracteristica c";
+        String consulta = "select c from Caracteristica c where c.ativo = 1 ";
 
         // A parte where da consulta
         String filtro = "";
@@ -39,22 +39,17 @@ public class CaracteristicaDAO extends DAOGenerico<Caracteristica> implements IC
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND c.nome like '%"+obj.getNome()+"%'";
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.id=:id";
-                parametros.put("id", obj.getId());
+                filtro += " AND c.id like '%"+obj.getId()+"%'";
             }
             
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta = consulta + filtro;
             }
         }
 

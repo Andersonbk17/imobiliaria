@@ -42,7 +42,7 @@ public class ClienteDAO extends DAOGenerico<Cliente> implements IClienteReposito
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
                 
-                filtro += " c.id ="+obj.getId();
+                filtro += " AND c.id like '%"+obj.getId()+"%' ";
 
             }
             //Cpf

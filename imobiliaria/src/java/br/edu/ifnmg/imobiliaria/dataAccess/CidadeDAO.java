@@ -27,7 +27,7 @@ public class CidadeDAO extends DAOGenerico<Cidade> implements  ICidadeRepositori
     @Override
     public List<Cidade> Buscar(Cidade obj) {
         // Corpo da consulta
-        String consulta = "select c from Cidade c";
+        String consulta = "select c from Cidade c where c.id > 0 ";
 
         // A parte where da consulta
         String filtro = "";
@@ -39,29 +39,20 @@ public class CidadeDAO extends DAOGenerico<Cidade> implements  ICidadeRepositori
         if (obj != null) {
             //Nome
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " c.nome like nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " AND c.nome like '%"+obj.getNome()+"%'";
             }
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.id =:id";
-                parametros.put("id", obj.getId());
+                filtro += " AND c.id like '%"+obj.getId()+"%'";
             }
             
             if (obj.getEstado()!= 0 && obj.getEstado()> 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.estado =:estado";
-                parametros.put("estado", obj.getEstado());
+                filtro += " AND c.estado like '%"+obj.getEstado()+"%'";
             }
             
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta = consulta + filtro;
             }
         }
 

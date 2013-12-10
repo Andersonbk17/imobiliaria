@@ -47,6 +47,7 @@ public class VisitaController implements Serializable{
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Salvo com Sucesso!");
+        entidade = new Visita();
 
     }
 

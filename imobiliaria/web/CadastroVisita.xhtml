@@ -18,13 +18,13 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Cliente*:"/>
-                                <p:selectOneMenu id="clienteProprietario"  filter="true" converter="${clienteConverter}" value="#{visitaController.entidade.cliente}">
+                                <p:selectOneMenu id="clienteProprietario"  filter="true" converter="${clienteConverter}" value="#{visitaController.entidade.cliente}" required="true" requiredMessage="O campo cliente deve ser preenchido!" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{ClienteController.listarTodos()}"/>
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Imovel*:"/>
-                                <p:selectOneMenu id="imovelVisita"  filter="true" converter="${imovelConverter}" value="#{visitaController.entidade.imovel}">
+                                <p:selectOneMenu id="imovelVisita"  filter="true" converter="${imovelConverter}" value="#{visitaController.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{imovelController.listarTodos()}"/>
                                 </p:selectOneMenu>
@@ -32,7 +32,7 @@
                               
                                 
                                 <h:outputLabel value="Data Agendamento:*" />
-                                <p:calendar value="#{visitaController.entidade.dataAgenda}" required="true" />
+                                <p:calendar value="#{visitaController.entidade.dataAgenda}" required="true" requiredMessage="O campo data de agendamento deve ser preenchido!" />
                                
                                 
                             </h:panelGrid>

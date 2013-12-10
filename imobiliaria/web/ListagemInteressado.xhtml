@@ -34,7 +34,11 @@
                     <p:column sortBy="nome" headerText="Nome" >${interessado.nome}</p:column>
                     <p:column sortBy="telefone" headerText="Telefone" >${interessado.telefone}</p:column>
                     <p:column sortBy="email" headerText="E-mail" >${interessado.email}</p:column>
-                    <p:column sortBy="dataRegistro" headerText="Data do Registro" >${interessado.dataRegistro.toLocaleString()}</p:column>
+                    <p:column sortBy="dataRegistro" headerText="Data do Registro" >
+                        <h:outputText value="${interessado.dataRegistro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                        </h:outputText>
+                    </p:column>
                     
                     <!--
                     <p:column headerText="Editar">

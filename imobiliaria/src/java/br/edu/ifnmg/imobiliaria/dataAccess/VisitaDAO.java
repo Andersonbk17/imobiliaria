@@ -27,7 +27,7 @@ public class VisitaDAO extends DAOGenerico<Visita> implements IVisitaRepositorio
     @Override
     public List<Visita> Buscar(Visita obj) {
         // Corpo da consulta
-        String consulta = "select v from Visita v";
+        String consulta = "select v from Visita v WHERE v.ativo = 1 ";
 
         // A parte where da consulta
         String filtro = "";
@@ -37,24 +37,17 @@ public class VisitaDAO extends DAOGenerico<Visita> implements IVisitaRepositorio
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
-            //Nome
-            /*
-            if (obj.getImovel().getId()!= null && obj.getImovel().getId() > 0) {
-                filtro += " v.imovel_id=:imovel ";
-                parametros.put("imovel", obj.getImovel().getId());
-            }*/
+           
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " v.id=:id ";
-                parametros.put("id", obj.getId());
+                
+                filtro += " AND v.id ="+obj.getId();
+           
             }
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta = consulta + filtro;
             }
         }
 

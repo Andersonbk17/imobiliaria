@@ -19,21 +19,29 @@
                     <!--
                     <h:outputLabel value="Imovel:" />
                     <p:inputText value="${visitaController.filtro.imovel.id}" />
-                    
                     -->
+                    
                     
                     <f:facet name="footer"> 
                         <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${visitaController.filtrar()}" style="margin:0"/>  
                         <p:commandButton ajax="false" value="Novo Funcionario" action="${visitaController.criar()}" />
                     </f:facet>
                 </p:panelGrid>
-                
-                <p:dataTable value="${visitaController.listagem}" var="visita" emptyMessage="Registros não encontrados!">
+                <br />
+                <p:dataTable style="text-align: center" value="${visitaController.listagem}" var="visita" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" headerText="Id" > ${visita.id}</p:column>
                     <p:column sortBy="imovel" headerText="Cod. Imóvel" >${visita.imovel}</p:column>
                     <p:column sortBy="cliente" headerText="Cliente" >${visita.cliente.nome}</p:column>
-                    <p:column sortBy="dataAgenda" headerText="Data da visita" >${visita.dataAgenda.toLocaleString()}</p:column>
-                    <p:column sortBy="dataRegistro" headerText="Data do registro" >${visita.dataRegistro.toLocaleString()}</p:column>
+                    <p:column sortBy="dataAgenda" headerText="Data da visita" >
+                        <h:outputText value="${visita.dataAgenda}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column sortBy="dataRegistro" headerText="Data do registro" >
+                        <h:outputText value="${visita.dataRegistro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                        </h:outputText>
+                    </p:column>
                     
                     
       

@@ -27,7 +27,7 @@ public class LogAcessoDAO extends DAOGenerico<LogAcesso> implements ILogAcessoRe
      @Override
     public List<LogAcesso> Buscar(LogAcesso obj) {
         // Corpo da consulta
-        String consulta = "select l from LogAcesso l";
+        String consulta = "select l from LogAcesso l where l.id > 0 ";
 
         // A parte where da consulta
         String filtro = "";
@@ -45,17 +45,13 @@ public class LogAcessoDAO extends DAOGenerico<LogAcesso> implements ILogAcessoRe
             }*/
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " l.id=:id ";
-                parametros.put("id", obj.getId());
+                filtro += " AND l.id like '%"+obj.getId()+"%'";
             }
             
 
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta = consulta + filtro;
             }
         }
 

@@ -18,18 +18,18 @@
                             <h:panelGrid columns="2" cellpadding="10" >
 
                                 <h:outputLabel value="Imóvel*:"/>
-                                <p:selectOneMenu id="imovel" value="#{reformaController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true">
+                                <p:selectOneMenu id="imovel" value="#{reformaController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true" requiredMessage="O campo imóvel deve ser selecionado!" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{imovelController.listarTodos()}"/>
                                 </p:selectOneMenu>
                                 
-                                <h:outputLabel value="Data de Inicio*" />
-                                <p:calendar size="50" pattern="dd/MM/yyyy" locale="pt_BR" value="#{reformaController.entidade.dataInicio}" required="true" />
-                                <h:outputLabel value="Data de Termino*" />
-                                <p:calendar size="50" pattern="dd/MM/yyyy" locale="pt_BR" value="#{reformaController.entidade.dataTermino}" required="true" />
-                                <h:outputLabel value="Valor:" />
-                                <p:inputText size="50" value="#{reformaController.entidade.valor}" required="false" />
-                                <h:outputLabel value="Observações:*" />
+                                <h:outputLabel value="Data de Inicio*:" />
+                                <p:calendar size="50" pattern="dd/MM/yyyy" locale="pt_BR" value="#{reformaController.entidade.dataInicio}" required="true" requiredMessage="O campo date de inicio deve ser preenchido!" />
+                                <h:outputLabel value="Data de Termino*:" />
+                                <p:calendar size="50" pattern="dd/MM/yyyy" locale="pt_BR" value="#{reformaController.entidade.dataTermino}" required="true" requiredMessage="O campo data de termino deve ser preenchido!" />
+                                <h:outputLabel value="Valor*:" />
+                                <p:inputText size="50" value="#{reformaController.entidade.valor}" required="true" requiredMessage="O campo valor deve ser preenchido!" />
+                                <h:outputLabel value="Observações:" />
                                 <p:inputTextarea maxlength="200" cols="60" rows="10" value="#{reformaController.entidade.observacos}" required="false" />
                                 
                                 <h:inputHidden value="#{reformaController.entidade.ativo}" required="true" />
