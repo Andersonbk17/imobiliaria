@@ -17,52 +17,52 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Nome*:"/>
-                                <p:inputText size="50" value="#{ClienteController.entidade.nome}" required="true" />
+                                <p:inputText size="50" value="#{ClienteController.entidade.nome}" required="true" requiredMessage="O campo nome deve ser preenchido!" />
                             
                                 <h:outputLabel value="Sexo*:"/>
-                                <p:selectOneMenu id="sexoCliente" value="#{ClienteController.entidade.sexo}" rendered="true" >
+                                <p:selectOneMenu id="sexoCliente" value="#{ClienteController.entidade.sexo}" required="true" requiredMessage="O campo sexo deve ser selecionado!">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItem itemLabel="Masculino" itemValue="1"/>
                                     <f:selectItem itemLabel="Feminino"  itemValue="2"/>
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Rg*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.rg}" required="true" />
+                                <p:inputText size="20" value="#{ClienteController.entidade.rg}" required="true" requiredMessage="O campo rg deve ser preenchido!"/>
                                 
                                 <h:outputLabel value="Orgão expedidor*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.orgaoExpedidor}" required="true" />
+                                <p:inputText size="20" value="#{ClienteController.entidade.orgaoExpedidor}" required="true" requiredMessage="O campo orgão expedidor deve ser preenchido!" />
                             
                                 <h:outputLabel value="cpf*:"/>
-                                <p:inputMask mask="999.999.999-99" size="20" value="#{ClienteController.entidade.cpf}" required="true" />
+                                <p:inputMask mask="999.999.999-99" size="20" value="#{ClienteController.entidade.cpf}" required="true" requiredMessage="O campo cpf deve ser preenchido!" />
                             
                                 <h:outputLabel value="Nascimento*:"/>
-                                <p:calendar size="20" value="#{ClienteController.entidade.dataNascimento}" required="true" />
+                                <p:calendar size="20" value="#{ClienteController.entidade.dataNascimento}" required="true" requiredMessage="O campo data de nascimento deve ser preenchido!"/>
                             
                                 <h:outputLabel value="Telefone*:"/>
-                                <p:inputMask mask="(999)9999-9999" size="20" value="#{ClienteController.entidade.telefone}" required="true" />
+                                <p:inputMask mask="(999)9999-9999" size="20" value="#{ClienteController.entidade.telefone}" required="true" requiredMessage="O campo telefone deve ser preenchido!"/>
                                 
                                 <h:outputLabel value="E-mail*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.email}" validatorMessage="Insira um e-mail válido !" required="true" >
+                                <p:inputText size="20" value="#{ClienteController.entidade.email}" validatorMessage="Insira um e-mail válido !" required="true"  requiredMessage="O campo e-mail deve ser preenchido!" >
                                     <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                 
                                 </p:inputText>
                                 
                                 <h:outputLabel value="Nacionalidade*:"/>
-                                <p:selectOneMenu id="nacionalidade" value="#{ClienteController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" rendered="true"  filter="true">
+                                <p:selectOneMenu id="nacionalidade" value="#{ClienteController.entidade.nacionalidade}" converter="${nacionalidadeConverter}" required="true"  filter="true" requiredMessage="O campo nacionalidade deve ser selecionado!">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{NacionalidadeController.listarNacionalidade()}"/>
                                     
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Profissão:"/>
-                                <p:selectOneMenu id="profissao" value="#{ClienteController.entidade.profissao}" converter="${profissaoConverter}" required="true" filter="true">
+                                <p:selectOneMenu id="profissao" value="#{ClienteController.entidade.profissao}" converter="${profissaoConverter}" required="true" filter="true" requiredMessage="O campo profissão deve ser selecionado!">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{ProfissaoController.listarProfissao()}"/>
                                     
                                 </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Pessoa*:"/>
-                                <p:selectOneMenu id="juridico" value="#{ClienteController.entidade.clienteJuridicoFisico}" required="true">
+                                <p:selectOneMenu id="juridico" value="#{ClienteController.entidade.clienteJuridicoFisico}" required="true" requiredMessage="O campo tipo de pessoa deve ser selecionado!">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItem itemLabel="Fisica" itemValue="1"/>
                                     <f:selectItem itemLabel="Juridica"  itemValue="2"/>
@@ -78,43 +78,43 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Rua*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoRua}" required="true" />
+                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoRua}" required="true" requiredMessage="O campo rua deve ser preenchido!"/>
                             
                                 <h:outputLabel value="Número*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoNumero}" required="true" />
+                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoNumero}" required="true" requiredMessage="O campo número deve ser preenchido!"/>
                             
                                 <h:outputLabel value="Bairro*:"/>
-                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoBairro}" required="true" />
+                                <p:inputText size="20" value="#{ClienteController.entidade.enderecoBairro}" required="true" requiredMessage="O campo bairro deve ser preenchido!"/>
                             
                                 <h:outputLabel value="Cep*:"/>
-                                <p:inputMask mask="99999-999" size="20" value="#{ClienteController.entidade.enderecoCep}" required="true" />
+                                <p:inputMask mask="99999-999" size="20" value="#{ClienteController.entidade.enderecoCep}" required="true" requiredMessage="O campo cep deve ser preenchido!" />
                                 
                                  <h:outputLabel value="Estado*:" />
-                                 <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true" filter="true">
+                                 <p:selectOneMenu id="estado" value="#{CidadeController.idEstado}" required="true" filter="true" requiredMessage="O campo estado deve ser selecionado!">
                                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                                     <f:selectItem itemLabel="AC" itemValue="1"/>
                                     <f:selectItem itemLabel="AL" itemValue="2"/>
-                                    <f:selectItem itemLabel="AP" itemValue="3"/>
-                                    <f:selectItem itemLabel="AM" itemValue="4"/>
+                                    <f:selectItem itemLabel="AM" itemValue="3"/>
+                                    <f:selectItem itemLabel="AP" itemValue="4"/>
                                     <f:selectItem itemLabel="BA" itemValue="5"/>
                                     <f:selectItem itemLabel="CE" itemValue="6"/>
                                     <f:selectItem itemLabel="DF" itemValue="7"/>
                                     <f:selectItem itemLabel="ES" itemValue="8"/>
                                     <f:selectItem itemLabel="GO" itemValue="9"/>
                                     <f:selectItem itemLabel="MA" itemValue="10"/>                        
-                                    <f:selectItem itemLabel="MT" itemValue="11"/>
+                                    <f:selectItem itemLabel="MG" itemValue="11"/>
                                     <f:selectItem itemLabel="MS" itemValue="12"/>
-                                    <f:selectItem itemLabel="MG" itemValue="13"/>                        
+                                    <f:selectItem itemLabel="MT" itemValue="13"/>                        
                                     <f:selectItem itemLabel="PA" itemValue="14"/>
                                     <f:selectItem itemLabel="PB" itemValue="15"/>
-                                    <f:selectItem itemLabel="PR" itemValue="16"/>
-                                    <f:selectItem itemLabel="PE" itemValue="17"/>
-                                    <f:selectItem itemLabel="PI" itemValue="18"/>                        
+                                    <f:selectItem itemLabel="PE" itemValue="16"/>
+                                    <f:selectItem itemLabel="PI" itemValue="17"/>
+                                    <f:selectItem itemLabel="PR" itemValue="18"/>                        
                                     <f:selectItem itemLabel="RJ" itemValue="19"/>
                                     <f:selectItem itemLabel="RN" itemValue="20"/>
-                                    <f:selectItem itemLabel="RS" itemValue="21"/>
-                                    <f:selectItem itemLabel="RO" itemValue="22"/>
-                                    <f:selectItem itemLabel="RR" itemValue="23"/>                            
+                                    <f:selectItem itemLabel="RO" itemValue="21"/>
+                                    <f:selectItem itemLabel="RR" itemValue="22"/>
+                                    <f:selectItem itemLabel="RS" itemValue="23"/>                            
                                     <f:selectItem itemLabel="SC" itemValue="24"/>                            
                                     <f:selectItem itemLabel="SE" itemValue="25"/>
                                     <f:selectItem itemLabel="SP" itemValue="26"/>                               
@@ -126,7 +126,7 @@
                                 
                                 
                                 <h:outputLabel value="Cidade*:"/>
-                                <p:selectOneMenu id="cidades" value="#{ClienteController.entidade.cidade}" converter="${cidadeConverter}" required="true" filter="true" >
+                                <p:selectOneMenu id="cidades" value="#{ClienteController.entidade.cidade}" converter="${cidadeConverter}" required="true" filter="true" requiredMessage="O campo cidade deve ser selecionado!" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{CidadeController.filtrarCidade()}" />
                                 </p:selectOneMenu>
@@ -137,7 +137,7 @@
                         <p:tab title="Conjugue" id="cadastroClienteConjugue">
                             <h:panelGrid columns="2" cellpadding="10">
                                 
-                                <h:outputLabel value="Data casamento*:"/>
+                                <h:outputLabel value="Data casamento:"/>
                                 <p:calendar size="20" value="#{ClienteController.entidade.dataCasamento}"/>
                                 
                                 <h:outputLabel value="Nome:"/>
@@ -166,8 +166,8 @@
                                 <p:inputMask mask="(999)9999-9999" size="20" value="#{ClienteController.entidade.conjugueTelefone}"  />
                                 
                                 <h:outputLabel value="E-mail:"/>
-                                <p:inputText required="false" size="20" value="#{ClienteController.entidade.conjugueEmail}"  validatorMessage="Insira um e-mail válido!">
-                                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"  />
+                                <p:inputText  size="20" value="#{ClienteController.entidade.conjugueEmail}" validatorMessage="Insira um e-mail válido!">
+                                    <f:validateRegex disabled="true" pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"  />
                                 
                                 </p:inputText>
                                 
