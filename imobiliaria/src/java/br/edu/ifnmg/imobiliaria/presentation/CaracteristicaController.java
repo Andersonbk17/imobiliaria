@@ -67,7 +67,7 @@ public class CaracteristicaController implements Serializable{
     
     public String criar(){
         entidade = new Caracteristica();
-        return "CadastradoCaracteristica.xhtml";
+        return "CadastroCaracteristica.xhtml";
     }
     
     public String apagar(){

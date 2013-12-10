@@ -29,6 +29,7 @@
                         <p:menuitem url="ListagemImovel.xhtml" value="Imóveis" />
                         <p:menuitem url="ListagemProfissao.xhtml" value="Profissões" />
                         <p:menuitem url="ListagemTipoDeImovel.xhtml" value="Tipos de Imóveis" />
+                        <p:menuitem url="ListagemVisita.xhtml" value="Visitas" />
                     </p:submenu>
                     
                     <p:submenu label="Relatórios" >
@@ -37,15 +38,13 @@
                         <p:menuitem ajax="false" actionListener="#{relatorios.PDF(actionEvent)}" value="Folha de Pagamento" />
                         <p:menuitem ajax="false" actionListener="#{relatorios.PDFImoveisMaisVisitados(actionEvent)}" value="Imóveis mais Visitados" />
                         <p:menuitem ajax="false" actionListener="#{relatorios.PDFTipoImoveisMaisProcurados(actionEvent)}" value="Tipos de Imóves mais Procurados" />
-                        <!--
-                        <p:menuitem url="ListagemCargo.xhtml" value="Cargos" />
-                        <p:menuitem url="ListagemCararacteristica.xhtml" value="Características de imovel" />
-                        <p:menuitem url="ListagemFormaDePagamento.xhtml" value="Formas de Pagamento" />
-                        <p:menuitem url="ListagemFuncionario.xhtml" value="Funcionários" />
-                        <p:menuitem url="ListagemImovel.xhtml" value="Imóveis" />
-                        <p:menuitem url="ListagemProfissao.xhtml" value="Profissões" />
-                        <p:menuitem url="ListagemTipoDeImovel.xhtml" value="Tipos de Imóveis" />
-                        -->
+                        
+                    </p:submenu>
+                    
+                    <p:submenu label="Operações" >
+                        <p:menuitem url="ListagemVendaImovel.xhtml" value="Venda de Imóvel" />
+                        <p:menuitem url="ListagemAluguelImovel.xhtml" value="Aluguel de Imóvel" />
+                        
                     </p:submenu>
                     <p:menuitem value="Logout" action="#{autenticacaoController.logout()}" />
                 </p:menubar>
