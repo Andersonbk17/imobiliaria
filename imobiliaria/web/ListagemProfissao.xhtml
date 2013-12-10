@@ -31,7 +31,7 @@
                     <p:column sortBy="Id" headerText="Id" > ${profissao.id}</p:column>
                     <p:column sortBy="nome" headerText="Nome" >${profissao.nome}</p:column>
     
-                    <p:column headerText="Editar">
+                    <p:column >
                         <p:commandButton value="Editar" ajax="false" action="${ProfissaoController.editar()}">
                             <f:setPropertyActionListener target="${ProfissaoController.entidade}" value="${profissao}" />
                         </p:commandButton>

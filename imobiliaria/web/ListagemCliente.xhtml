@@ -38,7 +38,7 @@
                     <p:column sortBy="telefone" headerText="Telefone" > #{cliente.telefone}</p:column>
                     <p:column sortBy="email" headerText="E-mail" > #{cliente.email}</p:column>
       
-                    <p:column headerText="Editar">
+                    <p:column >
                         <p:commandButton value="Editar" ajax="false" action="${ClienteController.editar()}">
                             <f:setPropertyActionListener target="${ClienteController.entidade}" value="${cliente}" />
                         </p:commandButton>

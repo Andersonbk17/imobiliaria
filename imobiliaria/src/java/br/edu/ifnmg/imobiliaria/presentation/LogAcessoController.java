@@ -70,6 +70,13 @@ public class LogAcessoController implements Serializable{
         listagem = dao.Buscar(filtro);
         return "ListagemLogAcesso.xhtml";
     }
+    
+    public String converteTipo(int tipo){
+        if(tipo == 1)
+            return "LOGIN";
+        else
+            return "LOGOUT";
+    }
 
     
     public String voltar(){

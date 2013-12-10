@@ -29,7 +29,7 @@
                 <p:dataTable style="text-align: center" value="${TipoImovelController.listagem}" var="item" emptyMessage="Registros não encontrados !">
                     <p:column sortBy="Id" headerText="Id" >${item.id}</p:column>
                     <p:column sortBy="Nome" headerText="Nome" >${item.nome}</p:column>
-                    <p:column headerText="Editar">
+                    <p:column>
                         <p:commandButton value="Editar" ajax="false" action="${TipoImovelController.editar()}">
                             <f:setPropertyActionListener target="${TipoImovelController.entidade}" value="${item}" />
                         </p:commandButton>

@@ -30,6 +30,7 @@
                         <p:menuitem url="ListagemProfissao.xhtml" value="Profissões" />
                         <p:menuitem url="ListagemTipoDeImovel.xhtml" value="Tipos de Imóveis" />
                         <p:menuitem url="ListagemVisita.xhtml" value="Visitas" />
+                        <p:menuitem url="ListagemUsuario.xhtml" value="Usuários" />
                     </p:submenu>
                     
                     <p:submenu label="Relatórios" >
@@ -38,6 +39,7 @@
                         <p:menuitem ajax="false" actionListener="#{relatorios.PDF(actionEvent)}" value="Folha de Pagamento" />
                         <p:menuitem ajax="false" actionListener="#{relatorios.PDFImoveisMaisVisitados(actionEvent)}" value="Imóveis mais Visitados" />
                         <p:menuitem ajax="false" actionListener="#{relatorios.PDFTipoImoveisMaisProcurados(actionEvent)}" value="Tipos de Imóves mais Procurados" />
+                        <p:menuitem url="ListagemLogAcesso.xhtml" value="Log de Acesso" />
                         
                     </p:submenu>
                     
@@ -55,7 +57,7 @@
                 <ui:insert name="content">Content</ui:insert>
             </div>
 
-            <div id="bottom" style="text-align: center">
+            <div id="bottom" style="text-align: center;">
                 
                 <ui:insert   name="bottom">ImobiSys© - Sistema de Gerenciamento de Imobiliárias </ui:insert>
                 

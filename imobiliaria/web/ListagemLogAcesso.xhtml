@@ -30,6 +30,7 @@
                 <p:dataTable style="text-align: center" value="${logAcessoController.listagem}" var="log" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" width="30" headerText="Id" >${log.id}</p:column>
                     <p:column sortBy="usuario" headerText="Usuário" >${log.usuario}</p:column>
+                    <p:column sortBy="usuario" headerText="Tipo" >${logAcessoController.converteTipo(log.tipo)}</p:column>
                     <p:column sortBy="horario" headerText="Horário" >${log.dataHora.toLocaleString()}</p:column>
     
                     <!--
