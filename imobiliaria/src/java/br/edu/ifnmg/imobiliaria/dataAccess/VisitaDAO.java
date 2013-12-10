@@ -41,7 +41,7 @@ public class VisitaDAO extends DAOGenerico<Visita> implements IVisitaRepositorio
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
                 
-                filtro += "AND v.id ="+obj.getId();
+                filtro += " AND v.id ="+obj.getId();
            
             }
 
