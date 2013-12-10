@@ -18,16 +18,34 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Cliente*:"/>
-                                <p:selectOneMenu id="clienteProprietario"  filter="true" converter="${clienteConverter}" value="#{visitaController.entidade.cliente}" required="true" requiredMessage="O campo cliente deve ser preenchido!" >
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{ClienteController.listarTodos()}"/>
-                                </p:selectOneMenu>
+                                <p:autoComplete size="50" completeMethod="#{ClienteController.autoCompletar}" var="p" itemLabel="#{p.nome}" itemValue="#{p}" converter="${clienteConverter}" value="#{visitaController.entidade.cliente}" required="true" requiredMessage="O campo cliente deve ser preenchido!" >
+                                    <p:column>
+                                        #{p.cpf}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.nome}
+                                    </p:column>
+                                </p:autoComplete>
                                 
-                                <h:outputLabel value="Imovel*:"/>
-                                <p:selectOneMenu id="imovelVisita"  filter="true" converter="${imovelConverter}" value="#{visitaController.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!">
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{imovelController.listarTodos()}"/>
-                                </p:selectOneMenu>
+                                <h:outputLabel value="Código do Imóvel*:"/>
+                                <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}"  
+                                                converter="${imovelConverter}" value="#{visitaController.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!" >
+                                    <p:column>
+                                        #{p.id}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoRua}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoNumero}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoBairro}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.cidade}
+                                    </p:column>
+                                </p:autoComplete>
                               
                               
                                 
