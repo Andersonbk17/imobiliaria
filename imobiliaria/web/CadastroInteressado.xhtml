@@ -28,13 +28,28 @@
                                                                   
                                 <h:outputLabel value="Telefone*:"/>
                                 <p:inputMask mask="(999)9999-9999" size="20" value="#{InteressadoController.entidade.telefone}" required="true" requiredMessage="O campo telefone deve ser preenchido!" />
+                                                                  
                                 
+                                <h:outputLabel value="Código do Imóvel*:"/>
+                                <p:autoComplete size="50" completeMethod="#{imovelController.autoCompletar}" var="p" itemLabel="#{p.id}" itemValue="#{p}"  
+                                                converter="${imovelConverter}" value="#{InteressadoController.entidade.imovel}" required="true" requiredMessage="O campo imóvel deve ser preenchido!" >
+                                    <p:column>
+                                        #{p.id}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoRua}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoNumero}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.enderecoBairro}
+                                    </p:column>
+                                    <p:column>
+                                        #{p.cidade}
+                                    </p:column>
+                                </p:autoComplete>
                                 
-                                <h:outputLabel value="Imóvel*:"/>
-                                <p:selectOneMenu id="imovel" value="#{InteressadoController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true" requiredMessage="O campo imóvel deve ser preenchido!" >
-                                    <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{imovelController.listarTodos()}"/>
-                                </p:selectOneMenu>
                                 
                                 <h:outputLabel value="Mensagem:"/>
                                 <p:inputTextarea rows="5" cols="52" value="#{InteressadoController.entidade.mensagem}" queryDelay="750" minQueryLength="4" />  
