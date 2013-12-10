@@ -29,6 +29,14 @@ public class Caracteristica implements Serializable {
     private String nome;
 
     private boolean ativo;
+
+    public Caracteristica() {
+        this.nome = null;
+        this.ativo = true;
+    }
+    
+    
+    
     
     public Long getId() {
         return id;
