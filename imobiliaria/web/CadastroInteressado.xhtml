@@ -17,21 +17,21 @@
                             <h:panelGrid columns="2" cellpadding="10">
                                 
                                 <h:outputLabel value="Nome*:"/>
-                                <p:inputText size="50" value="#{InteressadoController.entidade.nome}" required="true" />
+                                <p:inputText size="50" value="#{InteressadoController.entidade.nome}" required="true" requiredMessage="O campo nome deve ser preenchido!" />
                              
                                        
                                 <h:outputLabel value="E-mail*:"/>
-                                <p:inputText size="20" value="#{InteressadoController.entidade.email}" required="true" validatorMessage="Insira um e-mail válido!" >
+                                <p:inputText size="20" value="#{InteressadoController.entidade.email}" required="true" validatorMessage="Insira um e-mail válido!" requiredMessage="O campo e-mail deve ser preenchido!" >
                                     <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                                 
                                 </p:inputText>
                                                                   
                                 <h:outputLabel value="Telefone*:"/>
-                                <p:inputMask mask="(999)9999-9999" size="20" value="#{InteressadoController.entidade.telefone}" required="true" />
+                                <p:inputMask mask="(999)9999-9999" size="20" value="#{InteressadoController.entidade.telefone}" required="true" requiredMessage="O campo telefone deve ser preenchido!" />
                                 
                                 
                                 <h:outputLabel value="Imóvel*:"/>
-                                <p:selectOneMenu id="imovel" value="#{InteressadoController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true">
+                                <p:selectOneMenu id="imovel" value="#{InteressadoController.entidade.imovel}" converter="${imovelConverter}" required="true" filter="true" requiredMessage="O campo imóvel deve ser preenchido!" >
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
                                     <f:selectItems value="#{imovelController.listarTodos()}"/>
                                 </p:selectOneMenu>
