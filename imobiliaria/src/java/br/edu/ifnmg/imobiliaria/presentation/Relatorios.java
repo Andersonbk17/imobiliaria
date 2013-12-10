@@ -88,30 +88,34 @@ public class Relatorios implements Serializable {
         }
     }
     
-    /*
-    public void PDF(ActionEvent actionEvent) throws JRException, IOException {
+    
+    public void PDFImoveisMaisVisitados(ActionEvent actionEvent) throws JRException, IOException {
         Connection conn;
-        String arquivo = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/relatorios/TotalGastoFuncionario.jasper");
+        String arquivo = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/relatorios/ImoveisMaisVisitas.jasper");
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Imobiliaria", "root", "");
             java.sql.Statement sql = conn.createStatement();
             ResultSet rs = sql.executeQuery("SELECT\n"
-                    + "     \n"
-                    + "     cargo.`NOME` AS CARGO,\n"
-                    + "     cargo.`SALARIO` AS SALARIO,\n"
-                    + "     pessoa.`CPF` AS CPF,\n"
-                    + "     pessoa.`NOME` AS FUNCIONARIO,\n"
+                    + "     count(visita.`IMOVEL_ID`) AS Quantidade,\n"
+                    + "     imovel.`ENDERECONUMERO` AS NUMERO,\n"
+                    + "     imovel.`ENDERECORUA` AS RUA,\n"
+                    + "     imovel.`ENDERECOCEP` AS CEP,\n"
+                    + "     imovel.`ENDERECOBAIRRO` AS BAIRRO,\n"
+                    + "     imovel.`ID` AS ID_Imovel,\n"
                     + "     pessoa.`TELEFONE` AS TELEFONE,\n"
                     + "     pessoa.`EMAIL` AS EMAIL,\n"
-                    + "     funcionario.`DATAADMISSAO` AS DATA_ADMISSAO,\n"
-                    + "     funcionario.`ID` AS ID_FUNCIONARIO\n"
+                    + "     pessoa.`NOME` AS PROPRIETARIO,\n"
+                    + "     cidade.`NOME` AS CIDADE\n"
                     + "FROM\n"
-                    + "     `cargo` cargo INNER JOIN `funcionario` funcionario ON cargo.`ID` = funcionario.`CARGO_ID`\n"
-                    + "     INNER JOIN `pessoa` pessoa ON funcionario.`ID` = pessoa.`ID`\n"
+                    + "     `imovel` imovel INNER JOIN `visita` visita ON imovel.`ID` = visita.`IMOVEL_ID`\n"
+                    + "     INNER JOIN `pessoa` pessoa ON imovel.`CLIENTEPROPRIETARIO_ID` = pessoa.`ID`\n"
+                    + "     INNER JOIN `cidade` cidade ON imovel.`CIDADE_ID` = cidade.`ID`\n"
+                    + "GROUP BY\n"
+                    + "     ID_Imovel\n"
                     + "ORDER BY\n"
-                    + "     pessoa.`NOME` ASC");
+                    + "     Quantidade DESC");
             JRDataSource ds = new JRResultSetDataSource(rs);
             JasperPrint jasperPrint = JasperFillManager.fillReport(arquivo, null, ds);
 
@@ -121,23 +125,14 @@ public class Relatorios implements Serializable {
             HttpServletResponse res = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
             res.setContentType("application/pdf");
 
-                //String nome = usuario.getNome().replace(" ", "_");
-            //Código abaixo gerar o relatório e disponibiliza diretamente na página 
-            //   res.setHeader("Content-disposition", "inline;filename=" + nome + "_Alergias.pdf");
-            //Código abaixo gerar o relatório e disponibiliza para o cliente baixar ou salvar 
             res.getOutputStream().write(b);
             res.getCharacterEncoding();
             FacesContext.getCurrentInstance().responseComplete();
 
-            // HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-            //  httpServletResponse.addHeader("Content-disposition", "attachment; filename=report.pdf");
-            // ServletOutputStream servletOutputStream = httpServletResponse.getOutputStream();
-            // JasperExportManager.exportReportToPdfStream(jasperPrint, servletOutputStream);
-            // FacesContext.getCurrentInstance().responseComplete();
         } catch (JRException | ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ImovelController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    */
+    
     
 }
