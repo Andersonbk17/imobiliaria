@@ -27,7 +27,7 @@ public class AluguelImovelDAO extends DAOGenerico<AluguelImovel> implements IAlu
     @Override
     public List<AluguelImovel> Buscar(AluguelImovel obj) {
         // Corpo da consulta
-        String consulta = "select c from AluguelImovel c";
+        String consulta = "select c from AluguelImovel c where c.id > 0";
 
         // A parte where da consulta
         String filtro = "";
@@ -39,16 +39,12 @@ public class AluguelImovelDAO extends DAOGenerico<AluguelImovel> implements IAlu
         if (obj != null) {
             //Id
             if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " c.id=:id ";
-                parametros.put("id", obj.getId());
+                filtro += " AND c.id like '%"+obj.getId()+"%'";
             }
          
             // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
-                consulta = consulta + " where " + filtro;
+                consulta = consulta + filtro;
             }
         }
 
