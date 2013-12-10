@@ -51,6 +51,7 @@ public class ReformaController implements Serializable{
     public void salvar() {
         if(dao.Salvar(entidade)){
             exibirMensagem("Salvo com Sucesso!");
+            entidade = new Reforma();
         }else{
             exibirMensagem("Erro ao salvar !");
         }
