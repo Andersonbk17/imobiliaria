@@ -27,11 +27,19 @@
                         <p:commandButton ajax="false" value="Nova Reforma" action="${reformaController.criar()}" />
                     </f:facet>
                 </p:panelGrid>
-                
-                <p:dataTable value="${reformaController.listagem}" var="reforma" emptyMessage="Registros não encontrados!">
+                <br />
+                <p:dataTable style="text-align: center" value="${reformaController.listagem}" var="reforma" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" headerText="Id" > #{reforma.id}</p:column>
-                    <p:column sortBy="dataInicio" headerText="Data Inicio" > #{reforma.dataInicio.toLocaleString()}</p:column>
-                    <p:column sortBy="dataTermino" headerText="Data Término" > #{reforma.dataTermino.toLocaleString()}</p:column>
+                    <p:column sortBy="dataInicio" headerText="Data Inicio" > 
+                        <h:outputText value="${reforma.dataInicio}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column sortBy="dataTermino" headerText="Data Término" > 
+                        <h:outputText value="${reforma.dataTermino}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                        </h:outputText>
+                    </p:column>
                     <p:column sortBy="imovel" headerText="Código do Imóvel" > #{reforma.imovel}</p:column>
                     <p:column sortBy="valor" headerText="Valor" > #{reforma.valor}</p:column>
                     <p:column sortBy="observacoes" headerText="Observações" > #{reforma.observacos}</p:column>
