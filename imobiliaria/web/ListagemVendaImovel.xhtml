@@ -34,7 +34,11 @@
                 
                 <p:dataTable  style="text-align: center" value="${vendaImovel.listagem}" var="venda" emptyMessage="Registros não encontrados!">
                     <p:column sortBy="id" headerText="Id" > #{venda.id}</p:column>
-                    <p:column sortBy="dataVenda" headerText="Data da Venda" > #{venda.dataVenda.toLocaleString()}</p:column>
+                    <p:column sortBy="dataVenda" headerText="Data da Venda" > 
+                        <h:outputText value="${venda.dataVenda}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="Brazil/East" locale="pt_BR"/>
+                        </h:outputText>
+                    </p:column>
                     <p:column sortBy="imovel" headerText="Código do Imóvel" > #{venda.imovel}</p:column>
                     <p:column sortBy="vendedor" headerText="Antigo Dono" > #{venda.clienteVendedor.nome}</p:column>
                     <p:column sortBy="comprador" headerText="Comprador" > #{venda.clienteComprador.nome}</p:column>
