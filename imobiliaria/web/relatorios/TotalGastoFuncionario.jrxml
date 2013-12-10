@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b88a8d4f-b516-4390-978f-71ab49fc7185">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     
+     cargo.`NOME` AS CARGO,
+     cargo.`SALARIO` AS SALARIO,
+     pessoa.`CPF` AS CPF,
+     pessoa.`NOME` AS FUNCIONARIO,
+     pessoa.`TELEFONE` AS TELEFONE,
+     pessoa.`EMAIL` AS EMAIL,
+     funcionario.`DATAADMISSAO` AS DATA_ADMISSAO,
+     funcionario.`ID` AS ID_FUNCIONARIO
+FROM
+     `cargo` cargo INNER JOIN `funcionario` funcionario ON cargo.`ID` = funcionario.`CARGO_ID`
+     INNER JOIN `pessoa` pessoa ON funcionario.`ID` = pessoa.`ID`
+ORDER BY
+     pessoa.`NOME` ASC]]>
+	</queryString>
+	<field name="ID_FUNCIONARIO" class="java.lang.Long"/>
+	<field name="FUNCIONARIO" class="java.lang.String"/>
+	<field name="CPF" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TELEFONE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATA_ADMISSAO" class="java.sql.Date"/>
+	<field name="CARGO" class="java.lang.String"/>
+	<field name="SALARIO" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="total" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{SALARIO}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Float(0)]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="14ffc245-52e9-4249-9bec-3d4e67a5f5ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[ImobiSys]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="250" y="62" width="305" height="22" uuid="79034b37-be0f-4be7-bb67-8d31eff9ab9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isItalic="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Relatório de Folha de Pagamento]]></text>
+			</staticText>
+			<image>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="843136f8-86c7-4901-9cee-7810b8627909"/>
+				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="1" y="0" width="249" height="124" uuid="58f072bd-b3a2-41da-b740-35a48dfbafdc"/>
+				<imageExpression><![CDATA["C:\\Users\\Anderson\\Documents\\NetBeansProjects\\TrabalhoFinalLTPIV\\imobiliaria\\imobiliaria\\images\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="543aad53-eb38-4a0a-8f31-208bb1f63cc2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="56" height="15" forecolor="#736343" uuid="e9df4f26-3ac7-4882-84d7-366146176b32"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ID ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="56" y="0" width="181" height="15" forecolor="#736343" uuid="d16ac51f-fed6-409e-a7e7-0584a829de3a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FUNCIONÁRIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="0" width="110" height="15" forecolor="#736343" uuid="3456db63-a687-4677-b75e-a8916cc0d92e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="347" y="0" width="100" height="15" forecolor="#736343" uuid="c66f2369-9646-4006-b654-5262021cb167"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TELEFONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="447" y="0" width="133" height="15" forecolor="#736343" uuid="b394aef6-f7c8-4238-87bb-4fe09d60831f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="580" y="0" width="120" height="15" forecolor="#736343" uuid="71d543e7-1583-4430-9054-13ebdbc2ff5e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CARGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="41891bca-8c13-4588-a91f-b125c1c85082"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[SALÁRIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="a19829aa-b4b7-439e-bfaf-f4ef178f7ea5"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="56" height="15" uuid="3e13ae73-78b6-4104-8e41-7856374c304a"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{ID_FUNCIONARIO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="57" y="0" width="180" height="15" uuid="fd6a8be7-82fc-4427-9966-8c002223c57b"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{FUNCIONARIO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="237" y="0" width="110" height="15" uuid="dae5c596-8f9c-405a-baef-17355142198c"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{CPF}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="347" y="0" width="100" height="15" uuid="59ff2218-784e-4c66-b0d3-49b29d9046fa"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{TELEFONE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="447" y="0" width="133" height="15" uuid="b5ae33fa-6387-4225-a696-9357e665f9c6"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="580" y="0" width="120" height="15" forecolor="#000000" uuid="0d6a122a-ac91-42a1-8155-d2d4cbac0e5f"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{CARGO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="700" y="0" width="100" height="15" uuid="d0803c1d-71c0-485e-855b-784d47ae3624"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{SALARIO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="faf84409-9b0f-473b-b879-34faed4d6e03"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="696" y="8" width="100" height="20" uuid="ff472b37-9eb6-45ea-84e6-6f5e1d99540e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="555" y="8" width="136" height="20" forecolor="#736343" uuid="3d9c3371-3bfc-47a7-a26c-ac7d027f9420"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL SALÁRIOS R$:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="0" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="bc02244b-1075-4cbf-8e89-ef271204fb34"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="8d12c49b-76bc-440d-aa5b-6abce547aacd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="3cff8b34-b904-4721-8897-397a9d775fa7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="6d84f77e-2900-4b32-bd41-c12d5b281680"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
